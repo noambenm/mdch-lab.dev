@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: pihole-web-service.pihole.svc.cluster.local-cert
+  namespace: pihole
+spec:
+  secretName: pihole-service-cert
+  commonName: pihole-web-service.pihole.svc.cluster.local
+  dnsNames:
+    - pihole-web-service.pihole.svc.cluster.local
+  issuerRef:
+    name: letsencrypt-cluster-issuer
+    kind: ClusterIssuer

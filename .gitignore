@@ -1,0 +1,3 @@
+k8s/cloudflare/cloudflared-token.yml
+k8s/cert-manager/cloudflare-api-token-secret.yml
+k8s/pihole/pihole-secret.yml
