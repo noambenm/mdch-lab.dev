@@ -1,30 +1,30 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: cilium
-  namespace: cilium
+  name: cert-manager
+  namespace: cert-manager
 spec:
   interval: 24h
-  url: https://helm.cilium.io
+  url: https://charts.jetstack.io
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: cilium
-  namespace: cilium
+  name: cert-manager
+  namespace: cert-manager
 spec:
   interval: 10m
-  releaseName: cilium
+  releaseName: cert-manager
   chart:
     spec:
-      chart: cilium
+      chart: cert-manager
       version: 1.17.x
       sourceRef:
         kind: HelmRepository
-        name: cilium
-        namespace: cilium
+        name: cert-manager
+        namespace: cert-manager
   install:
     createNamespace: true
   valuesFrom:
     - kind: ConfigMap
-      name: cilium-values
+      name: cert-manager-values
