@@ -22,9 +22,3 @@ operator:
   replicas: 1
   rollOutPods: true
 rollOutCiliumPods: true
-ingressController:
-  enabled: true
-  loadbalancerMode: shared
-  service:
-    annotations:
-      "lbipam.cilium.io/ips": 192.168.1.30
