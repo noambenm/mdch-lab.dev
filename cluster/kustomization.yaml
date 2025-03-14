@@ -1,5 +1,4 @@
 resources:
   - coredns/
   - flux-system/
-  - apps.yaml
   - infrastructure.yaml
