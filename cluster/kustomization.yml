@@ -1,3 +1,5 @@
 resources:
   - coredns/
   - flux-system/
+  - apps.yml
+  - infrustructure.yml
