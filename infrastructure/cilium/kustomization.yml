@@ -1,0 +1,4 @@
+resources:
+  - cilium-ns.yaml
+  - cilium-values-cm.yaml
+  - cilium-helm-release.yaml

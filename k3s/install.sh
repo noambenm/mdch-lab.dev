@@ -5,14 +5,9 @@ echo "cgroup_memory=1 cgroup_enable=memory" >> /boot/firmware/cmdline.txt
 #check iptables
 iptables --version
 
+#before k3s install, put the config.yaml file in /etc/rancher/k3s/
 
-
-curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server \
-    --disable-kube-proxy \
-    --disable-network-policy \
-    --flannel-backend=none \
-    --disable=servicelb \
-    --disable=traefik" sh -
+curl -sfL https://get.k3s.io | sh -
 
 sudo mkdir -p ~/.kube
 sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config

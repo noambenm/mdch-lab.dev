@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hubble-ingress
+  namespace: cilium
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+spec:
+  ingressClassName: cilium
+  tls:
+    - hosts:
+      - hubble.mdch-lab.dev
+      secretName: hubble.mdch-lab.dev-cert
+  rules:
+    - host: hubble.mdch-lab.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hubble-ui
+                port:
+                  number: 80

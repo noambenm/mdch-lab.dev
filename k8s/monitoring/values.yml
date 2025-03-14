@@ -1,0 +1,34 @@
+kubeControllerManager:
+  enabled: true
+  endpoints: ['192.168.1.10']
+  service:
+    port: 10257
+    targetPort: 10257
+  serviceMonitor:
+    https: true
+    insecureSkipVerify: true
+
+kubeScheduler:
+  enabled: true
+  endpoints: ['192.168.1.10']
+  service:
+    port: 10259
+    targetPort: 10259
+  serviceMonitor:
+    https: true
+    insecureSkipVerify: true
+
+kubeProxy:
+  enabled: true
+  endpoints: ['192.168.1.10']
+  service:
+    enabled: true
+    port: 10249
+    targetPort: 10249
+
+defaultRules:
+  rules:
+    etcd: false
+
+kubeEtcd:
+  enabled: false

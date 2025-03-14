@@ -1,0 +1,11 @@
+# this is a workaround for the issue that the CoreDNS logs are shown warning messages regarding cusom configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  log.override: |
+    #
+  stub.server: |
+    #
