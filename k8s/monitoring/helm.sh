@@ -3,4 +3,4 @@ helm repo update
 
 helm install kube-prometheus-stack prometheus-community/ \
   --namespace monitoring \
-  --create-namespace -f values.yml
+  --create-namespace -f values.yaml

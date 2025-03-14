@@ -24,7 +24,6 @@ spec:
         name: cilium
         namespace: flux-system
   valuesFrom:
-    - configMapKeyRef:
-        name: cilium-values
-        namespace: flux-system
-        key: values.yaml
+    - kind: ConfigMap
+      name: cilium-values
+      

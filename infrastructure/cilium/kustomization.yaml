@@ -1,0 +1,9 @@
+resources:
+  - cilium-helm-release.yaml
+  - cilium-ns.yaml
+
+configMapGenerator:
+  - name: cilium-values
+    files:
+      - cilium-values.yaml
+

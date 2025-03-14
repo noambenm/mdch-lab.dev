@@ -1,4 +1,0 @@
-resources:
-  - cilium-helm-release.yml
-  - cilium-ns.yml
-  - cilium-values-cm.yml

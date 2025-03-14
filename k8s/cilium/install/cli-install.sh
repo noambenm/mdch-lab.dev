@@ -9,5 +9,5 @@ sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
 rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
 
 
-cilium install --version 1.17.1 -f values.yml
+cilium install --version 1.17.1 -f values.yaml
 
