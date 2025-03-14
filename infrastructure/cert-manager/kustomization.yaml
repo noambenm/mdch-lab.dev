@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: cert-manager
 resources:
   - cert-manager-helm-release.yaml
+  - cert-manager-ns.yaml
   - letsencrypt-cluster-issuer.yaml
 
 configMapGenerator:
