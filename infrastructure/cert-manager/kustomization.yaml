@@ -3,4 +3,3 @@ kind: Kustomization
 namespace: cert-manager
 resources:
   - helm/
-  - letsencrypt-cluster-issuer.yaml
