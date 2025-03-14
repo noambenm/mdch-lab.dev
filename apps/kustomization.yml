@@ -1,0 +1,4 @@
+resources:
+  - pihole/
+  - plex/
+  - vaultwarden/
