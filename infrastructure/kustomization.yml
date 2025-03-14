@@ -1,9 +1,2 @@
 resources:
-  - cert-manager/
   - cilium/
-  - cloudflare/
-  - external-secrets/
-  - ingress-nginx/
-  - loki/
-  - longhorn/
-  - monitoring/
