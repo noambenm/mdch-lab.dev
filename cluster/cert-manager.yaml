@@ -5,12 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./infrastructure
+  path: ./infrastructure/cert-manager/helm
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  dependsOn:
-    - name: cert-manager
-      kind: HelmRelease
-      namespace: cert-manager
