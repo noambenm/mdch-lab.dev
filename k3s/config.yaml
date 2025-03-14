@@ -1,11 +1,13 @@
 # This file needs to copied to /etc/rancher/k3s/ on the host
 disable:
-  - "kube-proxy"
-  - "network-policy"
   - "servicelb"
   - "traefik"
   - "metrics-server"
   - "local-storage"
+
+disable-kube-proxy: true
+
+disable-network-policy: true
 
 flannel-backend: "none"
 
