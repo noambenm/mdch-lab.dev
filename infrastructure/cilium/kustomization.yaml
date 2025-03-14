@@ -4,6 +4,7 @@ namespace: cilium
 resources:
   - cilium-helm-release.yaml
   - cilium-ns.yaml
+  - ip-pool.yaml
 
 configMapGenerator:
   - name: cilium-values
