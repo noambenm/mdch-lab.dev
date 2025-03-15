@@ -34,6 +34,7 @@ admin:
 extraEnvVars:
   TZ: "Asia/Jerusalem"
   FTLCONF_dns_listeningMode: "all"
+  FTLCONF_dns_revServers: 'true,192.168.0.0/24,192.168.1.254,mdch-lab.dev'
 
 DNS1: "1.1.1.1"
 DNS2: "1.0.0.1"
@@ -44,9 +45,6 @@ dnsmasq:
     - address=/grafana.mdch-lab.dev/192.168.1.30
     - address=/hubble.mdch-lab.dev/192.168.1.30
     - address=/pihole.mdch-lab.dev/192.168.1.30
-  customSettings:
-    - local=/mdch-lab.dev/
-    - rev-server=192.168.0.0/24,192.168.1.254
 
 adlists:
   - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
