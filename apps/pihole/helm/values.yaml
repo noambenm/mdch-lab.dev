@@ -9,6 +9,8 @@ serviceWeb:
     enabled: false
   type: ClusterIP
 
+virtualHost: "pihole.mdch-lab.dev"
+
 ingress:
   enabled: true
   ingressClassName: nginx
