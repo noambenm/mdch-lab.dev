@@ -2,13 +2,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: cilium
 resources:
-  - cilium-helm-release.yaml
-  - cilium-ns.yaml
   - ip-pool.yaml
-
-configMapGenerator:
-  - name: cilium-values
-    files:
-      - values.yaml=values.yaml
-configurations:
-  - kustomizeconfig.yaml

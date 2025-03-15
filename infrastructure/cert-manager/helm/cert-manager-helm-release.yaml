@@ -23,6 +23,8 @@ spec:
         kind: HelmRepository
         name: cert-manager
         namespace: cert-manager
+  install:
+    createNamespace: true
   valuesFrom:
     - kind: ConfigMap
       name: cert-manager-values

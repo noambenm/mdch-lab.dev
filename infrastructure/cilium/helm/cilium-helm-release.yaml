@@ -23,6 +23,8 @@ spec:
         kind: HelmRepository
         name: cilium
         namespace: cilium
+  install:
+    createNamespace: true
   valuesFrom:
     - kind: ConfigMap
       name: cilium-values
