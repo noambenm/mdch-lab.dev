@@ -6,7 +6,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
 spec:
-  ingressClassName: cilium
+  ingressClassName: nginx
   tls:
     - hosts:
       - hubble.mdch-lab.dev
