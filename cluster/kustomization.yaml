@@ -1,4 +1,5 @@
 resources:
   - coredns/
   - flux-system/
+  - helm/
   - infrastructure.yaml
