@@ -14,10 +14,10 @@ metadata:
   namespace: monitoring
 spec:
   interval: 10m
-  releaseName: monitoring
+  releaseName: kube-prometheus-stack
   chart:
     spec:
-      chart: monitoring
+      chart: kube-prometheus-stack
       version: x.x.x
       sourceRef:
         kind: HelmRepository
