@@ -2,7 +2,7 @@
 
 set -e
 
-### 1. Modify /boot/firmware/cmdline.txt ###
+### Modify /boot/firmware/cmdline.txt ###
 CMDLINE_FILE="/boot/firmware/cmdline.txt"
 CMDLINE_PARAMS="cgroup_memory=1 cgroup_enable=memory"
 if ! grep -q "$CMDLINE_PARAMS" $CMDLINE_FILE; then
@@ -12,12 +12,12 @@ else
     echo "Cgroup parameters already exist."
 fi
 
-### 2. Install iptables ###
+### Install iptables ###
 echo "Installing iptables..."
 sudo apt update
 sudo apt install -y iptables
 
-### 3. Create K3s config.yaml ###
+### Create K3s config.yaml ###
 CONFIG_PATH="/etc/rancher/k3s"
 sudo mkdir -p $CONFIG_PATH
 CONFIG_FILE="$CONFIG_PATH/config.yaml"
@@ -44,7 +44,7 @@ else
   echo "K3s config.yaml already exists."
 fi
 
-### 4. Install K3s ###
+### Install K3s ###
 if ! command -v k3s &> /dev/null; then
   echo "Installing K3s..."
   curl -sfL https://get.k3s.io | sh -
@@ -52,7 +52,7 @@ else
   echo "K3s already installed."
 fi
 
-### 5. Configure kubectl access ###
+### Configure kubectl access ###
 mkdir -p ~/.kube
 sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 sudo chown $(id -u):$(id -g) ~/.kube/config
@@ -60,7 +60,7 @@ export KUBECONFIG=~/.kube/config
 
 grep -qxF 'export KUBECONFIG=~/.kube/config' ~/.bashrc || echo 'export KUBECONFIG=~/.kube/config' >> ~/.bashrc
 
-### 6. Enable kubectl bash completion and alias ###
+### Enable kubectl bash completion and alias ###
 sudo apt-get install -y bash-completion
 grep -qxF "source /usr/share/bash-completion/bash_completion" ~/.bashrc || echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc
 
@@ -70,7 +70,19 @@ sudo chmod a+r /etc/bash_completion.d/kubectl
 grep -qxF 'alias k=kubectl' ~/.bashrc || echo 'alias k=kubectl' >> ~/.bashrc
 grep -qxF 'complete -o default -F __start_kubectl k' ~/.bashrc || echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
 
-### 7. Install Helm with auto completion ###
+### Install kubens and kubectx ###
+if ! command -v kubens &> /dev/null; then
+  echo "Installing kubens and kubectx..."
+  sudo apt-get install -y kubectx
+else
+  echo "kubens and kubectx already installed."
+fi
+
+echo "Fixing ~/.kube permissions..."
+sudo chown -R $(id -u):$(id -g) ~/.kube
+sudo chown $(id -u):$(id -g) ~/.kube/config
+
+### Install Helm with auto completion ###
 if ! command -v helm &> /dev/null; then
   echo "Installing Helm..."
   curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
@@ -84,7 +96,7 @@ else
   echo "Helm already installed."
 fi
 
-### 8. Install Kustomize with auto completion ###
+### Install Kustomize with auto completion ###
 if ! command -v kustomize &> /dev/null; then
   echo "Installing Kustomize..."
   curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
@@ -95,7 +107,7 @@ else
   echo "Kustomize already installed."
 fi
 
-### 9. Install Cilium CLI with alias and auto completion ###
+### Install Cilium CLI with alias and auto completion ###
 if ! command -v cilium &> /dev/null; then
   echo "Installing Cilium CLI..."
   CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
@@ -111,7 +123,7 @@ fi
 
 grep -qxF "alias cilium='cilium --namespace cilium'" ~/.bashrc || echo "alias cilium='cilium --namespace cilium'" >> ~/.bashrc
 
-### 10. Install Flux CLI with auto completion ###
+### Install Flux CLI with auto completion ###
 if ! command -v flux &> /dev/null; then
   echo "Installing Flux CLI..."
   curl -s https://fluxcd.io/install.sh | sudo bash
