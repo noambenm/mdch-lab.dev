@@ -44,6 +44,9 @@ dnsmasq:
     - address=/grafana.mdch-lab.dev/192.168.1.30
     - address=/hubble.mdch-lab.dev/192.168.1.30
     - address=/pihole.mdch-lab.dev/192.168.1.30
+  customSettings:
+    otherSettings: |
+      local=/mdch-lab.dev/
 
 adlists:
   - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
