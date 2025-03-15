@@ -1,3 +1,4 @@
-service:
-  annotations:
-    "lbipam.cilium.io/ips": 192.168.1.30
+controller:
+  service:
+    annotations:
+      "lbipam.cilium.io/ips": 192.168.1.30
