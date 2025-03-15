@@ -1,0 +1,28 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: mojo2600
+  namespace: pihole
+spec:
+  interval: 24h
+  url: https://mojo2600.github.io/pihole-kubernetes
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pihole
+  namespace: pihole
+spec:
+  interval: 10m
+  releaseName: pihole
+  chart:
+    spec:
+      chart: pihole
+      version: 2.29.x
+      sourceRef:
+        kind: HelmRepository
+        name: mojo2600
+        namespace: pihole
+  valuesFrom:
+    - kind: ConfigMap
+      name: pihole-values
