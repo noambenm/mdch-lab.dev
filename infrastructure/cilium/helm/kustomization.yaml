@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: cilium
 resources:
   - cilium-helm-release.yaml
+  - cilium-ns.yaml
 
 configMapGenerator:
   - name: cilium-values
