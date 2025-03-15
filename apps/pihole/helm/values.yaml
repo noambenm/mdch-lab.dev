@@ -34,7 +34,13 @@ admin:
 extraEnvVars:
   TZ: "Asia/Jerusalem"
   FTLCONF_dns_listeningMode: "all"
-  FTLCONF_dns_revServers: 'true,192.168.1.0/24,192.168.1.254,mdch-lab.dev'
+  FTLCONF_dns_revServers: "true,192.168.1.0/24,192.168.1.254,mdch-lab.dev"
+  PIHOLE_HOSTNAME: "localhost"
+
+extraEnvVarsSecret:
+  env_var:
+    name: pihole-secret
+    key: password
 
 DNS1: "1.1.1.1"
 DNS2: "1.0.0.1"
@@ -89,5 +95,14 @@ podAnnotations:
 monitoring:
   podMonitor:
     enabled: true
-
+  sidecar:
+    enabled: true
+    port: 9617
+    image:
+      repository: ekofr/pihole-exporter
+      tag: v1.0.1
+      pullPolicy: IfNotPresent
+    resources:
+      limits:
+        memory: 128Mi
 
