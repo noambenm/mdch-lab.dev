@@ -45,9 +45,8 @@ dnsmasq:
     - address=/hubble.mdch-lab.dev/192.168.1.30
     - address=/pihole.mdch-lab.dev/192.168.1.30
   customSettings:
-    otherSettings: |
-      local=/mdch-lab.dev/
-      rev-server=192.168.0.0/24,192.168.1.254
+    - local=/mdch-lab.dev/
+    - rev-server=192.168.0.0/24,192.168.1.254
 
 adlists:
   - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
