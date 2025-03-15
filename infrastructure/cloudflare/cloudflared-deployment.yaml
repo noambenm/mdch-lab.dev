@@ -6,7 +6,7 @@ metadata:
   name: cloudflared-deployment
   namespace: cloudflare
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       pod: cloudflared
