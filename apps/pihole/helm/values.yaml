@@ -89,15 +89,5 @@ podAnnotations:
 monitoring:
   podMonitor:
     enabled: true
-  sidecar:
-    enabled: true
-    port: 9617
-    image:
-      repository: ekofr/pihole-exporter
-      tag: v1.0.1
-      pullPolicy: IfNotPresent
-    resources:
-      limits:
-        memory: 128Mi
 
 
