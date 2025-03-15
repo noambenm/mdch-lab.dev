@@ -32,8 +32,5 @@ defaultRules:
 
 kubeEtcd:
   enabled: false
-
-prometheus:
-  prometheusSpec:
-    podMonitorSelectorNilUsesHelmValues: true
+  
 
