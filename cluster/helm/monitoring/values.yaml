@@ -2,11 +2,53 @@ defaultRules:
   rules:
     etcd: false
 
-kubeEtcd:
-  enabled: false
+alertmanager:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+    hosts: 
+      - alertmanager.mdch-lab.dev
+    paths:
+      - /
+    pathType: Prefix
+    tls:
+      - secretName: alertmanager-general-tls
+        hosts:
+        - alertmanager.mdch-lab.dev
+  alertmanagerSpec:
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: local-path
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
 
-kubeProxy:
-  enabled: false
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+    hosts:
+      - grafana.mdch-lab.dev
+    path: /
+    tls:
+      - secretName: grafana-general-tls
+        hosts:
+        - grafana.mdch-lab.dev
+  persistence:
+    enabled: true
+    type: sts
+    storageClassName: default
+    accessModes:
+      - ReadWriteOnce
+    size: 5Gi
+    finalizers:
+      - kubernetes.io/pvc-protection
 
 kubeControllerManager:
   enabled: true
@@ -18,6 +60,9 @@ kubeControllerManager:
     https: true
     insecureSkipVerify: true
 
+kubeEtcd:
+  enabled: false
+
 kubeScheduler:
   enabled: true
   endpoints: ['192.168.1.10']
@@ -28,7 +73,34 @@ kubeScheduler:
     https: true
     insecureSkipVerify: true
 
+kubeProxy:
+  enabled: false
+
 prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+    hosts:
+      - prometheus.mdch-lab.dev
+    paths:
+      - /
+    pathType: Prefix
+    tls:
+      - secretName: prometheus-general-tls
+        hosts:
+          - prometheus.mdch-lab.dev
   prometheusSpec:
     podMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelectorNilUsesHelmValues: false
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
+
+cleanPrometheusOperatorObjectNames: true
