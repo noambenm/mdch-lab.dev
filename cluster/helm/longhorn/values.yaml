@@ -1,0 +1,33 @@
+persistence:
+  defaultClassReplicaCount: 1
+
+csi:
+  attacherReplicaCount: 1  
+  provisionerReplicaCount: 1
+  resizerReplicaCount: 1
+  snapshotterReplicaCount: 1
+
+defaultSettings:
+  defaultReplicaCount: 1
+
+longhornUI:
+  replicas: 1
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  host: longhorn.mdch-lab.dev
+  tls: true
+  tlsSecret: longhorn.mdch-lab.dev
+  path: /
+  pathType: Prefix
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+  secrets:
+    - name: longhorn-general-tls
+      key: tls.key
+      certificate: tls.crt
+
+metrics:
+  serviceMonitor:
+    enabled: true
