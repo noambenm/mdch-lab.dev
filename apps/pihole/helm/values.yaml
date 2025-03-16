@@ -50,6 +50,7 @@ dnsmasq:
     - address=/mdch-lab.dev/192.168.1.10
     - address=/grafana.mdch-lab.dev/192.168.1.30
     - address=/prometheus.mdch-lab.dev/192.168.1.30
+    - address=/alertmanager.mdch-lab.dev/192.168.1.30
     - address=/hubble.mdch-lab.dev/192.168.1.30
     - address=/pihole.mdch-lab.dev/192.168.1.30
 
