@@ -18,14 +18,14 @@ alertmanager:
         hosts:
         - alertmanager.mdch-lab.dev
   alertmanagerSpec:
-  storage:
-    volumeClaimTemplate:
-      spec:
-        storageClassName: local-path
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 5Gi
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
 
 grafana:
   ingress:
