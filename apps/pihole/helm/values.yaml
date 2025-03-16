@@ -40,7 +40,7 @@ extraEnvVars:
   PIHOLE_HOSTNAME: "localhost"
 
 extraEnvVarsSecret:
-  env_var:
+  PIHOLE_PASSWORD:
     name: pihole-secret
     key: password
 
