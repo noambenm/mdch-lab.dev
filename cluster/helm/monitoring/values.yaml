@@ -1,3 +1,13 @@
+defaultRules:
+  rules:
+    etcd: false
+
+kubeEtcd:
+  enabled: false
+
+kubeProxy:
+  enabled: false
+
 kubeControllerManager:
   enabled: true
   endpoints: ['192.168.1.10']
@@ -18,21 +28,7 @@ kubeScheduler:
     https: true
     insecureSkipVerify: true
 
-kubeProxy:
-  enabled: true
-  endpoints: ['192.168.1.10']
-  service:
-    enabled: true
-    port: 10249
-    targetPort: 10249
-
-defaultRules:
-  rules:
-    etcd: false
-
-kubeEtcd:
-  enabled: false
-
 prometheus:
   prometheusSpec:
     podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
