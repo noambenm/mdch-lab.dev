@@ -21,6 +21,17 @@ hubble:
     enabled: true
   ui:
     enabled: true
+    ingress:
+      enabled: false
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+      className: nginx
+      hosts:
+        - hubble.mdch-lab.dev
+      tls:
+        - secretName: hubble.mdch-lab.dev
+          hosts:
+            - hubble.mdch-lab.dev
   metrics:
     enabled:
       - dns
