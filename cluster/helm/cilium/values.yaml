@@ -36,6 +36,8 @@ hubble:
 
 prometheus:
   enabled: true
+  serviceMonitor:
+    enabled: true
 
 operator:
   replicas: 1
