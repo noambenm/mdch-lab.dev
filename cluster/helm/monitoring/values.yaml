@@ -26,6 +26,7 @@ alertmanager:
           resources:
             requests:
               storage: 5Gi
+    forceEnableClusterMode: true
 
 grafana:
   ingress:
