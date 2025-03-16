@@ -22,7 +22,7 @@ hubble:
   ui:
     enabled: true
     ingress:
-      enabled: false
+      enabled: true
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
       className: nginx
