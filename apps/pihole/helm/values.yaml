@@ -27,6 +27,7 @@ ingress:
 persistentVolumeClaim:
   enabled: true
   storageClass: longhorn
+  size: "1Gi"
 
 admin:
   enabled: true
