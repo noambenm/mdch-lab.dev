@@ -11,6 +11,7 @@ ingressController:
   loadbalancerMode: shared
   service:
     loadBalancerIP: 192.168.1.30
+    allocateLoadBalancerNodePorts: false
 
 ipam:
   operator:
