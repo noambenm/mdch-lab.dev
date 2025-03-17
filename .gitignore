@@ -1,3 +1,3 @@
-infrastructure/cloudflare/cloudflared-token.yaml
-infrastructure/cert-manager/cloudflare-api-token-secret.yaml
+infrastructure/controllers/cloudflare/cloudflared-token.yaml
+infrastructure/configs/cloudflare-api-token-secret.yaml
 apps/pihole/helm/pihole-secret.yaml
