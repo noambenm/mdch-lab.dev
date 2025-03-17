@@ -6,7 +6,7 @@ resources:
   - repository.yaml
   - release.yaml
 configMapGenerator:
-  - name: monitoring-values
+  - name: kube-prometheus-stack-values
     files:
       - values.yaml
     options:
