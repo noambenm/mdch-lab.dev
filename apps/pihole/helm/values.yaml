@@ -12,7 +12,7 @@ serviceWeb:
 
 ingress:
   enabled: true
-  ingressClassName: nginx
+  ingressClassName: cilium
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-cluster-issuer"
   path: /

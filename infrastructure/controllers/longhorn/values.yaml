@@ -15,7 +15,7 @@ longhornUI:
 
 ingress:
   enabled: true
-  ingressClassName: nginx
+  ingressClassName: cilium
   host: longhorn.mdch-lab.dev
   tls: true
   tlsSecret: longhorn.mdch-lab.dev

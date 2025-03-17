@@ -5,7 +5,7 @@ defaultRules:
 alertmanager:
   ingress:
     enabled: true
-    ingressClassName: nginx
+    ingressClassName: cilium
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
     hosts: 
@@ -31,7 +31,7 @@ alertmanager:
 grafana:
   ingress:
     enabled: true
-    ingressClassName: nginx
+    ingressClassName: cilium
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
     hosts:
@@ -80,7 +80,7 @@ kubeProxy:
 prometheus:
   ingress:
     enabled: true
-    ingressClassName: nginx
+    ingressClassName: cilium
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
     hosts:
