@@ -5,7 +5,7 @@ resources:
   - podmonitor.yaml
   - ip-pool.yaml
   - coredns-custom.yaml
-  - letsenrypt-cluster-issuer.yaml
+  - letsencrypt-cluster-issuer.yaml
 configMapGenerator:
   - name: flux-grafana-dashboards
     files:
