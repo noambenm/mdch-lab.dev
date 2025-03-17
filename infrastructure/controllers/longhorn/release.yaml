@@ -15,6 +15,10 @@ spec:
         kind: HelmRepository
         name: longhorn
         namespace: longhorn-system
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   valuesFrom:
     - kind: ConfigMap
       name: longhorn-values
