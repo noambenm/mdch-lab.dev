@@ -55,7 +55,7 @@ dnsmasq:
     - address=/longhorn.mdch-lab.dev/192.168.1.30
     - address=/hubble.mdch-lab.dev/192.168.1.30
     - address=/pihole.mdch-lab.dev/192.168.1.30
-
+    - address=/maintenance.mdch-lab.dev/192.168.1.30
 adlists:
   - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
   - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
@@ -85,6 +85,9 @@ adlists:
   - https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts
   - https://urlhaus.abuse.ch/downloads/hostfile/
   - https://lists.cyberhost.uk/malware.txt
+
+whitelist:
+  - imasdk.googleapis.com	 # allow content to be played from smart tv n12 app
 
 capabilities:
   add:
