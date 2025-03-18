@@ -3,5 +3,22 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - repository.yaml
-  - release.yaml
+  - loki-release.yaml
   - promtail-release.yaml
+configMapGenerator:
+  - name: loki-values
+    files:
+      - values.yaml=loki-values.yaml
+    options:
+      labels:
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: monitoring
+  - name: promtail-values
+    files:
+      - values.yaml=promtail-values.yaml
+    options:
+      labels:
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: monitoring
+configurations:
+  - kustomizeconfig.yaml
