@@ -27,8 +27,6 @@ loki:
     enable_api: true
 test:
   enabled: false
-lokiCanary:
-  enabled: false
 singleBinary:
   replicas: 1
 write:
@@ -37,10 +35,6 @@ read:
   replicas: 0
 backend:
   replicas: 0
-resultsCache:
-  enabled: false
-chunksCache:
-  enabled: false
 minio:
   enabled: true
 extraObjects:
