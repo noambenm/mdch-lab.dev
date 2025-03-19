@@ -12,6 +12,18 @@ loki:
   # https://grafana.com/docs/loki/latest/setup/install/helm/install-monolithic/
   commonConfig:
     replication_factor: 1
+  memcached:
+    chunk_cache:
+      enabled: true
+      host: loki-chunks-cache.monitoring.svc.cluster.local
+      service: memcached-client
+      batch_size: 256
+      parallelism: 10
+    results_cache:
+      enabled: true
+      host: loki-results-cache.monitoring.svc.cluster.local
+      service: memcached-client
+      default_validity: 12h
   schemaConfig:
     configs:
       - from: "2024-04-01"
