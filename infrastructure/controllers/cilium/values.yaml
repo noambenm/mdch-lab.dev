@@ -5,6 +5,9 @@ k8sClientRateLimit:
   qps: 50
   burst: 200
 
+l2announcements:
+  enabled: true
+
 ingressController:
   enabled: true
   default: true
@@ -12,6 +15,9 @@ ingressController:
   service:
     loadBalancerIP: 192.168.1.30
     allocateLoadBalancerNodePorts: false
+
+gatewayAPI:
+  enabled: true
 
 ipam:
   operator:
@@ -21,8 +27,9 @@ ipam:
 kubeProxyReplacement: true
 kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 
-l2announcements:
-  enabled: true
+loadBalancer:
+  l7:
+    backend: envoy
 
 hubble:
   relay:
