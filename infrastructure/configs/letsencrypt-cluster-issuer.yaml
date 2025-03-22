@@ -4,7 +4,7 @@ metadata:
   name: letsencrypt-cluster-issuer
 spec:
   acme:
-    email: noam112113@gmail.com
+    email: admin@mdch-lab.dev
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: issuer-account-key
