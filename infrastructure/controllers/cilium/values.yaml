@@ -36,8 +36,10 @@ loadBalancer:
 hubble:
   relay:
     enabled: true
+    rollOutPods: true
   ui:
     enabled: true
+    rollOutPods: true
     ingress:
       enabled: true
       annotations:
@@ -68,6 +70,7 @@ prometheus:
     enabled: true
 
 operator:
+  rollOutPods: true
   replicas: 1
   prometheus:
     enabled: true
@@ -75,6 +78,7 @@ operator:
       enabled: true
 
 envoy:
+  rollOutPods: true
   prometheus:
     serviceMonitor:
       enabled: true
