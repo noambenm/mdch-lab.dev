@@ -18,6 +18,8 @@ ingressController:
 
 gatewayAPI:
   enabled: true
+  gatewayClass:
+    create: 'true'
 
 ipam:
   operator:
