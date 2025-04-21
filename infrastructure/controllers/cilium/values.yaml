@@ -26,7 +26,7 @@ ipam:
     clusterPoolIPv4PodCIDRList:
       - 10.42.0.0/16
 
-kubeProxyReplacement: true
+kubeProxyReplacement: "true"
 kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 
 loadBalancer:
