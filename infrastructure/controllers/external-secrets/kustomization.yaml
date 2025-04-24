@@ -3,7 +3,9 @@ kind: Kustomization
 namespace: external-secrets
 resources:
   - namespace.yaml
-  - repository.yaml
+  - repositories.yaml
+  - deployment-crds.yaml
+  - deployment-crs.yaml
   - release.yaml
 configMapGenerator:
   - name: external-secrets-values

@@ -1,0 +1,19 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: cloudflared-token
+  namespace: cloudflare
+spec:
+  refreshInterval: 24h
+  secretStoreRef:
+    name: ssm-parameter-store
+    kind: ClusterSecretStore
+  target:
+    name: cloudflared-token
+    creationPolicy: Owner
+    template:
+      type: Opaque
+  data:
+  - secretKey: TOKEN
+    remoteRef:
+      key: /mdch-lab/cloudfront/api-token

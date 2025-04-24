@@ -14,10 +14,6 @@ spec:
         kind: HelmRepository
         name: external-secrets
         namespace: external-secrets
-  install:
-    crds: CreateReplace
-  upgrade:
-    crds: CreateReplace
   valuesFrom:
     - kind: ConfigMap
       name: external-secrets-values 
