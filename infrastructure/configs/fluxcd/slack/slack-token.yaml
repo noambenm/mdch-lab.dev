@@ -1,0 +1,19 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: slack-token
+  namespace: flux-system
+spec:
+  refreshInterval: 24h
+  secretStoreRef:
+    name: ssm-parameter-store
+    kind: ClusterSecretStore
+  target:
+    name: slack-token
+    creationPolicy: Owner
+    template:
+      type: Opaque
+  data:
+  - secretKey: token
+    remoteRef:
+      key: /mdch-lab/fluxcd/slack-token
