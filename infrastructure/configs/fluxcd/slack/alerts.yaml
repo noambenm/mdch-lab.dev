@@ -6,7 +6,6 @@ metadata:
 spec:
   providerRef:
     name: slack
-  eventSeverity: info
   eventSources:
     - kind: GitRepository
       name: '*'
@@ -16,3 +15,5 @@ spec:
       name: '*'
     - kind: HelmRepository
       name: '*'
+  exclusionList:
+    - "^Dependencies.*"
