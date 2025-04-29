@@ -4,6 +4,7 @@ namespace: pihole
 resources:
   - pihole-helm-release.yaml
   - pihole-ns.yaml
+  - pihole-secret.yaml
 
 configMapGenerator:
   - name: pihole-values
