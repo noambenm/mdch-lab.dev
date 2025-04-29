@@ -2,7 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: pihole
 resources:
-  - pihole-helm-release.yaml
+  - release.yaml
+  - repository.yaml
   - pihole-ns.yaml
   - pihole-secret.yaml
 

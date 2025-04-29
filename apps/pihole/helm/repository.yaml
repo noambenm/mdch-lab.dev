@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: cilium
-  namespace: cilium
+  name: mojo2600
+  namespace: pihole
 spec:
   interval: 24h
-  url: https://helm.cilium.io
+  url: https://mojo2600.github.io/pihole-kubernetes
