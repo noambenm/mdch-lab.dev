@@ -1,8 +1,8 @@
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
-  name: pihole-gateway
-  namespace: envoy-gateway
+  name: pihole-dns-gateway
+  namespace: pihole
 spec:
   gatewayClassName: envoy-gateway
   addresses:

@@ -1,4 +1,3 @@
-# TCP 53
 apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: TCPRoute
 metadata:
@@ -6,15 +5,13 @@ metadata:
   namespace: pihole
 spec:
   parentRefs:
-  - name: pihole-gateway
-    namespace: envoy-gateway
+  - name: pihole-dns-gateway
     sectionName: dns-tcp
   rules:
   - backendRefs:
-    - name: pihole
+    - name: pihole-dns
       port: 53
 ---
-# UDP 53
 apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: UDPRoute
 metadata:
@@ -22,10 +19,9 @@ metadata:
   namespace: pihole
 spec:
   parentRefs:
-  - name: pihole-gateway
-    namespace: envoy-gateway
+  - name: pihole-dns-gateway
     sectionName: dns-udp
   rules:
   - backendRefs:
-    - name: pihole
+    - name: pihole-dns
       port: 53
