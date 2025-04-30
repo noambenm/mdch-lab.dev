@@ -1,15 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: pihole
 resources:
   - release.yaml
   - repository.yaml
-  - pihole-ns.yaml
+  - namespace.yaml
   - pihole-secret.yaml
   - gateway.yaml
 
 configMapGenerator:
   - name: pihole-values
+    namespace: pihole
     files:
       - values.yaml=values.yaml
 configurations:
