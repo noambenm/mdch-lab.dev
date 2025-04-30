@@ -7,4 +7,4 @@ spec:
   interval: 24h
   url: oci://docker.io/envoyproxy/gateway-helm
   ref:
-    tag: v0.0.0-latest      
+    tag: v1.3.2
