@@ -5,7 +5,7 @@ metadata:
   namespace: pihole
 spec:
   parentRefs:
-  - name: pihole-dns-gateway
+  - name: pihole-gateway
     sectionName: dns-tcp
   rules:
   - backendRefs:
@@ -19,9 +19,36 @@ metadata:
   namespace: pihole
 spec:
   parentRefs:
-  - name: pihole-dns-gateway
+  - name: pihole-gateway
     sectionName: dns-udp
   rules:
   - backendRefs:
     - name: pihole-dns
       port: 53
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: pihole-web
+  namespace: pihole
+spec:
+  parentRefs:
+  - name: pihole-gateway
+    sectionName: web
+  hostnames:
+  - "pihole.mdch-lab.dev"
+  rules:
+  - matches:
+    - path:
+        type: Exact
+        value: "/"
+    filters:
+    - type: RequestRedirect
+      requestRedirect:
+        path:
+          type: ReplaceFullPath
+          replaceFullPath: /login
+        statusCode: 302 
+  - backendRefs:
+    - name: pihole-web
+      port: 80
