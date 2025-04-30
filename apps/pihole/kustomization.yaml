@@ -7,7 +7,6 @@ resources:
   - pihole-secret.yaml
   - gateway.yaml
   - routes.yaml
-  - envoyproxy-pihole-gateway.yaml
 
 configMapGenerator:
   - name: pihole-values
