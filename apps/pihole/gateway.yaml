@@ -5,16 +5,13 @@ metadata:
   namespace: envoy-gateway
 spec:
   gatewayClassName: envoy-gateway
+  addresses:
+  - type: IPAddress
+    value: 192.168.1.25
   listeners:
   - name: dns-tcp
     protocol: TCP
     port: 53
-    allowedRoutes:
-      namespaces:
-        from: Same
   - name: dns-udp
     protocol: UDP
     port: 53
-    allowedRoutes:
-      namespaces:
-        from: Same
