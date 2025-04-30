@@ -34,6 +34,9 @@ spec:
         patch:
           type: StrategicMerge
           value:
+            metadata:
+              annotations:
+                lbipam.cilium.io/ips: "192.168.1.25"
             spec:
               loadBalancerClass: "io.cilium/l2-announcer"
               allocateLoadBalancerNodePorts: false
