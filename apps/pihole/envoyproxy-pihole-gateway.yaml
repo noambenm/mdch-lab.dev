@@ -1,0 +1,16 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: pihole-dns-gateway
+  namespace: pihole
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        patch:
+          type: StrategicMerge
+          value:
+            spec:
+              loadBalancerClass: "io.cilium/l2-announcer"
+              allocateLoadBalancerNodePorts: false
