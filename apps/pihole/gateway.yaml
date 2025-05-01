@@ -12,9 +12,6 @@ spec:
       group: gateway.envoyproxy.io
       kind: EnvoyProxy
       name: pihole-gateway
-  addresses:
-  - type: IPAddress
-    value: 192.168.1.25
   listeners:
   - name: dns-tcp
     protocol: TCP
@@ -46,5 +43,8 @@ spec:
         patch:
           type: StrategicMerge
           value:
+            metadata:
+              annotations:
+                lbipam.cilium.io/ips: "192.168.1.25"
             spec:
               allocateLoadBalancerNodePorts: false
