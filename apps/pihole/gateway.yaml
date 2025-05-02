@@ -6,12 +6,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
 spec:
-  gatewayClassName: envoy-gateway
-  infrastructure:
-    parametersRef:
-      group: gateway.envoyproxy.io
-      kind: EnvoyProxy
-      name: pihole-gateway
+  gatewayClassName: cilium
   listeners:
   - name: web
     hostname: pihole.mdch-lab.dev
