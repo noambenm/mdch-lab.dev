@@ -17,9 +17,9 @@ ingressController:
     allocateLoadBalancerNodePorts: false
 
 gatewayAPI:
-   enabled: true
-   gatewayClass:
-     create: 'true'
+  enabled: true
+  gatewayClass:
+    create: 'true'
 
 ipam:
   operator:
