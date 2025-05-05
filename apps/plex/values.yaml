@@ -1,3 +1,7 @@
+ingress:
+  enabled: false
+  url: ""
+
 pms:
   storageClassName: longhorn
 
@@ -7,6 +11,7 @@ service:
   loadBalancerIP: 192.168.1.21
 
 extraEnv:
+  ADVERTISE_IP: "http://192.168.1.21:32400,https://plex.mdch-lab.dev:443"
   TZ: "Asia/Jerusalem"
 
 extraVolumeMounts:
