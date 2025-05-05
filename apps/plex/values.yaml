@@ -1,3 +1,11 @@
+ingress:
+  enabled: true
+  ingressClassName: "cilium"
+  url: "plex.mdch-lab.dev"
+  certificateSecret: plex.mdch-lab.dev-tls
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+
 pms:
   storageClassName: longhorn
 
