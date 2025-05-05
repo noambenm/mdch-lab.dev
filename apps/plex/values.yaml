@@ -7,7 +7,6 @@ service:
   loadBalancerIP: 192.168.1.21
 
 extraEnv:
-  ADVERTISE_IP: "192.168.1.21:32400,plex.mdch-lab.dev:443"
   TZ: "Asia/Jerusalem"
 
 extraVolumeMounts:
