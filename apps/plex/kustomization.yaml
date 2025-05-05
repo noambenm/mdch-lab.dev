@@ -4,6 +4,7 @@ resources:
   - release.yaml
   - repository.yaml
   - namespace.yaml
+  - gateway.yaml
 
 configMapGenerator:
   - name: plex-values
