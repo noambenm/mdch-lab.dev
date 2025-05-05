@@ -14,5 +14,14 @@ service:
   port: 32400
   loadBalancerIP: 192.168.1.21
 
-extraEnv:
-  PLEX_CLAIM: "claim-z4xoiCWsFefLjLNLGBqD"
+extraVolumeMounts:
+  - name: plex-media
+    mountPath: /plex
+    readOnly: false
+
+extraVolumes:
+  - name: plex-media
+    nfs:
+      server: 192.168.1.98
+      path: /nfs/Plex
+      readOnly: false
