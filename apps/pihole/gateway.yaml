@@ -43,7 +43,7 @@ spec:
       requestRedirect:
         path:
           type: ReplaceFullPath
-          replaceFullPath: /login
+          replaceFullPath: /admin/login
         statusCode: 302 
   - backendRefs:
     - name: pihole-web
