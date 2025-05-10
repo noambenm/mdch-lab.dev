@@ -1,0 +1,7 @@
+global:
+  domain: argocd.mdch-lab.dev
+controller:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
