@@ -5,18 +5,3 @@ controller:
     enabled: true
     serviceMonitor:
       enabled: true
-
-configs:
-  params:
-    server.insecure: true
-
-server:
-  ingress:
-    enabled: true
-    ingressClassName: cilium
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
-    extraTls:
-      - hosts:
-        - argocd.mdch-lab.dev
-        secretName: argocd.mdch-lab.dev-cert
