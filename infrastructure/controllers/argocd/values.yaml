@@ -5,3 +5,7 @@ controller:
     enabled: true
     serviceMonitor:
       enabled: true
+
+configs:
+  params:
+    server.insecure: true
