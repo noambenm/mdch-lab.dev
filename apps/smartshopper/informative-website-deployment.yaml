@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: informative-website-deployment
+  namespace: smartshopper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: informative-website
+  template:
+    metadata:
+      labels:
+        app: informative-website
+    spec:
+      imagePullSecrets:
+        - name: ecr-creds
+      containers:
+      - name: informative-website
+        image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-informative-website
+        ports:
+        - containerPort: 80

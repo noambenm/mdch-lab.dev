@@ -1,0 +1,31 @@
+apiVersion: generators.external-secrets.io/v1alpha1
+kind: ECRAuthorizationToken
+metadata:
+  name: ecr-token
+  namespace: smartshopper
+spec:
+  region: us-east-1
+  auth:
+    secretRef:
+      accessKeyIDSecretRef:
+        name: "alex-aws-creds"
+        key: "key-id"
+      secretAccessKeySecretRef:
+        name: "alex-aws-creds"
+        key: "secret-access-key"
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: "ecr-creds"
+  namespace: smartshopper
+spec:
+  refreshInterval: "1h"
+  target:
+    name: ecr-creds
+  dataFrom:
+  - sourceRef:
+      generatorRef:
+        apiVersion: generators.external-secrets.io/v1alpha1
+        kind: ECRAuthorizationToken
+        name: "ecr-token"
