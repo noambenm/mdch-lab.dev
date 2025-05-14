@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: smartshopper
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      imagePullSecrets:
+        - name: ecr-creds
+      containers:
+      - name: backend
+        image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-backend
+        ports:
+        - containerPort: 80
+        envFrom:
+        - secretRef:
+            name: auth0-creds
+        - secretRef:
+            name: google-creds
+        - secretRef:
+            name: openai-key
+        - secretRef:
+            name: db-creds
+        - secretRef:
+            name: aws-creds
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: smartshopper
+spec:
+  selector:
+    app: backend
+  ports:
+  - port: 80
+    targetPort: 80
