@@ -20,3 +20,16 @@ spec:
         image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-informative-website
         ports:
         - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: informative-website-service
+  namespace: smartshopper
+spec:
+  selector:
+    app: informative-website
+  ports:
+  - port: 80
+    targetPort: 80
+
