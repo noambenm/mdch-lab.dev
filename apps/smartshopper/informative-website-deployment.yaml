@@ -16,10 +16,10 @@ spec:
       imagePullSecrets:
         - name: ecr-creds
       containers:
-      - name: informative-website
-        image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-informative-website:0.1.2 # {"$imagepolicy": "smartshopper:informative-website-policy"}
-        ports:
-        - containerPort: 80
+        - name: informative-website
+          image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-informative-website:0.1.3 # {"$imagepolicy": "smartshopper:informative-website-policy"}
+          ports:
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -32,4 +32,3 @@ spec:
   ports:
   - port: 80
     targetPort: 80
-
