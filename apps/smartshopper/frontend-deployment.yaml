@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: smartshopper
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      imagePullSecrets:
+        - name: ecr-creds
+      containers:
+      - name: frontend
+        image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-frontend
+        ports:
+        - containerPort: 80
+        envFrom:
+        - secretRef:
+            name: auth0-creds
+        - secretRef:
+            name: backend-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: smartshopper
+spec:
+  selector:
+    app: frontend
+  ports:
+  - port: 80
+    targetPort: 80

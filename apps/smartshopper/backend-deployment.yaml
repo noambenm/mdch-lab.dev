@@ -18,7 +18,7 @@ spec:
       - name: backend
         image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-backend
         ports:
-        - containerPort: 80
+        - containerPort: 8000
         envFrom:
         - secretRef:
             name: auth0-creds
@@ -41,4 +41,4 @@ spec:
     app: backend
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8000
