@@ -1,0 +1,42 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: informative-website-image
+  namespace: smartshopper
+spec:
+  image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-informative-website
+  interval: 1h
+  provider: generic
+  secretRef:
+    name: ecr-creds
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: informative-website-policy
+  namespace: smartshopper
+spec:
+  imageRepositoryRef:
+    name: informative-website-image
+  policy:
+    semver:
+      range: '>=0.0.0-0'  
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: informative-website-update
+  namespace: smartshopper
+spec:
+  interval: 30m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  git:
+    commit:
+      author:
+        email: fluxcdbot@users.noreply.github.com
+        name: fluxcdbot
+  update:
+    path: ./apps/smartshopper/informative-website-deployment.yaml
