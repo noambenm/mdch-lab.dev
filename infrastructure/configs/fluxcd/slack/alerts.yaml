@@ -15,5 +15,7 @@ spec:
       name: '*'
     - kind: HelmRepository
       name: '*'
+    - kind: ImageRepository
+      name: '*'
   exclusionList:
     - "^Dependencies.*"

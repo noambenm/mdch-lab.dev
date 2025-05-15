@@ -1,0 +1,26 @@
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Receiver
+metadata:
+  name: smartshopper-ecr
+  namespace: smartshopper
+spec:
+  type: generic
+  events:
+    - push
+  secretRef:
+    name: webhook-token
+    key: token
+    namespace: flux-system
+  resources:
+    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+      kind: ImagePolicy
+      name: backend-policy
+      namespace: smartshopper
+    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+      kind: ImagePolicy
+      name: frontend-policy
+      namespace: smartshopper
+    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+      kind: ImagePolicy
+      name: informative-website-policy
+      namespace: smartshopper
