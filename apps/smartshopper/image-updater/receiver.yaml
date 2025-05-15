@@ -9,8 +9,6 @@ spec:
     - push
   secretRef:
     name: webhook-token
-    key: token
-    namespace: flux-system
   resources:
     - apiVersion: image.toolkit.fluxcd.io/v1beta2
       kind: ImagePolicy
