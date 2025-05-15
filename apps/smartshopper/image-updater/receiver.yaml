@@ -11,6 +11,18 @@ spec:
     name: webhook-token
   resources:
     - apiVersion: image.toolkit.fluxcd.io/v1beta2
+      kind: ImageRepository
+      name: backend-image
+      namespace: smartshopper
+    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+      kind: ImageRepository
+      name: frontend-image
+      namespace: smartshopper
+    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+      kind: ImageRepository
+      name: informative-website-image
+      namespace: smartshopper
+    - apiVersion: image.toolkit.fluxcd.io/v1beta2
       kind: ImagePolicy
       name: backend-policy
       namespace: smartshopper
