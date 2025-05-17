@@ -21,3 +21,21 @@ spec:
           targetLabel: namespace
   targetLabels:
     - app
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: podinfo-canary
+  namespace: test
+spec:
+  namespaceSelector:
+    matchNames:
+      - test
+  selector:
+    matchLabels:
+      app: podinfo-canary
+  endpoints:
+    - port: http-metrics
+      path: /metrics
+      interval: 15s
+      scrapeTimeout: 10s
