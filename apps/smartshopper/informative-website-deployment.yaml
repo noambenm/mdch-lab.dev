@@ -20,6 +20,9 @@ spec:
           image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-informative-website:0.1.3 # {"$imagepolicy": "smartshopper:informative-website-policy"}
           ports:
             - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: frontend-url
 ---
 apiVersion: v1
 kind: Service
