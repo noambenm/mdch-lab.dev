@@ -4,8 +4,6 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
-  - canary.yaml
-  - flagger-loadtester.yaml
 configMapGenerator:
   - name: kube-prometheus-stack-values
     namespace: monitoring
