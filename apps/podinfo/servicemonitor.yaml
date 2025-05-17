@@ -16,3 +16,5 @@ spec:
       interval: 15s
       scrapeTimeout: 10s
       honorLabels: true
+  targetLabels:
+    - app
