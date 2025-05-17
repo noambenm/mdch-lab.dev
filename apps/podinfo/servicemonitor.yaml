@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: podinfo
+  name: podinfo-primary
   namespace: test
 spec:
   namespaceSelector:
@@ -9,18 +9,12 @@ spec:
       - test
   selector:
     matchLabels:
-      app: podinfo
+      app: podinfo-primary
   endpoints:
     - port: http-metrics
       path: /metrics
       interval: 15s
       scrapeTimeout: 10s
-      honorLabels: true
-      metricRelabelings:
-        - sourceLabels: [__meta_kubernetes_namespace]
-          targetLabel: namespace
-  targetLabels:
-    - app
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -34,6 +28,24 @@ spec:
   selector:
     matchLabels:
       app: podinfo-canary
+  endpoints:
+    - port: http-metrics
+      path: /metrics
+      interval: 15s
+      scrapeTimeout: 10s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: podinfo
+  namespace: test
+spec:
+  namespaceSelector:
+    matchNames:
+      - test
+  selector:
+    matchLabels:
+      app: podinfo
   endpoints:
     - port: http-metrics
       path: /metrics
