@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: flagger-examples
+  namespace: 
+spec:
+  interval: 24h
+  url: https://github.com/fluxcd/flagger.git
+  ref:
+    branch: main
