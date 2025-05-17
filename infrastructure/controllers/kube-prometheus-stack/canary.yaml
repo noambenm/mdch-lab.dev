@@ -47,10 +47,10 @@ spec:
         timeout: 15s
         metadata:
           type: bash
-          cmd: "curl -sd 'anon' https://kube-prometheus-stack-operator.monitoring/token | grep token"
+          cmd: "curl -sd 'anon' https://kube-prometheus-stack-operator.monitoring/healthz"
       - name: load-test
         url: http://flagger-loadtester.monitoring/
         timeout: 5s
         metadata:
           type: cmd
-          cmd: "hey -z 1m -q 10 -c 2 https://kube-prometheus-stack-operator.monitoring/"
+          cmd: "hey -z 1m -q 10 -c 2 https://kube-prometheus-stack-operator.monitoring/healthz"
