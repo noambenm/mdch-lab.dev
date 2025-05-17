@@ -16,5 +16,8 @@ spec:
       interval: 15s
       scrapeTimeout: 10s
       honorLabels: true
+      metricRelabelings:
+        - sourceLabels: [__meta_kubernetes_namespace]
+          targetLabel: namespace
   targetLabels:
     - app
