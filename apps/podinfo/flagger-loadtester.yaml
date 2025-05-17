@@ -12,7 +12,7 @@ spec:
       interval: 6h # scan for new versions every six hours
       sourceRef:
         kind: HelmRepository
-        name: flagger
+        name: flagger-loadtester
         namespace: flagger-system
       verify: # verify the chart signature with Cosign keyless
         provider: cosign 

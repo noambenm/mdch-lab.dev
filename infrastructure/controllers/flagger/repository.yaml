@@ -7,3 +7,12 @@ spec:
   interval: 24h
   url: oci://ghcr.io/fluxcd/charts
   type: oci
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: flagger-loadtester
+  namespace: flagger-system
+spec:
+  interval: 24h
+  url: https://flagger.app
