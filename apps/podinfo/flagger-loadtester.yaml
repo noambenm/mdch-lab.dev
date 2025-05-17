@@ -14,5 +14,4 @@ spec:
         kind: HelmRepository
         name: flagger-loadtester
         namespace: flagger-system
-      verify: # verify the chart signature with Cosign keyless
-        provider: cosign 
+
