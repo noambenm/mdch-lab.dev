@@ -6,6 +6,7 @@ resources:
   - namespace.yaml
   - pihole-secret.yaml
   - gateway.yaml
+  - pihole-policy.yaml
 
 configMapGenerator:
   - name: pihole-values
