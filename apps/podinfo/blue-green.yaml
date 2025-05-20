@@ -1,16 +1,19 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: podinfo-canary
+  name: podinfo-glue-green
   namespace: test
 spec:
+  suspend: true
+  # service mesh provider can be: kubernetes, istio, appmesh, nginx, gloo
+  provider: kubernetes
   # deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: podinfo
   # the maximum time in seconds for the canary deployment
-  # to make progress before it is rollback (default 600s)
+  # to make progress before rollback (default 600s)
   progressDeadlineSeconds: 60
   # HPA reference (optional)
   autoscalerRef:
@@ -18,28 +21,17 @@ spec:
     kind: HorizontalPodAutoscaler
     name: podinfo
   service:
-    # service port number
     port: 9898
-    # container port number or name (optional)
-    targetPort: 9898
-    # Gateway API HTTPRoute host names
-    hosts:
-     - podinfo.mdch-lab.dev
-    # Reference to the Gateway that the generated HTTPRoute would attach to.
-    gatewayRefs:
-      - name: podinfo-gateway
-        namespace: test
+    portDiscovery: true
   analysis:
     # schedule interval (default 60s)
-    interval: 1m
-    # max number of failed metric checks before rollback
-    threshold: 5
-    # max traffic percentage routed to canary
-    # percentage (0-100)
-    maxWeight: 50
-    # canary increment step
-    # percentage (0-100)
-    stepWeight: 10
+    interval: 30s
+    # max number of failed checks before rollback
+    threshold: 2
+    # number of checks to run before rollback
+    iterations: 10
+    # Prometheus checks based on 
+    # http_request_duration_seconds histogram
     metrics:
       - name: request-success-rate
         # minimum req success rate (non 5xx responses)
@@ -53,7 +45,7 @@ spec:
         thresholdRange:
           max: 500
         interval: 30s
-    # testing (optional)
+    # acceptance/load testing hooks
     webhooks:
       - name: smoke-test
         type: pre-rollout
@@ -66,4 +58,5 @@ spec:
         url: http://flagger-loadtester.test/
         timeout: 5s
         metadata:
-          cmd: "hey -z 2m -q 10 -c 2 -host podinfo.mdch-lab.dev https://podinfo-gateway.test/"
+          type: cmd
+          cmd: "hey -z 1m -q 10 -c 2 http://podinfo-canary.test:9898/"

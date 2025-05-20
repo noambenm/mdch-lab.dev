@@ -1,0 +1,23 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: podinfo-gateway
+  namespace: test
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+spec:
+  gatewayClassName: cilium
+  addresses:
+  - type: IPAddress
+    value: 192.168.1.28
+  listeners:
+  - name: web
+    hostname: podinfo.mdch-lab.dev
+    protocol: HTTPS
+    port: 443
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - kind: Secret
+        group: ""
+        name: podinfo.mdch-lab.dev-cert
