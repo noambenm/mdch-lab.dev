@@ -1,0 +1,40 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: pihole-policy
+  namespace: pihole
+spec:
+  endpointSelector:
+    matchLabels:
+      app: pihole
+  enableDefaultDeny:
+    ingress: false
+    egress: false
+  egress:
+    - toEntities:
+        - all
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: ANY   
+          rules:
+            dns:
+              - matchPattern: "*"
+  ingress:
+    - fromEntities:
+        - all
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: ANY
+          rules:
+            dns:
+              - matchPattern: "*"
+        - ports:
+            - port: "80"
+              protocol: TCP
+            - port: "9617"
+              protocol: TCP
+          rules:
+            http:
+              - {}
