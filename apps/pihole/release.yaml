@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: pihole
-      version: 2.30.x
+      version: 2.31.x
       sourceRef:
         kind: HelmRepository
         name: mojo2600
