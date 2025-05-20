@@ -9,6 +9,12 @@ serviceDhcp:
 serviceWeb:
   type: ClusterIP
 
+probes:
+  liveness:
+    timeoutSeconds: 10
+  readiness:
+    timeoutSeconds: 10
+
 persistentVolumeClaim:
   enabled: true
   storageClass: longhorn
