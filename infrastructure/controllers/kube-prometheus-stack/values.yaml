@@ -94,7 +94,7 @@ prometheus:
           - prometheus.mdch-lab.dev
   prometheusSpec:
     additionalScrapeConfigs:
-      - job_name: kubernetes-pods                 # identical to Config 2
+      - job_name: kubernetes-pods
         honor_timestamps: true
         scrape_interval: 5s
         scrape_timeout: 5s
@@ -102,41 +102,28 @@ prometheus:
         scheme: http
         follow_redirects: true
         enable_http2: true
-
-        # --- relabels (verbatim copy from Config 2) -------------------------
+        kubernetes_sd_configs:
+          - role: pod
         relabel_configs:
           - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
             regex: "true"
             action: keep
-
-          # skip Envoy sidecars that expose port 9901
-          - source_labels: [__address__]
-            regex: .*9901.*
-            action: drop
-
           - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
             regex: (.+)
             target_label: __metrics_path__
             replacement: $1
             action: replace
-
           - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
             regex: ([^:]+)(?::\d+)?;(\d+)
             target_label: __address__
             replacement: $1:$2
             action: replace
-
-          # copy every pod label into a Prometheus label (same as labelmap rule)
           - regex: __meta_kubernetes_pod_label_(.+)
             action: labelmap
-
           - source_labels: [__meta_kubernetes_namespace]
             target_label: kubernetes_namespace
           - source_labels: [__meta_kubernetes_pod_name]
             target_label: kubernetes_pod_name
-        # --------------------------------------------------------------------
-        kubernetes_sd_configs:
-          - role: pod
     podMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelectorNilUsesHelmValues: false
     storageSpec:
