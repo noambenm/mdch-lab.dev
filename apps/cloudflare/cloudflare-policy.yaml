@@ -1,0 +1,46 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: cloudflare-policy
+  namespace: cloudflare
+spec:
+  endpointSelector:
+    matchLabels:
+      pod: cloudflared 
+  enableDefaultDeny:
+    ingress: false
+    egress: false
+  egress:
+    - toEntities:
+        - all
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: ANY   
+          rules:
+            dns:
+              - matchPattern: "*"
+        - ports:
+            - port: "8000"
+              protocol: TCP
+            - port: "8081"
+              protocol: TCP
+            - port: "3000"
+              protocol: TCP
+            - port: "80"  
+              protocol: TCP
+            - port: "9292"
+              protocol: TCP
+          rules:
+            http:
+              - {}
+  ingress:
+    - fromEntities:
+        - all
+      toPorts:
+        - ports:
+            - port: "2000"
+              protocol: TCP
+          rules:
+            http:
+              - {}
