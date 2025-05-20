@@ -4,6 +4,7 @@ metadata:
   name: podinfo-canary
   namespace: test
 spec:
+  provider: gatewayapi:v1
   # deployment reference
   targetRef:
     apiVersion: apps/v1
