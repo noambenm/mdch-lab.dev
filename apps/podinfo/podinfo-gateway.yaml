@@ -9,7 +9,7 @@ spec:
   gatewayClassName: cilium
   addresses:
   - type: IPAddress
-    value: 192.168.1.28
+    value: 192.168.1.27
   listeners:
   - name: web
     hostname: podinfo.mdch-lab.dev
