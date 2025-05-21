@@ -4,14 +4,15 @@ metadata:
   name: podinfo-blue-green
   namespace: test
 spec:
-  provider: gatewayapi:v1
+  # service mesh provider can be: kubernetes, istio, appmesh, nginx, gloo
+  provider: kubernetes
   # deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: podinfo
   # the maximum time in seconds for the canary deployment
-  # to make progress before it is rollback (default 600s)
+  # to make progress before rollback (default 600s)
   progressDeadlineSeconds: 60
   # HPA reference (optional)
   autoscalerRef:
@@ -19,17 +20,8 @@ spec:
     kind: HorizontalPodAutoscaler
     name: podinfo
   service:
-    # service port number
     port: 9898
-    # container port number or name (optional)
-    targetPort: 9898
-    # Gateway API HTTPRoute host names
-    hosts:
-     - podinfo.mdch-lab.dev
-    # Reference to the Gateway that the generated HTTPRoute would attach to.
-    gatewayRefs:
-      - name: podinfo-gateway
-        namespace: test
+    portDiscovery: true
   analysis:
     # schedule interval (default 60s)
     interval: 10s
@@ -52,7 +44,7 @@ spec:
       thresholdRange:
         max: 0.5
       interval: 30s
-    # testing (optional)
+    # acceptance/load testing hooks
     webhooks:
       - name: smoke-test
         type: pre-rollout
@@ -65,4 +57,5 @@ spec:
         url: http://flagger-loadtester.test/
         timeout: 5s
         metadata:
-          cmd: "hey -z 2m -q 10 -c 2 -host podinfo.mdch-lab.dev https://podinfo-gateway.test/"
+          type: cmd
+          cmd: "hey -z 1m -q 10 -c 2 http://podinfo-canary.test:9898/"

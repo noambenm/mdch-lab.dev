@@ -1,7 +1,7 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: podinfo-canary
+  name: podinfo-blue-green-gateway-api
   namespace: test
 spec:
   suspend: true
@@ -34,14 +34,12 @@ spec:
   analysis:
     # schedule interval (default 60s)
     interval: 15s
-    # max number of failed metric checks before rollback
-    threshold: 2
-    # max traffic percentage routed to canary
-    # percentage (0-100)
-    maxWeight: 50
-    # canary increment step
-    # percentage (0-100)
-    stepWeight: 10
+    # max number of failed checks before rollback
+    threshold: 1
+    # number of checks to run before rollback
+    iterations: 3
+    # Prometheus checks based on 
+    # http_request_duration_seconds histogram
     metrics:
     - name: error-rate
       templateRef:
