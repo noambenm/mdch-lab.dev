@@ -4,6 +4,7 @@ metadata:
   name: podinfo-canary
   namespace: test
 spec:
+  suspend: true
   provider: gatewayapi:v1
   # deployment reference
   targetRef:
