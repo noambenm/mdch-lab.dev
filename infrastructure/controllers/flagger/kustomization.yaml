@@ -4,6 +4,7 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
+  - slack-webhook-url.yaml
 configMapGenerator:
   - name: flagger-values
     namespace: flagger-system

@@ -2,3 +2,16 @@ metricsServer: "http://kube-prometheus-stack-prometheus.monitoring:9090"
 
 serviceMonitor:
   enabled: true
+
+clusterName: "mdch-lab.dev"
+
+slack:
+  user: flagger
+  channel: flagger-system
+
+env:
+- name: SLACK_URL
+  valueFrom:
+   secretKeyRef:
+     name: slack-webhook-url
+     key: url
