@@ -1,0 +1,34 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: backend-blue-green
+  namespace: smartshopper
+spec:
+  # service mesh provider can be: kubernetes, istio, appmesh, nginx, gloo
+  provider: kubernetes
+  # deployment reference
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: backend-deployment
+  # the maximum time in seconds for the canary deployment
+  # to make progress before rollback (default 600s)
+  progressDeadlineSeconds: 60
+  service:
+    port: 80
+    portDiscovery: true
+  analysis:
+    # schedule interval (default 60s)
+    interval: 30s
+    # max number of failed checks before rollback
+    threshold: 1
+    # number of checks to run before rollback
+    iterations: 3
+    # acceptance/load testing hooks
+    webhooks:
+      - name: load-test
+        url: http://flagger-loadtester/
+        timeout: 5s
+        metadata:
+          type: cmd
+          cmd: "hey -z 1m -q 10 -c 2 http://backend-service/"

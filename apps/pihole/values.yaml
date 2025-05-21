@@ -48,6 +48,7 @@ dnsmasq:
     - address=/hubble.mdch-lab.dev/192.168.1.30
     - address=/pihole.mdch-lab.dev/192.168.1.25
     - address=/plex.mdch-lab.dev/192.168.1.26
+    - address=/smartshopper.mdch-lab.dev/192.168.1.27
 adlists:
   - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
   - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
