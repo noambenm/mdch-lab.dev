@@ -24,7 +24,7 @@ spec:
     portDiscovery: true
   analysis:
     # schedule interval (default 60s)
-    interval: 10s
+    interval: 40s
     # max number of failed checks before rollback
     threshold: 1
     # number of checks to run before rollback

@@ -33,7 +33,7 @@ spec:
         namespace: test
   analysis:
     # schedule interval (default 60s)
-    interval: 15s
+    interval: 40s
     # max number of failed metric checks before rollback
     threshold: 2
     # max traffic percentage routed to canary
