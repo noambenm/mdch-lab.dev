@@ -32,11 +32,11 @@ spec:
         namespace: test
   analysis:
     # schedule interval (default 60s)
-    interval: 30s
+    interval: 10s
     # max number of failed checks before rollback
-    threshold: 2
+    threshold: 1
     # number of checks to run before rollback
-    iterations: 10
+    iterations: 3
     # Prometheus checks based on 
     # http_request_duration_seconds histogram
     metrics:
