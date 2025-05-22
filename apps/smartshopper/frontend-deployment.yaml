@@ -24,6 +24,8 @@ spec:
                 name: auth0-creds
             - secretRef:
                 name: backend-url
+            - secretRef:
+                name: frontend-url
 ---
 apiVersion: v1
 kind: Service
