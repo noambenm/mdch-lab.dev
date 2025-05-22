@@ -4,6 +4,7 @@ metadata:
   name: podinfo-blue-green
   namespace: test
 spec:
+  suspend: true
   # service mesh provider can be: kubernetes, istio, appmesh, nginx, gloo
   provider: kubernetes
   # deployment reference

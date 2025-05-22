@@ -4,7 +4,6 @@ metadata:
   name: podinfo-blue-green-gateway-api
   namespace: test
 spec:
-  suspend: true
   provider: gatewayapi:v1
   # deployment reference
   targetRef:
@@ -29,8 +28,8 @@ spec:
      - podinfo.mdch-lab.dev
     # Reference to the Gateway that the generated HTTPRoute would attach to.
     gatewayRefs:
-      - name: podinfo-gateway
-        namespace: test
+      - name: mdch-lab-gateway
+        namespace: cilium
   analysis:
     # schedule interval (default 60s)
     interval: 40s
