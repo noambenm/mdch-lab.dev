@@ -5,5 +5,5 @@ metadata:
   namespace: qbittorrent
 spec:
   interval: 24h
-  url: oci://ghcr.io/gabe565/charts/qbittorrent
+  url: oci://ghcr.io/gabe565/charts
   type: oci
