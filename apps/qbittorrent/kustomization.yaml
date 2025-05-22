@@ -4,14 +4,12 @@ resources:
   - release.yaml
   - repository.yaml
   - namespace.yaml
-  - pihole-secret.yaml
   - httproute.yaml
-  - pihole-policy.yaml
 
 configMapGenerator:
-  - name: pihole-values
-    namespace: pihole
+  - name: qbittorrent-values
+    namespace: qbittorrent
     files:
-      - values.yamך
+      - values.yaml
 configurations:
   - kustomizeconfig.yaml
