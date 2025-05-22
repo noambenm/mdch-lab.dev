@@ -33,7 +33,7 @@ spec:
     # testing (optional)
     webhooks:
       - name: load-test
-        url: http://flagger-loadtester.smartshopper/
+        url: http://flagger-loadtester/
         timeout: 5s
         metadata:
-          cmd: "hey -z 2m -q 10 -c 2 -host smartshopper.mdch-lab.dev https://smartshopper-gateway/"
+          cmd: "hey -z 2m -q 10 -c 2 -host smartshopper.mdch-lab.dev https://smartshopper-gateway.smartshopper/"

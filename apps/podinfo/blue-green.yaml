@@ -48,13 +48,13 @@ spec:
     webhooks:
       - name: smoke-test
         type: pre-rollout
-        url: http://flagger-loadtester.test/
+        url: http://flagger-loadtester/
         timeout: 15s
         metadata:
           type: bash
           cmd: "curl -sd 'anon' http://podinfo-canary.test:9898/token | grep token"
       - name: load-test
-        url: http://flagger-loadtester.test/
+        url: http://flagger-loadtester/
         timeout: 5s
         metadata:
           type: cmd
