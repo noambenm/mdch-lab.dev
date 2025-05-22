@@ -23,15 +23,3 @@ spec:
           envFrom:
             - secretRef:
                 name: frontend-url
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: informative-website-service
-  namespace: smartshopper
-spec:
-  selector:
-    app: informative-website
-  ports:
-  - port: 80
-    targetPort: 80

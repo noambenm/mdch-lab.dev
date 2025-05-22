@@ -30,15 +30,3 @@ spec:
                 name: db-creds
             - secretRef:
                 name: aws-creds
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend-service
-  namespace: smartshopper
-spec:
-  selector:
-    app: backend
-  ports:
-  - port: 80
-    targetPort: 8000

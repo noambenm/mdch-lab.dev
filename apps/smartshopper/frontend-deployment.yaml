@@ -26,15 +26,3 @@ spec:
                 name: backend-url
             - secretRef:
                 name: frontend-url
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend-service
-  namespace: smartshopper
-spec:
-  selector:
-    app: frontend
-  ports:
-  - port: 80
-    targetPort: 80
