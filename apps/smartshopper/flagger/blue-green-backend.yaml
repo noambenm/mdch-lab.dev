@@ -15,6 +15,7 @@ spec:
   # to make progress before rollback (default 600s)
   progressDeadlineSeconds: 60
   service:
+    name: backend-service
     port: 80
     portDiscovery: true
   analysis:
