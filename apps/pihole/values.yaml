@@ -42,7 +42,6 @@ dnsmasq:
   customDnsEntries:
     - host-record=mdch-lab.dev,192.168.1.10
     - host-record=prometheus.mdch-lab.dev,192.168.1.30
-    - host-record=alertmanager.mdch-lab.dev,192.168.1.30
     - host-record=grafana.mdch-lab.dev,192.168.1.30
     - host-record=longhorn.mdch-lab.dev,192.168.1.30
     - host-record=hubble.mdch-lab.dev,192.168.1.30
