@@ -15,3 +15,6 @@ env:
    secretKeyRef:
      name: slack-webhook-url
      key: url
+
+configTracking:
+  enabled: false
