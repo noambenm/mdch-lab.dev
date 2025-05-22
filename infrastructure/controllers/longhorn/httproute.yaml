@@ -6,6 +6,7 @@ metadata:
 spec:
   parentRefs:
   - name: mdch-lab-gateway
+    namespace: cilium
   hostnames:
   - "longhorn.mdch-lab.dev"
   rules:
