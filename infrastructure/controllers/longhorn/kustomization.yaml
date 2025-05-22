@@ -4,6 +4,7 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
+  - httproute.yaml
 configMapGenerator:
   - name: longhorn-values
     namespace: longhorn-system

@@ -7,7 +7,7 @@ spec:
   gatewayClassName: cilium
   addresses:
     - type:  IPAddress
-      value: 192.168.1.29
+      value: 192.168.1.25
   listeners:
   - name: wildcard
     hostname: "*.mdch-lab.dev"

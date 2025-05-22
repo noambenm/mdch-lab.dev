@@ -41,10 +41,7 @@ DNS2: "1.0.0.1"
 dnsmasq:
   customDnsEntries:
     - host-record=mdch-lab.dev,192.168.1.10
-    - host-record=grafana.mdch-lab.dev,192.168.1.30
-    - host-record=longhorn.mdch-lab.dev,192.168.1.30
-    - host-record=hubble.mdch-lab.dev,192.168.1.30
-    - address=/.mdch-lab.dev/192.168.1.29
+    - address=/.mdch-lab.dev/192.168.1.25
 
 adlists:
   - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts

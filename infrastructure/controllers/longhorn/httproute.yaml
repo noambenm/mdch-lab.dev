@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: longhorn-httproute
+  namespace: longhorn-system
+spec:
+  parentRefs:
+  - name: mdch-lab-gateway
+  hostnames:
+  - "longhorn.mdch-lab.dev"
+  rules:
+  - matches:
+    - path:
+        type: Exact
+        value: "/"
+  - backendRefs:
+    - name: longhorn-frontend
+      port: 80
