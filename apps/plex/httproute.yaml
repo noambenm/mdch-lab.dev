@@ -1,0 +1,16 @@
+
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: plex-web
+  namespace: plex
+spec:
+  parentRefs:
+  - name: mdch-lab-gateway
+    namespace: cilium
+  hostnames:
+  - "plex.mdch-lab.dev"
+  rules:
+  - backendRefs:
+    - name: plex-plex-media-server
+      port: 32400

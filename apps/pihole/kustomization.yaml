@@ -5,7 +5,7 @@ resources:
   - repository.yaml
   - namespace.yaml
   - pihole-secret.yaml
-  - gateway.yaml
+  - httproute.yaml
   - pihole-policy.yaml
 
 configMapGenerator:
