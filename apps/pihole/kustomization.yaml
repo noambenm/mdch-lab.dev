@@ -12,6 +12,6 @@ configMapGenerator:
   - name: pihole-values
     namespace: pihole
     files:
-      - values.yamך
+      - values.yaml
 configurations:
   - kustomizeconfig.yaml
