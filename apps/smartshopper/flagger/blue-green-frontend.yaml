@@ -27,7 +27,7 @@ spec:
     # acceptance/load testing hooks
     webhooks:
       - name: load-test
-        url: http://flagger-loadtester/
+        url: http://flagger-loadtester.smartshopper/
         timeout: 5s
         metadata:
           type: cmd
