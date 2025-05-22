@@ -22,8 +22,8 @@ spec:
      - smartshopper.mdch-lab.dev
     # Reference to the Gateway that the generated HTTPRoute would attach to.
     gatewayRefs:
-      - name: smartshopper-gateway
-        namespace: smartshopper
+      - name: mdch-lab-gateway
+        namespace: cilium
   analysis:
     # schedule interval (default 60s)
     interval: 40s
@@ -37,4 +37,4 @@ spec:
         url: http://flagger-loadtester/
         timeout: 5s
         metadata:
-          cmd: "hey -z 2m -q 10 -c 2 -host smartshopper.mdch-lab.dev https://smartshopper-gateway.smartshopper/"
+          cmd: "hey -z 2m -q 10 -c 2 -host smartshopper.mdch-lab.dev https://cilium-gateway-mdch-lab-gateway.cilium/"
