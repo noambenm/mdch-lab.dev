@@ -16,7 +16,7 @@ spec:
         - name: ecr-creds
       containers:
         - name: backend
-          image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-backend:0.1.8 # {"$imagepolicy": "smartshopper:backend-policy"}
+          image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-backend:0.1.9 # {"$imagepolicy": "smartshopper:backend-policy"}
           ports:
             - containerPort: 8000
           envFrom:
