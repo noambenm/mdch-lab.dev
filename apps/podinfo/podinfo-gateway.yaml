@@ -3,8 +3,6 @@ kind: Gateway
 metadata:
   name: podinfo-gateway
   namespace: test
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
 spec:
   gatewayClassName: cilium
   addresses:
@@ -20,4 +18,5 @@ spec:
       certificateRefs:
       - kind: Secret
         group: ""
-        name: podinfo.mdch-lab.dev-cert
+        name: wildcard-mdch-lab-dev-cert
+        namespace: cert-manager
