@@ -17,7 +17,7 @@ spec:
         - name: ecr-creds
       containers:
         - name: informative-website
-          image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-informative-website:0.1.4 # {"$imagepolicy": "smartshopper:informative-website-policy"}
+          image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-informative-website:0.1.5 # {"$imagepolicy": "smartshopper:informative-website-policy"}
           ports:
             - containerPort: 80
           envFrom:
