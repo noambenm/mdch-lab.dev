@@ -14,4 +14,3 @@ spec:
         kind: HelmRepository
         name: flagger-loadtester
         namespace: flagger-system
-
