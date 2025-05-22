@@ -3,20 +3,26 @@ defaultRules:
     etcd: false
 
 alertmanager:
-  ingress:
-    enabled: true
-    ingressClassName: cilium
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
-    hosts: 
-      - alertmanager.mdch-lab.dev
-    paths:
-      - /
-    pathType: Prefix
-    tls:
-      - secretName: alertmanager-general-tls
-        hosts:
+  route:
+    main:
+      enabled: true
+      apiVersion: gateway.networking.k8s.io/v1
+      kind: HTTPRoute
+      annotations: {}
+      labels: {}
+      hostnames:
         - alertmanager.mdch-lab.dev
+      parentRefs:
+        - name: mdch-lab-gateway
+          namespace: cilium
+      httpsRedirect: false
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+      filters: []
+      additionalRules: []
+
   alertmanagerSpec:
     storage:
       volumeClaimTemplate:
