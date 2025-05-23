@@ -1,3 +1,4 @@
+qbittorrent:
   volumes:
     - name: media
       nfs:
@@ -12,3 +13,7 @@
     enabled: true
     serviceMonitor:
       enabled: true
+
+genericDevicePlugin:
+  serviceMonitor:
+    enabled: true
