@@ -12,6 +12,6 @@ spec:
       - cloudflare
   podMetricsEndpoints:
     - path: /metrics
-      interval: 30s
+      interval: 10s
       scheme: http
       targetPort: 2000
