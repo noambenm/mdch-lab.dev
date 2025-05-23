@@ -1,0 +1,31 @@
+apiVersion: flagger.app/v1beta1
+kind: MetricTemplate
+metadata:
+  name: dns-error-rate
+  namespace: pihole
+spec:
+  provider:
+    type: prometheus
+    address: http://kube-prometheus-stack-prometheus.monitoring:9090
+  query: |
+    100 *
+    (
+      sum(
+        rate(
+          pihole_reply{
+            namespace="{{ namespace }}",
+            job="{{ target }}-canary",
+            type=~"serv_fail|refused"
+          }[{{ interval }}]
+        )
+      ) by (job)
+      /
+      sum(
+        rate(
+          pihole_reply{
+            namespace="{{ namespace }}",
+            job="{{ target }}-canary"
+          }[{{ interval }}]
+        )
+      ) by (job)
+    )

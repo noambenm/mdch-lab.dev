@@ -65,4 +65,4 @@ spec:
         url: http://flagger-loadtester.test/
         timeout: 5s
         metadata:
-          cmd: "hey -z 2m -q 10 -c 2 -host podinfo.mdch-lab.dev https://podinfo-gateway.test/"
+          cmd: "hey -z 2m -q 10 -c 2 -host podinfo.mdch-lab.dev https://cilium-gateway-mdch-lab-gateway.cilium/"

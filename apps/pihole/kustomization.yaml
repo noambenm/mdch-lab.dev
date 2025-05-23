@@ -7,6 +7,8 @@ resources:
   - pihole-secret.yaml
   - httproute.yaml
   - pihole-policy.yaml
+  - flagger/blue-green.yaml
+  - flagger/metrics.yaml
 
 configMapGenerator:
   - name: pihole-values
