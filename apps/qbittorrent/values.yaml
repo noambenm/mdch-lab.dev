@@ -15,5 +15,4 @@ qbittorrent:
       enabled: true
 
 genericDevicePlugin:
-  serviceMonitor:
-    enabled: true
+  enabled: false
