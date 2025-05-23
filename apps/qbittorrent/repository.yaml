@@ -1,9 +1,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: gabe565
+  name: qbittorrent
   namespace: qbittorrent
 spec:
   interval: 24h
-  url: oci://ghcr.io/gabe565/charts
+  url: oci://ghcr.io/m0nsterrr/helm-charts
   type: oci

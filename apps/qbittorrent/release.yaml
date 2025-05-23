@@ -12,10 +12,12 @@ spec:
   chart:
     spec:
       chart: qbittorrent
-      version: 0.4.x
+      version: 5.1.x
       sourceRef:
         kind: HelmRepository
-        name: gabe565
+        name: qbittorrent
+      verify: # verify the chart signature with Cosign keyless
+        provider: cosign 
   valuesFrom:
     - kind: ConfigMap
       name: qbittorrent-values
