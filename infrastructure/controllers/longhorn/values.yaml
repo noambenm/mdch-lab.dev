@@ -1,5 +1,5 @@
 persistence:
-  defaultClassReplicaCount: 1
+  defaultClassReplicaCount: 2
 
 csi:
   attacherReplicaCount: 1  
