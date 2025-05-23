@@ -13,6 +13,7 @@ spec:
   service:
     name: backend-service
     port: 80
+    targetPort: 8000
     hosts:
      - smartshopper-app.mdch-lab.dev
     gatewayRefs:
