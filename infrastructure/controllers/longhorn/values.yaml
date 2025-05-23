@@ -8,7 +8,7 @@ csi:
   snapshotterReplicaCount: 1
 
 defaultSettings:
-  defaultReplicaCount: 1
+  defaultReplicaCount: 2
 
 longhornUI:
   replicas: 1
