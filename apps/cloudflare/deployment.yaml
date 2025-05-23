@@ -40,6 +40,10 @@ spec:
                   key: TOKEN
           image: cloudflare/cloudflared:latest
           name: cloudflared
+          ports:
+            - name: metrics
+              containerPort: 2000
+              protocol: TCP
           livenessProbe:
             httpGet:
               # Cloudflared has a /ready endpoint which returns 200 if and only if
