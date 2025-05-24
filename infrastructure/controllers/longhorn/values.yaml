@@ -7,9 +7,6 @@ csi:
   resizerReplicaCount: 1
   snapshotterReplicaCount: 1
 
-defaultSettings:
-  defaultReplicaCount: 2
-
 longhornUI:
   replicas: 1
 
