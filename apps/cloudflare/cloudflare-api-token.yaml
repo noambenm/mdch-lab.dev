@@ -16,4 +16,4 @@ spec:
   data:
   - secretKey: TOKEN
     remoteRef:
-      key: /mdch-lab/cloudfront/api-token
+      key: /mdch-lab/cloudflare/api-token
