@@ -10,9 +10,21 @@ service:
   port: 32400
   loadBalancerIP: 192.168.1.21
 
+affinity:
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - preference:
+        matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node1
+
+
 extraEnv:
   ADVERTISE_IP: "http://192.168.1.21:32400,https://plex.mdch-lab.dev:443"
   TZ: "Asia/Jerusalem"
+  PLEX_CLAIM: "claim-X87Ss6zhw_SDX_6xxrqi"
 
 extraVolumeMounts:
   - name: plex-media

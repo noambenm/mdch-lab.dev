@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: plex-media-server
-      version: 0.x
+      version: 1.0.x
       sourceRef:
         kind: HelmRepository
         name: plex
