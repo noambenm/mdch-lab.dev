@@ -71,7 +71,6 @@ prometheus:
 
 operator:
   rollOutPods: true
-  replicas: 1
   prometheus:
     enabled: true
     serviceMonitor:
