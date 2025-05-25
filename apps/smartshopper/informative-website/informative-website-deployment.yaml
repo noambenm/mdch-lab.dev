@@ -4,7 +4,6 @@ metadata:
   name: informative-website-deployment
   namespace: smartshopper
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: informative-website

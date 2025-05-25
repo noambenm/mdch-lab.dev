@@ -1,27 +1,27 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: backend-blue-green
+  name: informative-website-blue-green
   namespace: smartshopper
 spec:
   provider: gatewayapi:v1
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: backend-deployment
+    name: informative-website-deployment
   progressDeadlineSeconds: 60
+  autoscalerRef:
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
+    name: informative-website-hpa
   service:
-    name: backend-service
+    name: informative-website-service
     port: 80
-    targetPort: 8000
     hosts:
-     - smartshopper-app.mdch-lab.dev
+     - smartshopper.mdch-lab.dev
     gatewayRefs:
       - name: mdch-lab-gateway
         namespace: cilium
-    match:
-      - uri:
-          prefix: /api
   analysis:
     interval: 40s
     threshold: 1
@@ -31,4 +31,4 @@ spec:
         url: http://flagger-loadtester/
         timeout: 5s
         metadata:
-          cmd: "hey -z 2m -q 10 -c 2 -host smartshopper-app.mdch-lab.dev/api https://cilium-gateway-mdch-lab-gateway.cilium/"
+          cmd: "hey -z 2m -q 10 -c 2 -host smartshopper.mdch-lab.dev https://cilium-gateway-mdch-lab-gateway.cilium/"
