@@ -6,7 +6,6 @@ metadata:
 spec:
   interval: 1h
   releaseName: longhorn
-  persistentClient: false
   chart:
     spec:
       chart: longhorn
