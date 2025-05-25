@@ -13,7 +13,8 @@ service:
 affinity:
   nodeAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
-    - preference:
+    - weight: 100
+      preference:
         matchExpressions:
         - key: kubernetes.io/hostname
           operator: In
@@ -24,7 +25,7 @@ affinity:
 extraEnv:
   ADVERTISE_IP: "http://192.168.1.21:32400,https://plex.mdch-lab.dev:443"
   TZ: "Asia/Jerusalem"
-  PLEX_CLAIM: "claim-X87Ss6zhw_SDX_6xxrqi"
+  PLEX_CLAIM: "claim-iJC_bspDrxtB4GaBNx6u"
 
 extraVolumeMounts:
   - name: plex-media
