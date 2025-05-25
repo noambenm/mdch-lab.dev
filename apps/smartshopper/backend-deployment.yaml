@@ -4,6 +4,7 @@ metadata:
   name: backend-deployment
   namespace: smartshopper
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: backend
@@ -12,6 +13,17 @@ spec:
       labels:
         app: backend
     spec:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - backend
+              topologyKey: node.kubernetes.io/instance-type
       imagePullSecrets:
         - name: ecr-creds
       containers:

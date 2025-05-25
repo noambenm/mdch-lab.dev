@@ -4,7 +4,7 @@ metadata:
   name: informative-website-deployment
   namespace: smartshopper
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: informative-website
@@ -13,6 +13,17 @@ spec:
       labels:
         app: informative-website
     spec:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - informative-website
+            topologyKey: node.kubernetes.io/instance-type
       imagePullSecrets:
         - name: ecr-creds
       containers:
