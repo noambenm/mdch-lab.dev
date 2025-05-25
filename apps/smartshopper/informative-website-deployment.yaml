@@ -13,17 +13,18 @@ spec:
       labels:
         app: informative-website
     spec:
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - informative-website
-            topologyKey: node.kubernetes.io/instance-type
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - informative-website
+              topologyKey: kubernetes.io/hostname
       imagePullSecrets:
         - name: ecr-creds
       containers:
