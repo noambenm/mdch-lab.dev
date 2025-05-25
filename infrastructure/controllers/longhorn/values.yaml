@@ -10,21 +10,6 @@ csi:
 longhornUI:
   replicas: 2
 
-ingress:
-  enabled: true
-  ingressClassName: cilium
-  host: longhorn.mdch-lab.dev
-  tls: true
-  tlsSecret: longhorn.mdch-lab.dev
-  path: /
-  pathType: Prefix
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
-  secrets:
-    - name: longhorn-general-tls
-      key: tls.key
-      certificate: tls.crt
-
 metrics:
   serviceMonitor:
     enabled: true
