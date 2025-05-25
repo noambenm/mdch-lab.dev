@@ -63,6 +63,9 @@ hubble:
     enableOpenMetrics: true
     serviceMonitor:
       enabled: true
+    dashboards:
+      enabled: true
+
 
 prometheus:
   enabled: true
@@ -75,6 +78,11 @@ operator:
     enabled: true
     serviceMonitor:
       enabled: true
+  dashboards:
+    enabled: true
+
+dashboards:
+  enabled: true
 
 envoy:
   rollOutPods: true
