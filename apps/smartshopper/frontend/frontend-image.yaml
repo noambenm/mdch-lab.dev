@@ -39,4 +39,4 @@ spec:
         email: fluxcdbot@users.noreply.github.com
         name: fluxcdbot
   update:
-    path: ./apps/smartshopper/frontend-deployment.yaml
+    path: ./apps/smartshopper/frontend/frontend-deployment.yaml

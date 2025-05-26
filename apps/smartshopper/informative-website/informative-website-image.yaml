@@ -39,4 +39,4 @@ spec:
         email: fluxcdbot@users.noreply.github.com
         name: fluxcdbot
   update:
-    path: ./apps/smartshopper/informative-website-deployment.yaml
+    path: ./apps/smartshopper/informative-website/informative-website-deployment.yaml
