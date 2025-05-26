@@ -96,7 +96,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -265,7 +265,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -366,7 +366,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -451,7 +451,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(certmanager_certificate_expiration_timestamp_seconds{exported_namespace=~\"$namespace\"} - time()) BY (name,exported_namespace)",
@@ -493,7 +493,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -575,7 +575,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(rate(certmanager_http_acme_client_request_count[2m])) BY (status, path)",
@@ -590,7 +590,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -654,7 +654,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "expr": "sum(certmanager_http_acme_client_request_count)",
           "instant": true,
@@ -696,7 +696,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "Prometheus"
         },
         "definition": "label_values(exported_namespace)",
         "hide": 0,
@@ -723,7 +723,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "Prometheus"
         },
         "definition": "label_values(certmanager_certificate_expiration_timestamp_seconds{exported_namespace=~\"$namespace\"},name)",
         "hide": 0,

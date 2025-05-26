@@ -84,7 +84,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -138,7 +138,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "controller_runtime_active_workers{job=~\"$job\", controller=~\"$controller\"}",
@@ -154,7 +154,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -234,7 +234,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "controller_runtime_max_concurrent_reconciles{job=~\"$job\", controller=~\"$controller\"}",
@@ -250,7 +250,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -329,7 +329,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (controller, result) (rate(controller_runtime_reconcile_total{job=~\"$job\", controller=~\"$controller\"}[2m]))",
@@ -345,7 +345,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -426,7 +426,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (controller) (rate(controller_runtime_reconcile_errors_total{job=~\"$job\", controller=~\"$controller\"}[2m]))",
@@ -442,7 +442,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -521,7 +521,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.99,\n  sum by (le, controller)(\n    rate(\n      controller_runtime_reconcile_time_seconds_bucket{\n        job=~\"$job\",\n        controller=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -533,7 +533,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.95,\n  sum by (le, controller)(\n    rate(\n      controller_runtime_reconcile_time_seconds_bucket{\n        job=~\"$job\",\n        controller=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -546,7 +546,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.90,\n  sum by (le, controller)(\n    rate(\n      controller_runtime_reconcile_time_seconds_bucket{\n        job=~\"$job\",\n        controller=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -559,7 +559,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.50,\n  sum by (le, controller)(\n    rate(\n      controller_runtime_reconcile_time_seconds_bucket{\n        job=~\"$job\",\n        controller=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -591,7 +591,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -671,7 +671,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "workqueue_depth{job=~\"$job\", name=~\"$controller\"}",
@@ -687,7 +687,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -767,7 +767,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (name) (rate(workqueue_adds_total{job=~\"$job\", name=~\"$controller\"}[2m]))",
@@ -783,7 +783,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -863,7 +863,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "workqueue_longest_running_processor_seconds{job=~\"$job\", name=~\"$controller\"}",
@@ -879,7 +879,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -959,7 +959,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (name) (rate(workqueue_retries_total{job=~\"$job\", name=~\"$controller\"}[2m]))",
@@ -975,7 +975,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1055,7 +1055,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "workqueue_unfinished_work_seconds{job=~\"$job\", name=~\"$controller\"}",
@@ -1071,7 +1071,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1151,7 +1151,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.99,\n  sum by (le, name)(\n    rate(\n      workqueue_work_duration_seconds_bucket{\n        job=~\"$job\",\n        name=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -1163,7 +1163,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.95,\n  sum by (le, name)(\n    rate(\n      workqueue_work_duration_seconds_bucket{\n        job=~\"$job\",\n        name=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -1176,7 +1176,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.90,\n  sum by (le, name)(\n    rate(\n      workqueue_work_duration_seconds_bucket{\n        job=~\"$job\",\n        name=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -1189,7 +1189,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.50,\n  sum by (le, name)(\n    rate(\n      workqueue_work_duration_seconds_bucket{\n        job=~\"$job\",\n        name=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -1206,7 +1206,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1286,7 +1286,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.99,\n  sum by (le, name)(\n    rate(\n      workqueue_queue_duration_seconds_bucket{\n        job=~\"$job\",\n        name=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -1298,7 +1298,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.95,\n  sum by (le, name)(\n    rate(\n      workqueue_queue_duration_seconds_bucket{\n        job=~\"$job\",\n        name=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -1311,7 +1311,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.90,\n  sum by (le, name)(\n    rate(\n      workqueue_queue_duration_seconds_bucket{\n        job=~\"$job\",\n        name=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -1324,7 +1324,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(\n  0.50,\n  sum by (le, name)(\n    rate(\n      workqueue_queue_duration_seconds_bucket{\n        job=~\"$job\",\n        name=~\"$controller\",\n      }[2m]\n    )\n  )\n)",
@@ -1356,7 +1356,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1435,7 +1435,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (name, exported_namespace) (rate(externalsecret_sync_calls_total{job=~\"$job\", name=~\"$name\"}[2m]))",
@@ -1451,7 +1451,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1530,7 +1530,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (name, exported_namespace) (rate(externalsecret_sync_calls_error{job=~\"$job\", name=~\"$name\"}[2m]))",
@@ -1546,7 +1546,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1626,7 +1626,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "externalsecret_reconcile_duration{job=~\"$job\", name=~\"$name\"}",
@@ -1642,7 +1642,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_METRICS}"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1711,7 +1711,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_METRICS}"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "externalsecret_status_condition{job=~\"$job\", name=~\"$name\", condition=\"Ready\", status=\"True\"}",
@@ -1752,7 +1752,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_METRICS}"
+          "uid": "Prometheus"
         },
         "definition": "label_values(controller_runtime_active_workers,job)",
         "hide": 0,
@@ -1775,7 +1775,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_METRICS}"
+          "uid": "Prometheus"
         },
         "definition": "label_values(controller_runtime_active_workers{job=\"$job\"},controller)",
         "hide": 0,
@@ -1798,7 +1798,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_METRICS}"
+          "uid": "Prometheus"
         },
         "definition": "label_values(externalsecret_sync_calls_total{job=\"$job\"},name)",
         "hide": 0,
