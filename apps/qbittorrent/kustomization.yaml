@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: qbittorrent
 resources:
   - release.yaml
   - repository.yaml
@@ -8,7 +9,6 @@ resources:
 
 configMapGenerator:
   - name: qbittorrent-values
-    namespace: qbittorrent
     files:
       - values.yaml
 configurations:

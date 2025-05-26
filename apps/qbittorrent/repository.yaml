@@ -2,7 +2,6 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: qbittorrent
-  namespace: qbittorrent
 spec:
   interval: 24h
   url: oci://ghcr.io/m0nsterrr/helm-charts
