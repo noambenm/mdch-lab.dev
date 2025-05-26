@@ -1,21 +1,20 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: monitoring
+namespace: flux-system
 resources:
   - podmonitor.yaml
   - httproute.yaml
+  - slack/
+  - webhook-receiver/
 configMapGenerator:
   - name: flux-grafana-dashboards
     files:
-      - dashboards/fluxcd/control-plane.json
-      - dashboards/fluxcd/cluster.json
-      - dashboards/fluxcd/logs.json
-      - dashboards/longhorn/16888_rev9.json
-      - dashboards/cert-manager/20842_rev3.json
-      - dashboards/cert-manager/20340_rev1.json
+      - dashboards/control-plane.json
+      - dashboards/cluster.json
+      - dashboards/logs.json
     options:
       labels:
         grafana_dashboard: "1"
         app.kubernetes.io/part-of: flux
-        app.kubernetes.io/component: monitoring
+        app.kubernetes.io/component: flux
         kustomize.toolkit.fluxcd.io/substitute: disabled

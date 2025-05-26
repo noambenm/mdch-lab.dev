@@ -2,23 +2,22 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: flagger
-  namespace: flagger-system
 spec:
   interval: 1h
   releaseName: flagger
-  install: # override existing Flagger CRDs
+  install:
     crds: CreateReplace
-  upgrade: # update Flagger CRDs
+  upgrade:
     crds: CreateReplace
   chart:
     spec:
       chart: flagger
-      version: 1.x # update Flagger to the latest minor version
-      interval: 6h # scan for new versions every six hours
+      version: 1.x
+      interval: 6h
       sourceRef:
         kind: HelmRepository
         name: flagger
-      verify: # verify the chart signature with Cosign keyless
+      verify:
         provider: cosign 
   valuesFrom:
     - kind: ConfigMap

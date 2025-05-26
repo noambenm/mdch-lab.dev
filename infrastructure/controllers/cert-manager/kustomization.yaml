@@ -1,17 +1,27 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: cert-manager
 resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
 configMapGenerator:
   - name: cert-manager-values
-    namespace: cert-manager
     files:
       - values.yaml
     options:
       labels:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: cert-manager
+  - name: cert-manager-grafana-dashboards
+    files:
+      - dashboards/20340_rev1.json
+      - dashboards/20842_rev3.json
+    options:
+      labels:
+        grafana_dashboard: "1"
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: cert-manager
+        kustomize.toolkit.fluxcd.io/substitute: disabled
 configurations:
   - kustomizeconfig.yaml

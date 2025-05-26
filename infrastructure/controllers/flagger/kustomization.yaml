@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: flagger-system
 resources:
   - namespace.yaml
   - repository.yaml
@@ -7,7 +8,6 @@ resources:
   - flagger-loadtester.yaml
 configMapGenerator:
   - name: flagger-values
-    namespace: flagger-system
     files:
       - values.yaml
     options:
