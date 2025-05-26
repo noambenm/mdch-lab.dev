@@ -11,7 +11,6 @@ configMapGenerator:
       - dashboards/fluxcd/cluster.json
       - dashboards/fluxcd/logs.json
       - dashboards/longhorn/16888_rev9.json
-      - dashboards/pihole/10176_rev3.json
       - dashboards/cert-manager/20842_rev3.json
       - dashboards/cert-manager/20340_rev1.json
     options:
