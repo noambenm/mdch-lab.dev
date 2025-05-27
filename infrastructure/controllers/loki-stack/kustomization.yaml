@@ -27,5 +27,10 @@ configMapGenerator:
       labels:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: monitoring
+  - name: alloy-config
+    files:
+      - config.alloy
+    options:
+      disableNameSuffixHash: true
 configurations:
   - kustomizeconfig.yaml
