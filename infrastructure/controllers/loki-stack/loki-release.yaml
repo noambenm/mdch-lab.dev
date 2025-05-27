@@ -5,14 +5,14 @@ metadata:
 spec:
   interval: 1h
   dependsOn:
-    - name: kube-prometheus-stack
+    - name: alloy
   chart:
     spec:
       version: "6.29.x"
       chart: loki
       sourceRef:
         kind: HelmRepository
-        name: grafana-charts
+        name: grafana
   valuesFrom:
     - kind: ConfigMap
       name: loki-values

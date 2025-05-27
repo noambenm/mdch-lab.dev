@@ -5,6 +5,7 @@ resources:
   - repository.yaml
   - loki-release.yaml
   - promtail-release.yaml
+  - alloy-release.yaml
 configMapGenerator:
   - name: loki-values
     files:
@@ -16,6 +17,13 @@ configMapGenerator:
   - name: promtail-values
     files:
       - values.yaml=promtail-values.yaml
+    options:
+      labels:
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: monitoring
+  - name: alloy-values
+    files:
+      - values.yaml=alloy-values.yaml
     options:
       labels:
         app.kubernetes.io/part-of: flux

@@ -1,18 +1,19 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: promtail
+  name: alloy
 spec:
   interval: 1h
+  releaseName: grafana-alloy
   dependsOn:
     - name: kube-prometheus-stack
   chart:
     spec:
-      version: "6.16.x"
-      chart: promtail
+      version: "1.0.x"
+      chart: alloy
       sourceRef:
         kind: HelmRepository
         name: grafana
   valuesFrom:
     - kind: ConfigMap
-      name: promtail-values
+      name: alloy-values
