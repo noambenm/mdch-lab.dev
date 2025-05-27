@@ -4,13 +4,13 @@ metadata:
   name: alloy
 spec:
   interval: 1h
-  releaseName: grafana-alloy
+  releaseName: k8s-monitoring
   dependsOn:
     - name: kube-prometheus-stack
   chart:
     spec:
-      version: "1.0.x"
-      chart: alloy
+      version: "2.1.x"
+      chart: k8s-monitoring
       sourceRef:
         kind: HelmRepository
         name: grafana
