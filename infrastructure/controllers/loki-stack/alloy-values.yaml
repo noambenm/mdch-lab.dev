@@ -1,0 +1,6 @@
+alloy:
+  mounts:
+    varlog: true
+
+serviceMonitor:
+  enabled: true

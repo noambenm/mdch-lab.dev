@@ -4,7 +4,6 @@ namespace: monitoring
 resources:
   - repository.yaml
   - loki-release.yaml
-  - promtail-release.yaml
   - alloy-release.yaml
 configMapGenerator:
   - name: loki-values
