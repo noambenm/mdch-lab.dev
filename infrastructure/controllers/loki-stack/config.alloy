@@ -1,48 +1,40 @@
-logging {
-  level  = "info"
-  format = "logfmt"
-}
+############################################
+# discovery – unchanged                     #
+############################################
+discovery.kubernetes "pods" { role = "pod" }
 
-########################
-# 1. Discover all pods #
-########################
-discovery.kubernetes "pods" {
-  role = "pod"
-}
-
-##########################################################
-# 2. Promote the kube-meta you care about into real labels
-##########################################################
-discovery.relabel "log_labels" {
-  targets = discovery.kubernetes.pods.targets
-
-  # low-cardinality must-haves
-  rule { source_labels = ["__meta_kubernetes_namespace"];          target_label = "namespace" }
-  rule { source_labels = ["__meta_kubernetes_pod_name"];           target_label = "pod" }
-  rule { source_labels = ["__meta_kubernetes_pod_container_name"]; target_label = "container" }
-
-  # useful extras — uncomment to taste
-  # rule { source_labels = ["__meta_kubernetes_pod_node_name"];      target_label = "node" }
-  # rule { source_labels = ["__meta_kubernetes_cluster_name"];       target_label = "cluster" }
-  # rule {
-  #   action        = "replace"
-  #   source_labels = ["__meta_kubernetes_pod_label_app_kubernetes_io_name",
-  #                    "__meta_kubernetes_pod_label_app"]
-  #   regex         = "(.+)"
-  #   target_label  = "app"
-  # }
-}
-
-###############################################
-# 3. Tail logs and pass them to Loki gateway  #
-###############################################
+############################################
+# source – unchanged                        #
+############################################
 loki.source.kubernetes "pods" {
-  targets    = discovery.relabel.log_labels.output   # <- enriched targets
-  forward_to = [loki.write.default.receiver]
+  targets    = discovery.kubernetes.pods.targets
+  forward_to = [loki.relabel.k8s.receiver]        # <-- send to relabel
 }
 
+############################################
+# relabel – map meta-labels to real labels #
+############################################
+loki.relabel "k8s" {
+  forward_to = [loki.write.default.receiver]
+
+  # Keep the three “big-five” labels Promtail adds
+  rule { source_labels = ["__meta_kubernetes_namespace"];           target_label = "namespace"  }
+  rule { source_labels = ["__meta_kubernetes_pod_name"];            target_label = "pod"        }
+  rule { source_labels = ["__meta_kubernetes_pod_container_name"];  target_label = "container"  }
+
+  # Optional but handy
+  rule { source_labels = ["__meta_kubernetes_pod_node_name"];       target_label = "node"       }
+
+  # Copy *all* pod labels (app, tier, release, …)
+  rule { action = "labelmap";  regex = "__meta_kubernetes_pod_label_(.+)" }
+
+  # Now drop the remaining internal labels to keep things tidy
+  rule { action = "labeldrop"; regex  = "__meta.*" }
+}
+
+############################################
+# write – unchanged                         #
+############################################
 loki.write "default" {
-  endpoint {
-    url = "http://loki-gateway/loki/api/v1/push"
-  }
+  endpoint { url = "http://loki-gateway/loki/api/v1/push" }
 }
