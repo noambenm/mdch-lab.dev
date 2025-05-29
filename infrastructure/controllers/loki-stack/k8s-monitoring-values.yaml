@@ -12,7 +12,7 @@ clusterEvents:
   collector: alloy-logs
 
 nodeLogs:
-  enabled: true
+  enabled: false
   journal:
     units:
       - k3s.service
