@@ -38,7 +38,7 @@ alloy-logs:
   # Required when using the Kubernetes API to pod logs
   alloy:
     mounts:
-      varlog: true
+      varlog: false
       dockercontainers: false
     clustering:
       enabled: true

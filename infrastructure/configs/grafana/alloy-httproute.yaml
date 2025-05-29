@@ -14,12 +14,6 @@ spec:
         - path:
             type: PathPrefix
             value: /pods
-      filters:
-        - type: URLRewrite
-          urlRewrite:
-            path:
-              type: ReplaceFullPath
-              replaceFullPath: /
       backendRefs:
         - name: k8s-monitoring-alloy-logs
           port: 12345
@@ -27,12 +21,6 @@ spec:
         - path:
             type: PathPrefix
             value: /cluster
-      filters:
-        - type: URLRewrite
-          urlRewrite:
-            path:
-              type: ReplaceFullPath
-              replaceFullPath: /
       backendRefs:
         - name: k8s-monitoring-alloy-logs-cluster
           port: 12345
