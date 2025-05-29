@@ -10,20 +10,17 @@ spec:
   hostnames:
   - "alloy.mdch-lab.dev"
   rules:
-  - backendRefs:
-    - name: k8s-monitoring-alloy-logs
-      port: 12345
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /cluster
-    backendRefs:
-    - name: k8s-monitoring-alloy-logs-cluster
-      port: 12345
   - matches:
     - path:
         type: PathPrefix
         value: /pods
     backendRefs:
     - name: k8s-monitoring-alloy-logs
+      port: 12345
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: k8s-monitoring-alloy-logs-cluster
       port: 12345
