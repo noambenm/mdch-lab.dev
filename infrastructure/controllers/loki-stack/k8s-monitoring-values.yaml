@@ -1,5 +1,5 @@
 cluster:
-  name: meta-monitoring-tutorial
+  name: mdch-lab.dev
 
 destinations:
   - name: loki
@@ -10,12 +10,12 @@ destinations:
 clusterEvents:
   enabled: true
   collector: alloy-logs
-  namespaces:
-    - meta
-    - prod
 
 nodeLogs:
-  enabled: false
+  enabled: true
+  journal:
+    units:
+      - k3s.service
 
 podLogs:
   enabled: true
@@ -38,7 +38,7 @@ alloy-logs:
   # Required when using the Kubernetes API to pod logs
   alloy:
     mounts:
-      varlog: false
+      varlog: true
       dockercontainers: false
     clustering:
       enabled: true

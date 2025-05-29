@@ -4,7 +4,7 @@ namespace: monitoring
 resources:
   - repository.yaml
   - loki-release.yaml
-  - alloy-release.yaml
+  - k8s-monitoring-release.yaml
 configMapGenerator:
   - name: loki-values
     files:
@@ -13,24 +13,12 @@ configMapGenerator:
       labels:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: monitoring
-  - name: promtail-values
+  - name: k8s-monitoring-values
     files:
-      - values.yaml=promtail-values.yaml
+      - values.yaml=k8s-monitoring-values.yaml
     options:
       labels:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: monitoring
-  - name: alloy-values
-    files:
-      - values.yaml=alloy-values.yaml
-    options:
-      labels:
-        app.kubernetes.io/part-of: flux
-        app.kubernetes.io/component: monitoring
-  - name: alloy-config
-    files:
-      - config.alloy
-    options:
-      disableNameSuffixHash: true
 configurations:
   - kustomizeconfig.yaml
