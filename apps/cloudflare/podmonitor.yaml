@@ -13,4 +13,4 @@ spec:
     - path: /metrics
       interval: 10s
       scheme: http
-      targetPort: 2000
+      port: metrics
