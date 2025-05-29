@@ -38,3 +38,8 @@ spec:
             name: backend-url
         - secretRef:
             name: frontend-url
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+  

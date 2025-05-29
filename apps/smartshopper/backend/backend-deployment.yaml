@@ -42,3 +42,8 @@ spec:
                 name: db-creds
             - secretRef:
                 name: aws-creds
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi
+          
