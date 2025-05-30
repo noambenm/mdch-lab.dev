@@ -25,25 +25,24 @@ spec:
                   - backend
               topologyKey: kubernetes.io/hostname
       imagePullSecrets:
-        - name: ecr-creds
+      - name: ecr-creds
       containers:
-        - name: backend
-          image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-backend:0.1.9 # {"$imagepolicy": "smartshopper:backend-policy"}
-          ports:
-            - containerPort: 8000
-          envFrom:
-            - secretRef:
-                name: auth0-creds
-            - secretRef:
-                name: google-creds
-            - secretRef:
-                name: openai-key
-            - secretRef:
-                name: db-creds
-            - secretRef:
-                name: aws-creds
-          resources:
-            requests:
-              cpu: 10m
-              memory: 50Mi
-          
+      - name: backend
+        image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-backend:0.1.11 # {"$imagepolicy": "smartshopper:backend-policy"}
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: auth0-creds
+        - secretRef:
+            name: google-creds
+        - secretRef:
+            name: openai-key
+        - secretRef:
+            name: db-creds
+        - secretRef:
+            name: aws-creds
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
