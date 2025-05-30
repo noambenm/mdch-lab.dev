@@ -12,8 +12,6 @@ loki:
     labels:
       app.kubernetes.io/part-of: kube-prometheus-stack
   limits_config:
-    allow_structured_metadata: true
-    retention_period: 24h
     volume_enabled: true
   # https://grafana.com/docs/loki/latest/setup/install/helm/install-monolithic/
   commonConfig:
