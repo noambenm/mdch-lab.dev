@@ -1,4 +1,6 @@
 loki:
+  image:
+    tag: 3.5.1
   auth_enabled: false
   commonConfig:
     replication_factor: 1
