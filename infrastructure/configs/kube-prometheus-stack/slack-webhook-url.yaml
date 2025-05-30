@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-  name: slack-token
+  name: slack-webhook-url
   namespace: monitoring
 spec:
   refreshInterval: 24h

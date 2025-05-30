@@ -29,10 +29,9 @@ alertmanager:
             requests:
               storage: 5Gi
     forceEnableClusterMode: true
-  
-  envFrom:
-    - secretRef:
-        name: slack-webhook-url
+    envFrom:
+      - secretRef:
+          name: slack-webhook-url
 
   config:
     global:
