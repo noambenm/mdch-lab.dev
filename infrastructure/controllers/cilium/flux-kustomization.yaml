@@ -14,3 +14,4 @@ spec:
     name: flux-system
   dependsOn:
     - name: gateway-api-crds
+      namespace: kube-system
