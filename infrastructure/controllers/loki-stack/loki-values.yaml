@@ -1,7 +1,7 @@
 deploymentMode: SingleBinary
 loki:
   storage:
-    bucketNames:               # ← NEW  — satisfies the helper
+    bucketNames:
       chunks: loki-local-chunks
       ruler:  loki-local-ruler
       admin:  loki-local-admin
