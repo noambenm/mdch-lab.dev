@@ -1,6 +1,10 @@
 deploymentMode: SingleBinary
 loki:
   storage:
+    bucketNames:               # ← NEW  — satisfies the helper
+      chunks: loki-local-chunks
+      ruler:  loki-local-ruler
+      admin:  loki-local-admin
     type: filesystem
   auth_enabled: false
   serviceMonitor:
