@@ -5,7 +5,7 @@ metadata:
 spec:
   interval: 1h
   dependsOn:
-    - name: alloy
+    - name: k8s-monitoring
   chart:
     spec:
       version: "6.29.x"
