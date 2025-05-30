@@ -20,5 +20,8 @@ spec:
     - kind: ConfigMap
       name: kube-prometheus-stack-values
     - kind: ConfigMap
-      name: flux-kube-state-metrics-config
-      valuesKey: kube-state-metrics-config.yaml
+      name: flux-kube-state-metrics-values
+      valuesKey: kube-state-metrics-values.yaml
+    - kind: ConfigMap
+      name: alertmanager-values
+      valuesKey: alertmanager-values.yaml

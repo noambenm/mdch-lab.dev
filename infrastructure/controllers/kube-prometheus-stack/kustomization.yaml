@@ -13,9 +13,16 @@ configMapGenerator:
       labels:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: monitoring
-  - name: flux-kube-state-metrics-config
+  - name: flux-kube-state-metrics-values
     files:
-      - kube-state-metrics-config.yaml
+      - kube-state-metrics-values.yaml
+    options:
+      labels:
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: monitoring
+  - name: alertmanager-values
+    files:
+      - alertmanager-values.yaml
     options:
       labels:
         app.kubernetes.io/part-of: flux

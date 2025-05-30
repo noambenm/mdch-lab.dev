@@ -2,38 +2,6 @@ defaultRules:
   rules:
     etcd: false
 
-alertmanager:
-  route:
-    main:
-      enabled: true
-      apiVersion: gateway.networking.k8s.io/v1
-      kind: HTTPRoute
-      annotations: {}
-      labels: {}
-      hostnames:
-        - alertmanager.mdch-lab.dev
-      parentRefs:
-        - name: mdch-lab-gateway
-          namespace: cilium
-      httpsRedirect: false
-      matches:
-        - path:
-            type: PathPrefix
-            value: /
-      filters: []
-      additionalRules: []
-
-  alertmanagerSpec:
-    storage:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: longhorn
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 5Gi
-    forceEnableClusterMode: true
-
 grafana:
   ingress:
     enabled: true
