@@ -1,10 +1,6 @@
 deploymentMode: SingleBinary
 loki:
   storage:
-    bucketNames:
-      chunks: loki-local-chunks
-      ruler:  loki-local-ruler
-      admin:  loki-local-admin
     type: filesystem
   auth_enabled: false
   serviceMonitor:
@@ -26,8 +22,6 @@ loki:
         index:
           prefix: loki_index_
           period: 24h
-  pattern_ingester:
-    enabled: true
   ruler:
     enable_api: true
 test:
