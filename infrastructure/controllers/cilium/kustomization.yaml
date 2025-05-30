@@ -5,7 +5,6 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
-  - flux-kustomization.yaml
 configMapGenerator:
   - name: cilium-values
     files:
