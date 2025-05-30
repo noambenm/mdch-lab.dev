@@ -28,7 +28,6 @@ alloy-logs:
   enabled: true
   # Required when using the Kubernetes API to pod logs
   alloy:
-    uiPathPrefix: /pods
     mounts:
       varlog: true
       dockercontainers: false

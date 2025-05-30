@@ -10,32 +10,6 @@ spec:
   hostnames:
   - alloy.mdch-lab.dev
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /pods
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplacePrefixMatch
-          replacePrefixMatch: /
-    backendRefs:
-    - name: k8s-monitoring-alloy-logs
-      port: 12345
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /cluster
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplacePrefixMatch
-          replacePrefixMatch: /
-    backendRefs:
-    - name: k8s-monitoring-alloy-logs-cluster
-      port: 12345
   - backendRefs:
     - name: k8s-monitoring-alloy-logs
       port: 12345
