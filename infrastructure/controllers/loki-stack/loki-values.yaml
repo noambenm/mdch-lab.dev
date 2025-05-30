@@ -1,5 +1,7 @@
 deploymentMode: SingleBinary
 loki:
+  storage:
+    type: filesystem
   auth_enabled: false
   serviceMonitor:
     enabled: true
