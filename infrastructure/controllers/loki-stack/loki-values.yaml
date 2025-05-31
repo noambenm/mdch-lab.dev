@@ -22,6 +22,10 @@ loki:
     volume_enabled: true
   ruler:
     enable_api: true
+test:
+  enabled: false
+lokiCanary:
+  enabled: false
       
 deploymentMode: SingleBinary
 
