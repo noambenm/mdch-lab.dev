@@ -23,7 +23,6 @@ podLogs:
 
 alloy-logs:
   enabled: true
-  # Required when using the Kubernetes API to pod logs
   alloy:
     mounts:
       varlog: true

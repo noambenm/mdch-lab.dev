@@ -28,7 +28,7 @@ metadata:
   name: frontend-update
   namespace: smartshopper
 spec:
-  interval: 30m
+  interval: 1h
   sourceRef:
     kind: GitRepository
     name: flux-system
