@@ -45,7 +45,7 @@
       }
     ]
   },
-  "description": "Flux logs collected from Kubernetes, stored in Loki",
+  "description": "Flux logs collected from Kubernetes, stored in Loki via Alloy",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
@@ -128,7 +128,7 @@
       "targets": [
         {
           "datasource": "${DS_LOKI}",
-          "expr": "sum(count_over_time({namespace=~\"$namespace\", service_name=~\"$controller\"} | detected_level=~\"$level\" |= \"$query\" [$__interval]))",
+          "expr": "sum(count_over_time({namespace=~\"$namespace\", pod=~\"$controller.*\"} | json | __error__!=\"JSONParserErr\" | level=~\"$level\" |= \"$query\" [$__interval]))",
           "instant": false,
           "legendFormat": "Log count",
           "range": true,
@@ -139,7 +139,7 @@
     },
     {
       "datasource": "${DS_LOKI}",
-      "description": "Logs from services running in Kubernetes",
+      "description": "Logs from Flux controllers running in Kubernetes",
       "gridPos": {
         "h": 25,
         "w": 24,
@@ -149,18 +149,18 @@
       "id": 2,
       "options": {
         "dedupStrategy": "numbers",
-        "enableLogDetails": false,
+        "enableLogDetails": true,
         "prettifyLogMessage": true,
         "showCommonLabels": false,
-        "showLabels": false,
-        "showTime": false,
+        "showLabels": true,
+        "showTime": true,
         "sortOrder": "Descending",
-        "wrapLogMessage": false
+        "wrapLogMessage": true
       },
       "targets": [
         {
           "datasource": "${DS_LOKI}",
-          "expr": "{namespace=~\"$namespace\", service_name=~\"$controller\"} | detected_level=~\"$level\" |= \"$query\"",
+          "expr": "{namespace=~\"$namespace\", pod=~\"$controller.*\"} | json | __error__!=\"JSONParserErr\" | level=~\"$level\" |= \"$query\"",
           "refId": "A"
         }
       ],
@@ -171,7 +171,9 @@
   "schemaVersion": 36,
   "style": "light",
   "tags": [
-    "flux"
+    "flux",
+    "kubernetes",
+    "alloy"
   ],
   "templating": {
     "list": [
@@ -181,7 +183,7 @@
           "text": "",
           "value": ""
         },
-        "description": "String to search for",
+        "description": "String to search for in logs",
         "hide": 0,
         "label": "Search Query",
         "name": "query",
@@ -197,7 +199,7 @@
         "type": "textbox"
       },
       {
-        "allValue": "info|error",
+        "allValue": "info|error|warn|debug",
         "current": {
           "selected": false,
           "text": "All",
@@ -222,15 +224,25 @@
             "selected": false,
             "text": "error",
             "value": "error"
+          },
+          {
+            "selected": false,
+            "text": "warn",
+            "value": "warn"
+          },
+          {
+            "selected": false,
+            "text": "debug",
+            "value": "debug"
           }
         ],
-        "query": "info,error",
+        "query": "info,error,warn,debug",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       },
       {
-        "allValue": ".+",
+        "allValue": ".*",
         "current": {
           "selected": true,
           "text": [
@@ -241,21 +253,21 @@
           ]
         },
         "datasource": "${DS_LOKI}",
-        "definition": "label_values(service_name)",
+        "definition": "label_values({namespace=~\"flux-system\"}, pod)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "controller",
         "options": [],
-        "query": "label_values(service_name)",
+        "query": "label_values({namespace=~\"flux-system\"}, pod)",
         "refresh": 1,
-        "regex": "",
+        "regex": "/^(.*flux.*|.*controller.*|.*operator.*)/",
         "skipUrlSync": false,
-        "sort": 0,
+        "sort": 1,
         "type": "query"
       },
       {
-        "allValue": ".+",
+        "allValue": ".*",
         "current": {
           "selected": true,
           "text": [
@@ -276,28 +288,7 @@
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
-      },
-      {
-        "allValue": ".+",
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": "${DS_LOKI}",
-        "definition": "label_values(stream)",
-        "hide": 0,
-        "includeAll": true,
-        "multi": true,
-        "name": "stream",
-        "options": [],
-        "query": "label_values(stream)",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
+        "sort": 1,
         "type": "query"
       },
       {
@@ -326,7 +317,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Flux Logs",
-  "uid": "flux-logs",
-  "version": 2
+  "title": "Flux Logs (Alloy)",
+  "uid": "flux-logs-alloy",
+  "version": 3
 }
