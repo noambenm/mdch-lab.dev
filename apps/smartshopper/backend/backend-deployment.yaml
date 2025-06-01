@@ -33,7 +33,7 @@ spec:
         - containerPort: 8000
         envFrom:
         - secretRef:
-            name: auth0-creds
+            name: backend-auth0-creds
         - secretRef:
             name: google-creds
         - secretRef:

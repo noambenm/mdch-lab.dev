@@ -33,9 +33,7 @@ spec:
         - containerPort: 80
         envFrom:
         - secretRef:
-            name: auth0-creds
-        - secretRef:
-            name: backend-url
+            name: frontend-auth0-creds
         - secretRef:
             name: frontend-url
         resources:
