@@ -41,10 +41,10 @@ spec:
         - name: backend-configuration
           mountPath: /app/backend/dist/backend-configuration.json
           readOnly: true
-    volumes:
-      - name: backend-configuration
-        configMap:
-          name: backend-configuration
+      volumes:
+        - name: backend-configuration
+          configMap:
+            name: backend-configuration
 ---
 apiVersion: v1
 kind: Service
