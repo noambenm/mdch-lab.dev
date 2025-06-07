@@ -7,7 +7,8 @@ spec:
   ports:
   - port: 6379
   selector:
-    app: redis
+    app: monkeytype
+    tier: redis
   clusterIP: None
 ---
 apiVersion: apps/v1
@@ -18,11 +19,15 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: redis
+      app: monkeytype
+      tier: redis
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
-        app: redis
+        app: monkeytype
+        tier: redis
     spec:
       containers:
       - name: redis

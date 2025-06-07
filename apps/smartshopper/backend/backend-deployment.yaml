@@ -6,11 +6,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: backend
+      app: smartshopper
+      tier: backend
   template:
     metadata:
       labels:
-        app: backend
+        app: smartshopper
+        tier: backend
     spec:
       affinity:
         podAntiAffinity:
@@ -20,6 +22,10 @@ spec:
               labelSelector:
                 matchExpressions:
                 - key: app
+                  operator: In
+                  values:
+                  - smartshopper
+                - key: tier
                   operator: In
                   values:
                   - backend
