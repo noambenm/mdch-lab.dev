@@ -41,9 +41,9 @@ spec:
           periodSeconds: 5
           timeoutSeconds: 10
           failureThreshold: 3
-    volumeMounts:
-    - name: mongo-pvc
-      mountPath: /data/db
+        volumeMounts:
+        - name: mongo-pvc
+          mountPath: /data/db
       volumes:
       - name: mongo-pvc
         persistentVolumeClaim:
