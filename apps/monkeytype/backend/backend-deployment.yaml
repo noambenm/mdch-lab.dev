@@ -31,6 +31,8 @@ spec:
             name: db
         - secretRef:
             name: frontend-url
+        - secretRef:
+            name: firebase-env
         env:
         - name: RECAPTCHA_SECRET
           valueFrom:
@@ -42,10 +44,17 @@ spec:
           mountPath: /app/backend/dist/backend-configuration.json
           subPath: backend-configuration.json
           readOnly: true
+        - name: firebase-sa-key
+          mountPath: /app/backend/src/credentials/serviceAccountKey.json
+          subPath: serviceAccountKey.json
+          readOnly: true
       volumes:
         - name: backend-configuration
           configMap:
             name: backend-configuration
+        - name: firebase-sa-key
+          secret:
+            secretName: firebase-sa-key
 ---
 apiVersion: v1
 kind: Service

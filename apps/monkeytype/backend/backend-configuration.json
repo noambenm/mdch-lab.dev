@@ -4,9 +4,9 @@
       "savingEnabled": true
     },
     "users": {
-      "signUp": false,
+      "signUp": true,
       "profiles": {
-        "enabled": false
+        "enabled": true
       }
     },
     "dailyLeaderboards": {
