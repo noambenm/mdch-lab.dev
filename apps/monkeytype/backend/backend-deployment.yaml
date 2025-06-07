@@ -40,6 +40,7 @@ spec:
         volumeMounts:
         - name: backend-configuration
           mountPath: /app/backend/dist/backend-configuration.json
+          subPath: backend-configuration.json
           readOnly: true
       volumes:
         - name: backend-configuration
