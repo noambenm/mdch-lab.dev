@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+  namespace: monkeytype
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app: mongo
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  namespace: monkeytype
+spec:
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - name: mongo
+        image: mongo:5.0.13
+        ports:
+        - containerPort: 27017
+        readinessProbe:
+          exec:
+            command: ["mongo", "--quiet", "localhost:27017/test", "--eval", "db.stats().ok"]
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 10
+          failureThreshold: 3
+    volumeMounts:
+    - name: mongo-pvc
+      mountPath: /data/db
+      volumes:
+      - name: mongo-pvc
+        persistentVolumeClaim:
+          claimName: mongo-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+  namespace: monkeytype
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
