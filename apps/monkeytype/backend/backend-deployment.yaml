@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: monkeytype
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: monkeytype
+        tier: backend
+    spec:
+      containers:
+      - name: backend
+        image: monkeytype/monkeytype-backend:25.22.0
+        ports:
+        - containerPort: 5005
+        readinessProbe:
+          tcpSocket:
+            port: 5005
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        envFrom:
+        - secretRef:
+            name: db
+        - secretRef:
+            name: frontend-url
+        env:
+        - name: RECAPTCHA_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: google-recaptcha
+              key: RECAPTCHA_SECRET
+        volumeMounts:
+        - name: backend-configuration
+          mountPath: /app/backend/dist/backend-configuration.json
+          readOnly: true
+    volumes:
+      - name: backend-configuration
+        configMap:
+          name: backend-configuration
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: monkeytype
+    tier: backend
+  ports:
+  - port: 5005
