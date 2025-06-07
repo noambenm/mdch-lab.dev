@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: monkeytype
 resources:
   - backend-deployment.yaml
+  - backend-httproute.yaml
 configMapGenerator:
   - name: backend-configuration
     files:
