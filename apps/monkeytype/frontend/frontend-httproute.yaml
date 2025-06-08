@@ -29,8 +29,8 @@ spec:
       - type: URLRewrite
         urlRewrite:
           path:
-            type: ReplaceFullPath
-            replaceFullPath: "/index.html"
+            type: ReplacePrefixMatch
+            replacePrefixMatch: "/index.html"
     backendRefs:
       - name: frontend-service
         port: 80
