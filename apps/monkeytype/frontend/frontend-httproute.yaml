@@ -5,15 +5,28 @@ metadata:
   namespace: monkeytype
 spec:
   parentRefs:
-  - name: mdch-lab-gateway
-    namespace: cilium
+    - name: mdch-lab-gateway
+      namespace: cilium
   hostnames:
-  - "monkeytype.mdch-lab.dev"
+    - "monkeytype.mdch-lab.dev"
   rules:
   - matches:
-    - path:
-        type: PathPrefix
-        value: "/"
+      - path:
+          type: PathPrefix
+          value: "/assets"
     backendRefs:
-    - name: frontend-service
-      port: 80
+      - name: frontend-service
+        port: 80
+  - matches:
+      - path:
+          type: PathPrefix
+          value: "/"
+    filters:
+      - type: URLRewrite
+        urlRewrite:
+          path:
+            type: ReplaceFullPath
+            replaceFullPath: "/index.html"
+    backendRefs:
+      - name: frontend-service
+        port: 80
