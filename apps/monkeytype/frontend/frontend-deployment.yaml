@@ -22,6 +22,8 @@ spec:
         envFrom:
         - secretRef:
             name: backend-url
+        - secretRef:
+            name: firebase-env
         env:
         - name: RECAPTCHA_SITE_KEY
           valueFrom:

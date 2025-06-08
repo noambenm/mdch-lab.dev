@@ -31,8 +31,6 @@ spec:
             name: db
         - secretRef:
             name: frontend-url
-        - secretRef:
-            name: firebase-env
         env:
         - name: RECAPTCHA_SECRET
           valueFrom:
