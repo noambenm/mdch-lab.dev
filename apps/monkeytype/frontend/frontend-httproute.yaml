@@ -18,8 +18,8 @@ spec:
       - type: URLRewrite
         urlRewrite:
           path:
-            type: ReplacePrefixMatch
-            replacePrefixMatch: "/"
+            type: ReplaceFullPath
+            replaceFullPath: "/"
     backendRefs:
       - name: frontend-service
         port: 80
