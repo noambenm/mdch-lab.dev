@@ -13,13 +13,6 @@ spec:
   - matches:
       - path:
           type: PathPrefix
-          value: "/assets"
-    backendRefs:
-      - name: frontend-service
-        port: 80
-  - matches:
-      - path:
-          type: PathPrefix
           value: "/"
     filters:
       - type: URLRewrite
