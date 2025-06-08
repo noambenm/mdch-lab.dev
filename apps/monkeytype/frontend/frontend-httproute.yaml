@@ -14,7 +14,12 @@ spec:
       - path:
           type: PathPrefix
           value: "/"
+    filters:
+      - type: URLRewrite
+        urlRewrite:
+          path:
+            type: ReplacePrefixMatch
+            replacePrefixMatch: "/"
     backendRefs:
       - name: frontend-service
         port: 80
-
