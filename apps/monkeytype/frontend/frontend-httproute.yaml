@@ -13,24 +13,8 @@ spec:
   - matches:
       - path:
           type: PathPrefix
-          value: "/assets"
-    filters:
-      - type: RequestHeaderModifier
-        requestHeaderModifier:
-          add: []   
-    backendRefs:
-      - name: frontend-service
-        port: 80
-  - matches:
-      - path:
-          type: PathPrefix
           value: "/"
-    filters:
-      - type: URLRewrite
-        urlRewrite:
-          path:
-            type: ReplacePrefixMatch
-            replacePrefixMatch: "/index.html"
     backendRefs:
       - name: frontend-service
         port: 80
+
