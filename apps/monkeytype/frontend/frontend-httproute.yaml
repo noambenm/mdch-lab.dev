@@ -10,32 +10,6 @@ spec:
   hostnames:
     - "monkeytype.mdch-lab.dev"
   rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: "/static/"
-        - path:
-            type: PathPrefix
-            value: "/favicon.ico"
-        - path:
-            type: PathPrefix
-            value: "/manifest.json"
-        - path:
-            type: PathPrefix
-            value: "/logo"
-      backendRefs:
-        - name: frontend-service
-          port: 80
-    - matches:
-        - path:
-            type: PathPrefix
-            value: "/"
-      filters:
-        - type: URLRewrite
-          urlRewrite:
-            path:
-              type: ReplaceFullPath
-              replaceFullPath: "/"
-      backendRefs:
-        - name: frontend-service
-          port: 80
+    - backendRefs:
+      - name: frontend-service
+        port: 80
