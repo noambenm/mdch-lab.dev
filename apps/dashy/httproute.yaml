@@ -1,0 +1,15 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: dashy-httproute
+  namespace: dashy
+spec:
+  parentRefs:
+    - name: mdch-lab-gateway
+      namespace: cilium
+  hostnames:
+    - "dashy.mdch-lab.dev"
+  rules:
+    - backendRefs:
+      - name: dashy
+        port: 8080
