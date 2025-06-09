@@ -39,7 +39,7 @@ spec:
         - containerPort: 8000
         envFrom:
         - secretRef:
-            name: backend-auth0-creds
+            name: backend-firebase-creds
         - secretRef:
             name: google-creds
         - secretRef:
