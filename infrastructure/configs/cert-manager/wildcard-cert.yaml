@@ -4,7 +4,7 @@ metadata:
   name: wildcard-mdch-lab-dev
   namespace: cilium
 spec:
-  secretName: wildcard-mdch-lab-dev-cert
+  secretName: wildcard-mdch-lab-dev
   issuerRef:
     name: letsencrypt-cluster-issuer
     kind: ClusterIssuer
