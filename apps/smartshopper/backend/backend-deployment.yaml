@@ -52,3 +52,13 @@ spec:
           requests:
             cpu: 10m
             memory: 50Mi
+        volumeMounts:
+        - name: firebase-service-account
+          mountPath: /app/backend/src/credentials/firebase-service-account.json
+          subPath: FIREBASE_SERVICE_ACCOUNT_JSON
+          readOnly: true
+      volumes:
+      - name: firebase-service-account
+        secret:
+          secretName: backend-firebase-creds
+        
