@@ -52,7 +52,7 @@ spec:
             memory: 50Mi
         volumeMounts:
         - name: firebase-service-account
-          mountPath: /app/backend/src/credentials/firebase-service-account.json
+          mountPath: /app/backend/app/src/credentials/firebase-service-account.json
           subPath: firebase-service-account.json
           readOnly: true
       volumes:
