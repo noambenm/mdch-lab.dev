@@ -9,7 +9,8 @@ spec:
       namespace: cilium
   hostnames:
     - "monkeytype.mdch-lab.dev"
-  backendRefs:
-    - name: frontend-service
-      port: 80
+  rules:
+    - backendRefs:
+      - name: frontend-service
+        port: 80
 
