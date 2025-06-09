@@ -39,8 +39,6 @@ spec:
         - containerPort: 8000
         envFrom:
         - secretRef:
-            name: backend-auth0-creds
-        - secretRef:
             name: google-creds
         - secretRef:
             name: openai-key
@@ -52,3 +50,13 @@ spec:
           requests:
             cpu: 10m
             memory: 50Mi
+        volumeMounts:
+        - name: firebase-service-account
+          mountPath: /app/backend/src/credentials/firebase-service-account.json
+          subPath: firebase-service-account.json
+          readOnly: true
+      volumes:
+      - name: firebase-service-account
+        secret:
+          secretName: firebase-sa-key
+        

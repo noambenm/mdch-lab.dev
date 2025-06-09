@@ -39,7 +39,7 @@ spec:
         - containerPort: 80
         envFrom:
         - secretRef:
-            name: frontend-auth0-creds
+            name: firebase-env
         - secretRef:
             name: frontend-url
         resources:
