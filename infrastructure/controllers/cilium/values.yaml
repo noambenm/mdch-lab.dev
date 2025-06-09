@@ -40,17 +40,6 @@ hubble:
   ui:
     enabled: true
     rollOutPods: true
-    ingress:
-      enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
-      className: cilium
-      hosts:
-        - hubble.mdch-lab.dev
-      tls:
-        - secretName: hubble.mdch-lab.dev
-          hosts:
-            - hubble.mdch-lab.dev
   metrics:
     enabled:
       - dns

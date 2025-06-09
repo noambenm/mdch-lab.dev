@@ -3,18 +3,6 @@ defaultRules:
     etcd: false
 
 grafana:
-  ingress:
-    enabled: true
-    ingressClassName: cilium
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
-    hosts:
-      - grafana.mdch-lab.dev
-    path: /
-    tls:
-      - secretName: grafana-general-tls
-        hosts:
-        - grafana.mdch-lab.dev
   persistence:
     enabled: true
     type: sts
