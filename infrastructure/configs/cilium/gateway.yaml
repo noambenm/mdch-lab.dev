@@ -4,7 +4,6 @@ metadata:
   name: mdch-lab-gateway
   namespace: cilium
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
 spec:
   gatewayClassName: cilium
   addresses:
@@ -34,4 +33,4 @@ spec:
       mode: Terminate
       certificateRefs:
       - kind: Secret
-        name: mdch-lab-dev-cert
+        name: wildcard-mdch-lab-dev-cert
