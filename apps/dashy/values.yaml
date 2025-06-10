@@ -1,243 +1,244 @@
-configMapContent:
-  conf: |-
-    appConfig:
-      theme: nord-frost
-      customColors:
-        material-dark-original:
-          primary: '#f36558'
-          background: '#39434C'
-          background-darker: '#eb615c'
-          material-light: '#f36558'
-          item-text-color: '#ff948a'
-          curve-factor: 5px
-      enableErrorReporting: true
-      layout: auto
-      iconSize: medium
-      language: en
-    pageInfo:
-      title: Demo Homelab
-      description: Live Demo of Dashy
-      navLinks:
-        - title: GitHub
-          path: https://github.com/Lissy93/dashy
-        - title: Documentation
-          path: https://dashy.to/docs
-      footerText: ''
-    sections:
-      - name: Media & Entertainment
-        icon: fas fa-photo-video
-        displayData:
-          sortBy: default
-          cols: 2
-          itemCountX: 6
-        items:
-          - title: Alltube
-            icon: hl-alltube
-            id: 0_1956_alltube
-          - title: YT Downloads
-            icon: hl-youtubedl
-            id: 1_1956_ytdownloads
-          - title: Couch Potato
-            icon: hl-couchpotato
-            id: 2_1956_couchpotato
-          - title: Jellyfin
-            icon: hl-jellyfin
-            id: 3_1956_jellyfin
-          - title: FreshRSS
-            icon: hl-freshrss
-            id: 4_1956_freshrss
-          - title: Requestrr
-            icon: hl-requestrr
-            id: 5_1956_requestrr
-          - title: Web Torrent
-            icon: hl-webtorrent
-            id: 6_1956_webtorrent
-          - title: Airsonic
-            icon: hl-airsonic
-            id: 7_1956_airsonic
-          - title: FilePizza
-            icon: hl-filepizza
-            id: 8_1956_filepizza
-          - title: Plex
-            icon: hl-plex
-            id: 9_1956_plex
-          - title: PlexDrive
-            icon: hl-plexdrive
-            id: 10_1956_plexdrive
-          - title: PlexRequests
-            icon: hl-plexrequests
-            id: 11_1956_plexrequests
-      - name: Networking
-        icon: fas fa-network-wired
-        items:
-          - title: OPNSense
-            description: Firewall and network config
-            icon: hl-opnsense
-            id: 0_1064_opnsense
-          - title: Pi-Hole
-            description: DNS ad-blocking
-            icon: hl-pihole
-            id: 1_1064_pihole
-          - title: MalTrail
-            description: Malicious traffic detection system
-            icon: hl-router
-            id: 2_1064_maltrail
-          - title: Ntopng
-            description: Network traffic probe + usage monitor
-            icon: hl-ntop
-            id: 3_1064_ntopng
-          - title: Monit
-            description: Status of firewall system alerts
-            icon: hl-monit
-            id: 4_1064_monit
-          - title: PiAlert
-            description: Presence monitoring and ARP scanning
-            icon: hl-alertmanager
-            id: 5_1064_pialert
-      - name: Network Monitoring
-        icon: fas fa-tachometer-alt-fast
-        items:
-          - title: SmokePing
-            description: Network latency monitoring
-            icon: hl-smokeping
-            id: 0_1840_smokeping
-          - title: StatPing
-            description: Up-time monitoring for local service
-            icon: hl-statping
-            id: 1_1840_statping
-          - title: LibreSpeed
-            description: Local network speed and latency test
-            icon: hl-librespeed
-            id: 2_1840_librespeed
-          - title: NetData
-            description: Real-time system resource usage
-            icon: hl-netdata
-            id: 3_1840_netdata
-          - title: Zabbix
-            description: IT Monitoring
-            icon: hl-zabbix
-            id: 4_1840_zabbix
-          - title: Cockpit
-            description: All-in-one control panel
-            icon: hl-cockpit
-            id: 5_1840_cockpit
-      - name: System Monitoring
-        icon: fas fa-monitor-heart-rate
-        items:
-          - title: cAdvisor
-            description: Container monitoring
-            icon: hl-cadvisor
-            id: 0_1739_cadvisor
-          - title: Glances
-            description: Simple resource usage
-            icon: hl-glances
-            id: 1_1739_glances
-          - title: Dozzle
-            description: Docker container web log viewer
-            icon: hl-dozzle
-            id: 2_1739_dozzle
-          - title: HealthChecks
-            description: Cron Job Monitoring
-            icon: hl-healthchecks
-            url: https://healthchecks.io/checks/
-            id: 3_1739_healthchecks
-          - title: Grafana
-            description: Data visualised on dashboards
-            icon: hl-grafana
-            id: 4_1739_grafana
-          - title: Prometheus
-            description: System Statistics Aggregation with PromQL
-            icon: hl-prometheus
-            id: 5_1739_prometheus
-      - name: Home Control
-        icon: fas fa-house-signal
-        items:
-          - title: Home Assistant
-            description: Smart home control
-            icon: hl-home-assistant
-            id: 0_1162_homeassistant
-          - title: Node-RED
-            description: Flow-based automation
-            icon: hl-nodered
-            id: 1_1162_nodered
-          - title: OctoPrint
-            description: 3D Printer Control
-            icon: hl-octoprint
-            id: 2_1162_octoprint
-          - title: Zigbee 2 Mqtt
-            description: Zigbee to MQTT
-            icon: hl-zigbee2mqtt
-            id: 3_1162_zigbeemqtt
-          - title: Alarm Pi
-            description: IOT telegram-controlled alarm clock
-            icon: hl-alarmpi
-            id: 4_1162_alarmpi
-          - title: Brew Pi
-            description: IOT brewery controller
-            icon: hl-brewpi
-            id: 5_1162_brewpi
-      - name: Productivity
-        icon: fas fa-bookmark
-        items:
-          - title: NextCloud
-            description: File storage and apps
-            icon: hl-nextcloud
-            id: 0_1302_nextcloud
-          - title: BitWarden
-            description: Password manager
-            icon: hl-bitwarden
-            id: 1_1302_bitwarden
-          - title: Readarr
-            description: E-reader app
-            icon: hl-readarr
-            id: 2_1302_readarr
-          - title: Wallabag
-            description: Bookmark Manager
-            icon: hl-wallabag
-            id: 3_1302_wallabag
-          - title: ArchiveBox
-            description: Archive Manager
-            icon: hl-archivebox
-            id: 4_1302_archivebox
-          - title: VS Code
-            description: Cloud code editor
-            icon: hl-code
-            id: 5_1302_vscode
-      - name: Learn more about Dashy
-        icon: fas fa-rocket
-        displayData:
-          collapsed: true
-        items:
+static:
+  configMapContent:
+    conf: |-
+      appConfig:
+        theme: nord-frost
+        customColors:
+          material-dark-original:
+            primary: '#f36558'
+            background: '#39434C'
+            background-darker: '#eb615c'
+            material-light: '#f36558'
+            item-text-color: '#ff948a'
+            curve-factor: 5px
+        enableErrorReporting: true
+        layout: auto
+        iconSize: medium
+        language: en
+      pageInfo:
+        title: Demo Homelab
+        description: Live Demo of Dashy
+        navLinks:
           - title: GitHub
-            description: Source Code, Issues and Pull Requests
-            url: https://github.com/lissy93/dashy
-            icon: fab fa-github-alt
-            id: 0_2073_github
-          - title: Docs
-            description: Configuring & Usage Documentation
-            provider: Dashy.to
-            icon: far fa-book
-            url: https://dashy.to/docs
-            id: 1_2073_docs
-          - title: Showcase
-            description: See how others are using Dashy
-            url: https://github.com/Lissy93/dashy/blob/master/docs/showcase.md
-            icon: far fa-grin-hearts
-            id: 2_2073_showcase
-          - title: Config Docs
-            description: See full list of configuration options
-            url: https://github.com/Lissy93/dashy/blob/master/docs/configuring.md
-            icon: fas fa-wrench
-            id: 3_2073_configdocs
-          - title: Demo 2
-            description: Project management links for Dashy
-            icon: fas fa-sparkles
-            url: https://live.dashy.to/
-            target: newtab
-            id: 4_2073_demo
-          - title: Demo 3
-            description: Live deployment of development env
-            icon: far fa-sparkles
-            url: https://dev.dashy.to/
-            target: newtab
-            id: 5_2073_demo
+            path: https://github.com/Lissy93/dashy
+          - title: Documentation
+            path: https://dashy.to/docs
+        footerText: ''
+      sections:
+        - name: Media & Entertainment
+          icon: fas fa-photo-video
+          displayData:
+            sortBy: default
+            cols: 2
+            itemCountX: 6
+          items:
+            - title: Alltube
+              icon: hl-alltube
+              id: 0_1956_alltube
+            - title: YT Downloads
+              icon: hl-youtubedl
+              id: 1_1956_ytdownloads
+            - title: Couch Potato
+              icon: hl-couchpotato
+              id: 2_1956_couchpotato
+            - title: Jellyfin
+              icon: hl-jellyfin
+              id: 3_1956_jellyfin
+            - title: FreshRSS
+              icon: hl-freshrss
+              id: 4_1956_freshrss
+            - title: Requestrr
+              icon: hl-requestrr
+              id: 5_1956_requestrr
+            - title: Web Torrent
+              icon: hl-webtorrent
+              id: 6_1956_webtorrent
+            - title: Airsonic
+              icon: hl-airsonic
+              id: 7_1956_airsonic
+            - title: FilePizza
+              icon: hl-filepizza
+              id: 8_1956_filepizza
+            - title: Plex
+              icon: hl-plex
+              id: 9_1956_plex
+            - title: PlexDrive
+              icon: hl-plexdrive
+              id: 10_1956_plexdrive
+            - title: PlexRequests
+              icon: hl-plexrequests
+              id: 11_1956_plexrequests
+        - name: Networking
+          icon: fas fa-network-wired
+          items:
+            - title: OPNSense
+              description: Firewall and network config
+              icon: hl-opnsense
+              id: 0_1064_opnsense
+            - title: Pi-Hole
+              description: DNS ad-blocking
+              icon: hl-pihole
+              id: 1_1064_pihole
+            - title: MalTrail
+              description: Malicious traffic detection system
+              icon: hl-router
+              id: 2_1064_maltrail
+            - title: Ntopng
+              description: Network traffic probe + usage monitor
+              icon: hl-ntop
+              id: 3_1064_ntopng
+            - title: Monit
+              description: Status of firewall system alerts
+              icon: hl-monit
+              id: 4_1064_monit
+            - title: PiAlert
+              description: Presence monitoring and ARP scanning
+              icon: hl-alertmanager
+              id: 5_1064_pialert
+        - name: Network Monitoring
+          icon: fas fa-tachometer-alt-fast
+          items:
+            - title: SmokePing
+              description: Network latency monitoring
+              icon: hl-smokeping
+              id: 0_1840_smokeping
+            - title: StatPing
+              description: Up-time monitoring for local service
+              icon: hl-statping
+              id: 1_1840_statping
+            - title: LibreSpeed
+              description: Local network speed and latency test
+              icon: hl-librespeed
+              id: 2_1840_librespeed
+            - title: NetData
+              description: Real-time system resource usage
+              icon: hl-netdata
+              id: 3_1840_netdata
+            - title: Zabbix
+              description: IT Monitoring
+              icon: hl-zabbix
+              id: 4_1840_zabbix
+            - title: Cockpit
+              description: All-in-one control panel
+              icon: hl-cockpit
+              id: 5_1840_cockpit
+        - name: System Monitoring
+          icon: fas fa-monitor-heart-rate
+          items:
+            - title: cAdvisor
+              description: Container monitoring
+              icon: hl-cadvisor
+              id: 0_1739_cadvisor
+            - title: Glances
+              description: Simple resource usage
+              icon: hl-glances
+              id: 1_1739_glances
+            - title: Dozzle
+              description: Docker container web log viewer
+              icon: hl-dozzle
+              id: 2_1739_dozzle
+            - title: HealthChecks
+              description: Cron Job Monitoring
+              icon: hl-healthchecks
+              url: https://healthchecks.io/checks/
+              id: 3_1739_healthchecks
+            - title: Grafana
+              description: Data visualised on dashboards
+              icon: hl-grafana
+              id: 4_1739_grafana
+            - title: Prometheus
+              description: System Statistics Aggregation with PromQL
+              icon: hl-prometheus
+              id: 5_1739_prometheus
+        - name: Home Control
+          icon: fas fa-house-signal
+          items:
+            - title: Home Assistant
+              description: Smart home control
+              icon: hl-home-assistant
+              id: 0_1162_homeassistant
+            - title: Node-RED
+              description: Flow-based automation
+              icon: hl-nodered
+              id: 1_1162_nodered
+            - title: OctoPrint
+              description: 3D Printer Control
+              icon: hl-octoprint
+              id: 2_1162_octoprint
+            - title: Zigbee 2 Mqtt
+              description: Zigbee to MQTT
+              icon: hl-zigbee2mqtt
+              id: 3_1162_zigbeemqtt
+            - title: Alarm Pi
+              description: IOT telegram-controlled alarm clock
+              icon: hl-alarmpi
+              id: 4_1162_alarmpi
+            - title: Brew Pi
+              description: IOT brewery controller
+              icon: hl-brewpi
+              id: 5_1162_brewpi
+        - name: Productivity
+          icon: fas fa-bookmark
+          items:
+            - title: NextCloud
+              description: File storage and apps
+              icon: hl-nextcloud
+              id: 0_1302_nextcloud
+            - title: BitWarden
+              description: Password manager
+              icon: hl-bitwarden
+              id: 1_1302_bitwarden
+            - title: Readarr
+              description: E-reader app
+              icon: hl-readarr
+              id: 2_1302_readarr
+            - title: Wallabag
+              description: Bookmark Manager
+              icon: hl-wallabag
+              id: 3_1302_wallabag
+            - title: ArchiveBox
+              description: Archive Manager
+              icon: hl-archivebox
+              id: 4_1302_archivebox
+            - title: VS Code
+              description: Cloud code editor
+              icon: hl-code
+              id: 5_1302_vscode
+        - name: Learn more about Dashy
+          icon: fas fa-rocket
+          displayData:
+            collapsed: true
+          items:
+            - title: GitHub
+              description: Source Code, Issues and Pull Requests
+              url: https://github.com/lissy93/dashy
+              icon: fab fa-github-alt
+              id: 0_2073_github
+            - title: Docs
+              description: Configuring & Usage Documentation
+              provider: Dashy.to
+              icon: far fa-book
+              url: https://dashy.to/docs
+              id: 1_2073_docs
+            - title: Showcase
+              description: See how others are using Dashy
+              url: https://github.com/Lissy93/dashy/blob/master/docs/showcase.md
+              icon: far fa-grin-hearts
+              id: 2_2073_showcase
+            - title: Config Docs
+              description: See full list of configuration options
+              url: https://github.com/Lissy93/dashy/blob/master/docs/configuring.md
+              icon: fas fa-wrench
+              id: 3_2073_configdocs
+            - title: Demo 2
+              description: Project management links for Dashy
+              icon: fas fa-sparkles
+              url: https://live.dashy.to/
+              target: newtab
+              id: 4_2073_demo
+            - title: Demo 3
+              description: Live deployment of development env
+              icon: far fa-sparkles
+              url: https://dev.dashy.to/
+              target: newtab
+              id: 5_2073_demo
