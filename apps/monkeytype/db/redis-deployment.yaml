@@ -19,15 +19,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: monkeytype
-      tier: redis
+      app: redis
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: monkeytype
-        tier: redis
+        app: redis
     spec:
       containers:
       - name: redis

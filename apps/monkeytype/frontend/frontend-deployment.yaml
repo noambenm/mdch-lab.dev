@@ -6,13 +6,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: monkeytype
-      tier: frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: monkeytype
-        tier: frontend
+        app: frontend
     spec:
       containers:
       - name: frontend

@@ -5,13 +5,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: monkeytype
-      tier: backend
+      app: backend
   template:
     metadata:
       labels:
-        app: monkeytype
-        tier: backend
+        app: backend
     spec:
       containers:
       - name: backend

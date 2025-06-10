@@ -19,15 +19,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: monkeytype
-      tier: mongo
+      app: mongo
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: monkeytype
-        tier: mongo
+        app: mongo
     spec:
       containers:
       - name: mongo
