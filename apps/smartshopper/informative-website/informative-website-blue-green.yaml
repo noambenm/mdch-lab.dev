@@ -8,7 +8,7 @@ spec:
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: informative-website-deployment
+    name: informative-website
   progressDeadlineSeconds: 60
   autoscalerRef:
     apiVersion: autoscaling/v2

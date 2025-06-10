@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: informative-website-deployment
+  name: informative-website
   namespace: smartshopper
 spec:
   selector:
