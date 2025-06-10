@@ -7,14 +7,13 @@ spec:
   ports:
   - port: 6379
   selector:
-    app: monkeytype
-    tier: redis
+    app: redis
   clusterIP: None
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-deployment
+  name: redis
   namespace: monkeytype
 spec:
   selector:

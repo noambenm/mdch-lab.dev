@@ -7,14 +7,13 @@ spec:
   ports:
   - port: 27017
   selector:
-    app: monkeytype
-    tier: mongo
+    app: mongo
   clusterIP: None
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo-deployment
+  name: mongo
   namespace: monkeytype
 spec:
   selector:

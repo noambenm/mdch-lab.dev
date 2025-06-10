@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: frontend
   namespace: monkeytype
 spec:
   selector:
@@ -36,7 +36,6 @@ metadata:
   namespace: monkeytype
 spec:
   selector:
-    app: monkeytype
-    tier: frontend
+    app: frontend
   ports:
   - port: 80

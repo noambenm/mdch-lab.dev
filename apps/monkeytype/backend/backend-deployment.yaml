@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: backend
 spec:
   selector:
     matchLabels:
@@ -59,7 +59,6 @@ metadata:
   namespace: monkeytype
 spec:
   selector:
-    app: monkeytype
-    tier: backend
+    app: backend
   ports:
   - port: 5005
