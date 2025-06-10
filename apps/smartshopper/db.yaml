@@ -19,15 +19,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: smartshopper
-      tier: mysql
+      app: mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: smartshopper
-        tier: mysql
+        app: mysql
     spec:
       containers:
       - image: mysql:8.4

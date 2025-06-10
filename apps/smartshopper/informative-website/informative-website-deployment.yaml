@@ -6,13 +6,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: smartshopper
-      tier: informative-website
+      app: informative-website
   template:
     metadata:
       labels:
-        app: smartshopper
-        tier: informative-website
+        app: informative-website
     spec:
       affinity:
         podAntiAffinity:
@@ -22,10 +20,6 @@ spec:
               labelSelector:
                 matchExpressions:
                 - key: app
-                  operator: In
-                  values:
-                  - smartshopper
-                - key: tier
                   operator: In
                   values:
                   - informative-website
