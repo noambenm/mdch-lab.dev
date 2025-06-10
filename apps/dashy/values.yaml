@@ -16,229 +16,140 @@ static:
         iconSize: medium
         language: en
       pageInfo:
-        title: Demo Homelab
-        description: Live Demo of Dashy
+        title: mdch-lab.dev
+        description: Noam's Ultimate homelab
         navLinks:
           - title: GitHub
-            path: https://github.com/Lissy93/dashy
-          - title: Documentation
-            path: https://dashy.to/docs
-        footerText: ''
+            path: https://github.com/noambenm
+            target: newtab
+          - title: LinkedIn
+            path: https://www.linkedin.com/in/noam-ben-mordechai/
+            target: newtab
+        footerText: mdch-lab.dev by Noam Ben Mordechai
       sections:
+        - name: Networking
+          icon: fas fa-network-wired
+          items:
+            - &ref_0
+              title: Pi-Hole
+              description: DNS ad-blocking
+              icon: hl-pihole
+              url: https://pihole.mdch-lab.dev
+              id: 0_1064_pihole
+            - &ref_1
+              title: Hubble
+              description: Networking and Security Observability Platform
+              icon: hl-cilium
+              url: https://hubble.mdch-lab.dev
+              id: 1_1064_hubble
+          filteredItems:
+            - *ref_0
+            - *ref_1
+        - name: Monitoring & Logging
+          icon: fas fa-monitor-heart-rate
+          items:
+            - &ref_2
+              title: Grafana
+              description: Data visualised on dashboards
+              icon: hl-grafana
+              url: https://grafana.mdch-lab.dev
+              id: 0_1875_grafana
+            - &ref_3
+              title: Prometheus
+              description: System Statistics Aggregation with PromQL
+              icon: hl-prometheus
+              url: https://prometheus.mdch-lab.dev
+              id: 1_1875_prometheus
+            - &ref_4
+              title: AlertManager
+              icon: hl-alertmanager
+              url: https://alertmanager.mdch-lab.dev
+              id: 2_1875_alertmanager
+            - &ref_5
+              title: Alloy
+              icon: hl-alloy
+              url: https://alloy.mdch-lab.dev/
+              id: 3_1875_alloy
+          filteredItems:
+            - *ref_2
+            - *ref_3
+            - *ref_4
+            - *ref_5
+          displayData:
+            sortBy: default
+            rows: 1
+            cols: 1
+            collapsed: false
+            hideForGuests: false
         - name: Media & Entertainment
           icon: fas fa-photo-video
           displayData:
             sortBy: default
-            cols: 2
-            itemCountX: 6
+            rows: 1
+            cols: 1
+            collapsed: false
+            hideForGuests: false
           items:
-            - title: Alltube
-              icon: hl-alltube
-              id: 0_1956_alltube
-            - title: YT Downloads
-              icon: hl-youtubedl
-              id: 1_1956_ytdownloads
-            - title: Couch Potato
-              icon: hl-couchpotato
-              id: 2_1956_couchpotato
-            - title: Jellyfin
-              icon: hl-jellyfin
-              id: 3_1956_jellyfin
-            - title: FreshRSS
-              icon: hl-freshrss
-              id: 4_1956_freshrss
-            - title: Requestrr
-              icon: hl-requestrr
-              id: 5_1956_requestrr
-            - title: Web Torrent
-              icon: hl-webtorrent
-              id: 6_1956_webtorrent
-            - title: Airsonic
-              icon: hl-airsonic
-              id: 7_1956_airsonic
-            - title: FilePizza
-              icon: hl-filepizza
-              id: 8_1956_filepizza
-            - title: Plex
+            - &ref_6
+              title: Plex
               icon: hl-plex
-              id: 9_1956_plex
-            - title: PlexDrive
-              icon: hl-plexdrive
-              id: 10_1956_plexdrive
-            - title: PlexRequests
-              icon: hl-plexrequests
-              id: 11_1956_plexrequests
-        - name: Networking
-          icon: fas fa-network-wired
-          items:
-            - title: OPNSense
-              description: Firewall and network config
-              icon: hl-opnsense
-              id: 0_1064_opnsense
-            - title: Pi-Hole
-              description: DNS ad-blocking
-              icon: hl-pihole
-              id: 1_1064_pihole
-            - title: MalTrail
-              description: Malicious traffic detection system
-              icon: hl-router
-              id: 2_1064_maltrail
-            - title: Ntopng
-              description: Network traffic probe + usage monitor
-              icon: hl-ntop
-              id: 3_1064_ntopng
-            - title: Monit
-              description: Status of firewall system alerts
-              icon: hl-monit
-              id: 4_1064_monit
-            - title: PiAlert
-              description: Presence monitoring and ARP scanning
-              icon: hl-alertmanager
-              id: 5_1064_pialert
-        - name: Network Monitoring
-          icon: fas fa-tachometer-alt-fast
-          items:
-            - title: SmokePing
-              description: Network latency monitoring
-              icon: hl-smokeping
-              id: 0_1840_smokeping
-            - title: StatPing
-              description: Up-time monitoring for local service
-              icon: hl-statping
-              id: 1_1840_statping
-            - title: LibreSpeed
-              description: Local network speed and latency test
-              icon: hl-librespeed
-              id: 2_1840_librespeed
-            - title: NetData
-              description: Real-time system resource usage
-              icon: hl-netdata
-              id: 3_1840_netdata
-            - title: Zabbix
-              description: IT Monitoring
-              icon: hl-zabbix
-              id: 4_1840_zabbix
-            - title: Cockpit
-              description: All-in-one control panel
-              icon: hl-cockpit
-              id: 5_1840_cockpit
-        - name: System Monitoring
-          icon: fas fa-monitor-heart-rate
-          items:
-            - title: cAdvisor
-              description: Container monitoring
-              icon: hl-cadvisor
-              id: 0_1739_cadvisor
-            - title: Glances
-              description: Simple resource usage
-              icon: hl-glances
-              id: 1_1739_glances
-            - title: Dozzle
-              description: Docker container web log viewer
-              icon: hl-dozzle
-              id: 2_1739_dozzle
-            - title: HealthChecks
-              description: Cron Job Monitoring
-              icon: hl-healthchecks
-              url: https://healthchecks.io/checks/
-              id: 3_1739_healthchecks
-            - title: Grafana
-              description: Data visualised on dashboards
-              icon: hl-grafana
-              id: 4_1739_grafana
-            - title: Prometheus
-              description: System Statistics Aggregation with PromQL
-              icon: hl-prometheus
-              id: 5_1739_prometheus
-        - name: Home Control
-          icon: fas fa-house-signal
-          items:
-            - title: Home Assistant
-              description: Smart home control
-              icon: hl-home-assistant
-              id: 0_1162_homeassistant
-            - title: Node-RED
-              description: Flow-based automation
-              icon: hl-nodered
-              id: 1_1162_nodered
-            - title: OctoPrint
-              description: 3D Printer Control
-              icon: hl-octoprint
-              id: 2_1162_octoprint
-            - title: Zigbee 2 Mqtt
-              description: Zigbee to MQTT
-              icon: hl-zigbee2mqtt
-              id: 3_1162_zigbeemqtt
-            - title: Alarm Pi
-              description: IOT telegram-controlled alarm clock
-              icon: hl-alarmpi
-              id: 4_1162_alarmpi
-            - title: Brew Pi
-              description: IOT brewery controller
-              icon: hl-brewpi
-              id: 5_1162_brewpi
-        - name: Productivity
-          icon: fas fa-bookmark
-          items:
-            - title: NextCloud
-              description: File storage and apps
-              icon: hl-nextcloud
-              id: 0_1302_nextcloud
-            - title: BitWarden
-              description: Password manager
-              icon: hl-bitwarden
-              id: 1_1302_bitwarden
-            - title: Readarr
-              description: E-reader app
-              icon: hl-readarr
-              id: 2_1302_readarr
-            - title: Wallabag
-              description: Bookmark Manager
-              icon: hl-wallabag
-              id: 3_1302_wallabag
-            - title: ArchiveBox
-              description: Archive Manager
-              icon: hl-archivebox
-              id: 4_1302_archivebox
-            - title: VS Code
-              description: Cloud code editor
-              icon: hl-code
-              id: 5_1302_vscode
-        - name: Learn more about Dashy
-          icon: fas fa-rocket
+              url: https://plex.mdch-lab.dev
+              id: 0_1956_plex
+            - &ref_7
+              title: qBittorrent
+              icon: hl-qbittorrent
+              url: https://qbittorrent.mdch-lab.dev
+              id: 1_1956_qbittorrent
+            - &ref_8
+              title: Monkeytype
+              icon: si-monkeytype
+              url: https://monkeytype.mdch-lab.dev
+              id: 2_1956_monkeytype
+          filteredItems:
+            - *ref_6
+            - *ref_7
+            - *ref_8
+        - name: Storage
+          icon: fas fa-database
           displayData:
-            collapsed: true
+            sortBy: default
+            rows: 1
+            cols: 1
+            collapsed: false
+            hideForGuests: false
           items:
-            - title: GitHub
-              description: Source Code, Issues and Pull Requests
-              url: https://github.com/lissy93/dashy
-              icon: fab fa-github-alt
-              id: 0_2073_github
-            - title: Docs
-              description: Configuring & Usage Documentation
-              provider: Dashy.to
-              icon: far fa-book
-              url: https://dashy.to/docs
-              id: 1_2073_docs
-            - title: Showcase
-              description: See how others are using Dashy
-              url: https://github.com/Lissy93/dashy/blob/master/docs/showcase.md
-              icon: far fa-grin-hearts
-              id: 2_2073_showcase
-            - title: Config Docs
-              description: See full list of configuration options
-              url: https://github.com/Lissy93/dashy/blob/master/docs/configuring.md
-              icon: fas fa-wrench
-              id: 3_2073_configdocs
-            - title: Demo 2
-              description: Project management links for Dashy
-              icon: fas fa-sparkles
-              url: https://live.dashy.to/
-              target: newtab
-              id: 4_2073_demo
-            - title: Demo 3
-              description: Live deployment of development env
-              icon: far fa-sparkles
-              url: https://dev.dashy.to/
-              target: newtab
-              id: 5_2073_demo
+            - &ref_9
+              title: Longhorn
+              icon: hl-longhorn
+              url: https://longhorn.mdch-lab.dev
+              id: 0_725_longhorn
+          filteredItems:
+            - *ref_9
+        - name: Apps
+          icon: fas fa-photo-video
+          displayData:
+            sortBy: default
+            rows: 1
+            cols: 1
+            collapsed: false
+            hideForGuests: false
+          items:
+            - &ref_10
+              title: podinfo
+              icon: si-flux
+              url: https://podinfo.mdch-lab.dev
+              id: 0_404_podinfo
+            - &ref_11
+              title: SmartShopper
+              icon: mdi-cart
+              url: https://smartshopper.mdch-lab.dev
+              id: 1_404_smartshopper
+            - &ref_12
+              title: SmartShopper-app
+              icon: mdi-cart
+              url: https://smartshopper-app.mdch-lab.dev
+              id: 2_404_smartshopperapp
+          filteredItems:
+            - *ref_10
+            - *ref_11
+            - *ref_12
