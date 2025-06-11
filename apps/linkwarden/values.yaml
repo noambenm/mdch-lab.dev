@@ -1,4 +1,7 @@
 linkwarden:
+  nextAuthSecret:
+    value: "A4b1gTbaLVf0zvyNxIh0l5uHhUXdEhn0zqS2jGJD0Ww="
+  domain: "linkwarden.mdch-lab.dev"
   data:
     filesystem:
       pvc:
