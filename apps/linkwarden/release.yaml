@@ -1,0 +1,20 @@
+
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: linkwarden
+spec:
+  interval: 1h
+  releaseName: linkwarden
+  driftDetection:
+    mode: enabled
+  chart:
+    spec:
+      chart: linkwarden
+      version: 0.3.x
+      sourceRef:
+        kind: HelmRepository
+        name: linkwarden
+  valuesFrom:
+    - kind: ConfigMap
+      name: linkwarden-values
