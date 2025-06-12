@@ -153,3 +153,20 @@ static:
             - *ref_10
             - *ref_11
             - *ref_12
+        - name: knowledge Base
+          icon: fas fa-book
+          displayData:
+            sortBy: default
+            rows: 1
+            cols: 1
+            collapsed: false
+            hideForGuests: false
+          items:
+            - &ref_13
+              title: Linkwarden
+              description: Bookmark Manager
+              icon: hl-linkwarden
+              url: https://linkwarden.mdch-lab.dev
+              id: 0_1371_linkwarden
+          filteredItems:
+            - *ref_13
