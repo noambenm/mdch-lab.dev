@@ -6,6 +6,7 @@ resources:
   - repository.yaml
   - namespace.yaml
   - httproute.yaml
+  - nextjs-token.yaml
 configMapGenerator:
   - name: linkwarden-values
     files:

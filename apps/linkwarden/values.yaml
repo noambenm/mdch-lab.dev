@@ -1,6 +1,8 @@
 linkwarden:
   nextAuthSecret:
-    value: "A4b1gTbaLVf0zvyNxIh0l5uHhUXdEhn0zqS2jGJD0Ww="
+    existingSecret:
+      name: "nextjs-token"
+      key: "nextjs-token"
   domain: "linkwarden.mdch-lab.dev"
   data:
     filesystem:

@@ -1,0 +1,19 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: nextjs-token
+  namespace: linkwarden
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: ssm-parameter-store
+    kind: ClusterSecretStore
+  target:
+    name: nextjs-token
+    creationPolicy: Owner
+    template:
+      type: Opaque
+  data:
+  - secretKey: nextjs-token
+    remoteRef:
+      key: /mdch-lab/linkwarden/nextjs-token
