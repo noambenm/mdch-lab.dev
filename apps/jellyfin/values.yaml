@@ -8,6 +8,10 @@ affinity:
             values:
             - node1
 
+persistence:
+  media:
+    enabled: false
+
 VolumeMounts:
   - name: jellyfin-media
     mountPath: /nfs-jellyfin
