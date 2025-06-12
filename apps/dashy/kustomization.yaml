@@ -6,14 +6,6 @@ resources:
   - repository.yaml
   - namespace.yaml
   - httproute.yaml
-configMapGenerator:
-  - name: dashy-values
-    files:
-      - values.yaml
-    options:
-      labels:
-        app.kubernetes.io/part-of: flux
-        app.kubernetes.io/component: dashy
 secretGenerator:
   - name: dashy-conf
     files:
