@@ -12,12 +12,12 @@ persistence:
   media:
     enabled: false
 
-VolumeMounts:
+volumeMounts:
   - name: jellyfin-media
     mountPath: /nfs-jellyfin
     readOnly: false
 
-Volumes:
+volumes:
   - name: jellyfin-media
     nfs:
       server: 192.168.1.98
