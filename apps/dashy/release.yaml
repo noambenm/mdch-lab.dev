@@ -15,6 +15,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: selfhosted-helmcharts
-  valuesFrom:
-    - kind: ConfigMap
-      name: dashy-values
+  values:
+    static:
+      existingSecret: dashy-conf

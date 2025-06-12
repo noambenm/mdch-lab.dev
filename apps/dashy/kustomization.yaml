@@ -14,5 +14,13 @@ configMapGenerator:
       labels:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: dashy
+secretGenerator:
+  - name: dashy-conf
+    files:
+      - conf
+    options:
+      labels:
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: dashy
 configurations:
   - kustomizeconfig.yaml
