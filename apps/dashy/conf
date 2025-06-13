@@ -102,10 +102,16 @@ sections:
         icon: si-monkeytype
         url: https://monkeytype.mdch-lab.dev
         id: 2_1956_monkeytype
+      - &ref_9
+        title: Jellyfin
+        icon: hl-jellyfin
+        url: https://jellyfin.mdch-lab.dev
+        id: 3_1956_jellyfin
     filteredItems:
       - *ref_6
       - *ref_7
       - *ref_8
+      - *ref_9
   - name: Storage
     icon: fas fa-database
     displayData:
@@ -115,13 +121,13 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_9
+      - &ref_10
         title: Longhorn
         icon: hl-longhorn
         url: https://longhorn.mdch-lab.dev
         id: 0_725_longhorn
     filteredItems:
-      - *ref_9
+      - *ref_10
   - name: Apps
     icon: fas fa-photo-video
     displayData:
@@ -131,25 +137,25 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_10
+      - &ref_11
         title: podinfo
         icon: si-flux
         url: https://podinfo.mdch-lab.dev
         id: 0_404_podinfo
-      - &ref_11
+      - &ref_12
         title: SmartShopper
         icon: mdi-cart
         url: https://smartshopper.mdch-lab.dev
         id: 1_404_smartshopper
-      - &ref_12
+      - &ref_13
         title: SmartShopper-app
         icon: mdi-cart
         url: https://smartshopper-app.mdch-lab.dev
         id: 2_404_smartshopperapp
     filteredItems:
-      - *ref_10
       - *ref_11
       - *ref_12
+      - *ref_13
   - name: knowledge Base
     icon: fas fa-book
     displayData:
@@ -159,11 +165,11 @@ sections:
       collapsed: false
       hideForGuests: false
     items:
-      - &ref_13
+      - &ref_14
         title: Linkwarden
         description: Bookmark Manager
         icon: hl-linkwarden
         url: https://linkwarden.mdch-lab.dev
         id: 0_1371_linkwarden
     filteredItems:
-      - *ref_13
+      - *ref_14
