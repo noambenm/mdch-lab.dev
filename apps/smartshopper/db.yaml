@@ -7,8 +7,7 @@ spec:
   ports:
   - port: 3306
   selector:
-    app: smartshopper
-    tier: mysql
+    app: mysql
   clusterIP: None
 ---
 apiVersion: apps/v1
