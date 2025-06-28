@@ -9,7 +9,7 @@ spec:
     - name: kube-prometheus-stack
   chart:
     spec:
-      version: "2.1.x"
+      version: "3.1.x"
       chart: k8s-monitoring
       sourceRef:
         kind: HelmRepository
