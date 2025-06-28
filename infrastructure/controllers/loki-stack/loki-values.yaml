@@ -39,6 +39,16 @@ read:
 write:
   replicas: 0
 
+resultsCache:
+  resources:
+    requests:
+      cpu: 1m
+
+chunksCache:
+  resources:
+    requests:
+      cpu: 1m
+
 extraObjects:
   - apiVersion: v1
     kind: ConfigMap
