@@ -29,3 +29,7 @@ alloy-logs:
       dockercontainers: false
     clustering:
       enabled: true
+    resources:
+      requests:
+        cpu: 300m
+
