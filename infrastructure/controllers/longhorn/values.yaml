@@ -13,8 +13,3 @@ longhornUI:
 metrics:
   serviceMonitor:
     enabled: true
-
-defaultSettings:
-  # should request.  Valid range 0 – 40. 12 % is the Longhorn default.
-  guaranteedInstanceManagerCPU: "3" # 3 %  ⇒ 0.12 core on a 4-core node
-  v2DataEngineGuaranteedInstanceManagerCPU: "750" 
