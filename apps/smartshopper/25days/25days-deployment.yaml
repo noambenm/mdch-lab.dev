@@ -25,22 +25,22 @@ spec:
             name: 25days-secrets
         env:
         - name: MYSQL_HOST
-          valuesFrom:
+          valueFrom:
             secretKeyRef:
               name: db-creds
               key: MYSQL_HOST
         - name: MYSQL_PORT
-          valuesFrom:
+          valueFrom:
             secretKeyRef:
               name: db-creds
               key: MYSQL_PORT
         - name: MYSQL_USER
-          valuesFrom:
+          valueFrom:
             secretKeyRef:
               name: db-creds
               key: MYSQL_USER
         - name: MYSQL_PASSWORD
-          valuesFrom:
+          valueFrom:
             secretKeyRef:
               name: db-creds
               key: MYSQL_PASSWORD
