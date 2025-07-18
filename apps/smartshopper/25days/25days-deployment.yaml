@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 25days
+  namespace: smartshopper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 25days
+  template:
+    metadata:
+      labels:
+        app: 25days
+    spec:
+      imagePullSecrets:
+      - name: ecr-creds
+      containers:
+      - name: 25days
+        image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-25days:latest
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - secretRef:
+            name: 25days-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: 25days
+  namespace: smartshopper
+spec:
+  selector:
+    app: 25days
+  ports:
+  - port: 80
+    targetPort: 3000
+
