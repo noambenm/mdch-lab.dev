@@ -17,7 +17,7 @@ spec:
       - name: ecr-creds
       containers:
       - name: 25days
-        image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/smartshopper-25days:latest
+        image: 438465130856.dkr.ecr.us-east-1.amazonaws.com/smartshopper/25days:latest
         ports:
         - containerPort: 3000
         envFrom:
