@@ -27,7 +27,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: 25days
+  name: service-25days
   namespace: smartshopper
 spec:
   selector:
