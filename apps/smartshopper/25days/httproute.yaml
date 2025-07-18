@@ -10,6 +10,10 @@ spec:
   hostnames:
     - "feldrizz.mdch-lab.dev"
   rules:
-    - backendRefs:
-      - name: service-25days
-        port: 80
+  - matches:
+    - path:
+        type: PathPrefix
+        value: "/"
+  - backendRefs:
+    - name: service-25days
+      port: 80
