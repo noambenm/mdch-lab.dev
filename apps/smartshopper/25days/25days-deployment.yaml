@@ -23,6 +23,32 @@ spec:
         envFrom:
         - secretRef:
             name: 25days-secrets
+        env:
+        - name: MYSQL_HOST
+          valuesFrom:
+            secretKeyRef:
+              name: db-creds
+              key: MYSQL_HOST
+        - name: MYSQL_PORT
+          valuesFrom:
+            secretKeyRef:
+              name: db-creds
+              key: MYSQL_PORT
+        - name: MYSQL_USER
+          valuesFrom:
+            secretKeyRef:
+              name: db-creds
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valuesFrom:
+            secretKeyRef:
+              name: db-creds
+              key: MYSQL_PASSWORD
+        - name: MYSQL_PASSWORD
+          valuesFrom:
+            secretKeyRef:
+              name: db-creds
+              key: MYSQL_PASSWORD
 ---
 apiVersion: v1
 kind: Service
