@@ -44,11 +44,7 @@ spec:
             secretKeyRef:
               name: db-creds
               key: MYSQL_PASSWORD
-        - name: MYSQL_PASSWORD
-          valuesFrom:
-            secretKeyRef:
-              name: db-creds
-              key: MYSQL_PASSWORD
+
 ---
 apiVersion: v1
 kind: Service
