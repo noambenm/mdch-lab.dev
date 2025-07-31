@@ -1,0 +1,10 @@
+prometheus:
+  metricServer:
+    serviceMonitor:
+      enabled: true
+  operator:
+    serviceMonitor:
+      enabled: true
+  webhooks:
+    serviceMonitor:
+      enabled: true

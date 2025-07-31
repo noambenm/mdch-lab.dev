@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: keda
+resources:
+  - namespace.yaml
+  - repository.yaml
+  - release.yaml
+configMapGenerator:
+  - name: keda-values
+    files:
+      - values.yaml
+    options:
+      labels:
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: keda
+  - name: keda-grafana-dashboards
+    files:
+      - dashboards/22111_rev1.json
+    options:
+      labels:
+        grafana_dashboard: "1"
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: keda
+        kustomize.toolkit.fluxcd.io/substitute: disabled
+configurations:
+  - kustomizeconfig.yaml
