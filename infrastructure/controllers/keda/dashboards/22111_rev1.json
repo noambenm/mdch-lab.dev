@@ -1,14 +1,5 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
+  "__inputs": [],
   "__elements": {},
   "__requires": [
     {
@@ -78,7 +69,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -160,7 +151,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (scaledObject, exported_namespace) (rate(keda_scaled_object_errors_total{job=~\"$job\"}[2m]))",
@@ -176,7 +167,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -229,7 +220,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (type, exported_namespace) (keda_resource_registered_total{job=~\"$job\"})",
@@ -245,7 +236,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -298,7 +289,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (type) (keda_trigger_registered_total{job=~\"$job\"})",
@@ -314,7 +305,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "description": "",
       "gridPos": {
@@ -353,7 +344,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -434,7 +425,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "keda_scaler_metrics_value{job=~\"$job\"}",
@@ -450,7 +441,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -531,7 +522,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "keda_scaler_metrics_latency_seconds{job=~\"$job\"}",
@@ -547,7 +538,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -629,7 +620,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "keda_scaler_active{job=~\"$job\"} == 1",
@@ -645,7 +636,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -726,7 +717,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "rate(keda_scaler_detail_errors_total{job=~\"$job\"}[2m])",
@@ -755,7 +746,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -835,7 +826,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (controller) (controller_runtime_active_workers{job=~\"$job\"})",
@@ -851,7 +842,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -931,7 +922,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (controller) (rate(controller_runtime_reconcile_errors_total{job=~\"$job\"}[2m]))",
@@ -947,7 +938,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1027,7 +1018,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.99, \n  sum by (le, controller)(\n    rate(controller_runtime_reconcile_time_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1039,7 +1030,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.95, \n  sum by (le, controller)(\n    rate(controller_runtime_reconcile_time_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1052,7 +1043,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.5, \n  sum by (le, controller)(\n    rate(controller_runtime_reconcile_time_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1082,7 +1073,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1162,7 +1153,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (name) (rate(workqueue_adds_total{job=~\"$job\"}[2m]))",
@@ -1178,7 +1169,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1258,7 +1249,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (name) (workqueue_depth{job=~\"$job\"})",
@@ -1274,7 +1265,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -1355,7 +1346,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.99, \n  sum by (le, name)(\n    rate(workqueue_queue_duration_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1367,7 +1358,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.95, \n  sum by (le, name)(\n    rate(workqueue_queue_duration_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1380,7 +1371,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.50, \n  sum by (le, grpc_method, grpc_service)(\n    rate(workqueue_queue_duration_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1397,7 +1388,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1477,7 +1468,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (name) (rate(workqueue_retries_total{job=~\"$job\"}[2m]))",
@@ -1493,7 +1484,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1573,7 +1564,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (name) (workqueue_unfinished_work_seconds{job=~\"$job\"})",
@@ -1589,7 +1580,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -1670,7 +1661,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.99, \n  sum by (le, name)(\n    rate(workqueue_work_duration_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1682,7 +1673,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.95, \n  sum by (le, name)(\n    rate(workqueue_work_duration_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1695,7 +1686,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.50, \n  sum by (le, grpc_method, grpc_service)(\n    rate(workqueue_work_duration_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1725,7 +1716,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1805,7 +1796,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum by (grpc_code) (rate(keda_internal_metricsservice_grpc_server_handled_total{job=~\"$job\"}[2m]))",
@@ -1821,7 +1812,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -1902,7 +1893,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.99, \n  sum by (le, grpc_method, grpc_service)(\n    rate(keda_internal_metricsservice_grpc_server_handling_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1914,7 +1905,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.95, \n  sum by (le, grpc_method, grpc_service)(\n    rate(keda_internal_metricsservice_grpc_server_handling_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1927,7 +1918,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "histogram_quantile(0.50, \n  sum by (le, grpc_method, grpc_service)(\n    rate(keda_internal_metricsservice_grpc_server_handling_seconds_bucket{job=~\"$job\"}[2m])\n  )\n)",
@@ -1944,7 +1935,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2024,7 +2015,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "keda_internal_metricsservice_grpc_server_msg_received_total{job=~\"$job\"} - keda_internal_metricsservice_grpc_server_msg_sent_total{job=~\"$job\"}",
@@ -2040,7 +2031,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2120,7 +2111,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "rate(keda_internal_scale_loop_latency_seconds{job=~\"$job\"}[2m])",
@@ -2142,7 +2133,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
         "definition": "label_values(keda_build_info,job)",
         "hide": 0,
@@ -2165,7 +2156,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
         "definition": "label_values(keda_build_info{job=\"$job\"},version)",
         "hide": 2,
@@ -2188,7 +2179,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
         "definition": "label_values(keda_build_info{job=\"$job\"},goversion)",
         "hide": 2,
@@ -2211,7 +2202,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
         "definition": "label_values(keda_build_info{job=\"$job\"},git_commit)",
         "hide": 2,
@@ -2234,7 +2225,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
         "definition": "label_values(keda_build_info{job=\"$job\"},goarch)",
         "hide": 2,
@@ -2257,7 +2248,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
         "definition": "label_values(keda_build_info{job=\"$job\"},goos)",
         "hide": 2,
