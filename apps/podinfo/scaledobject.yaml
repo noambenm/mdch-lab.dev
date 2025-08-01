@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: podinfo-so
+  namespace: test
+spec:
+  scaleTargetRef:
+    name: podinfo
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+  - type: prometheus
+    metadata:
+      name: prom-trigger
+      serverAddress: http://kube-prometheus-stack-prometheus.monitoring:9090
+      metricName: http_requests_per_second
+      threshold: '100'
+      query: sum(rate(http_requests_total{job="podinfo"}[1m]))

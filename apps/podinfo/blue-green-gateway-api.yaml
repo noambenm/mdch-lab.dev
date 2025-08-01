@@ -13,11 +13,11 @@ spec:
   # the maximum time in seconds for the canary deployment
   # to make progress before it is rollback (default 600s)
   progressDeadlineSeconds: 60
-  # HPA reference (optional)
+  # KEDA ScaledObject reference for event-driven autoscaling
   autoscalerRef:
-    apiVersion: autoscaling/v2
-    kind: HorizontalPodAutoscaler
-    name: podinfo
+    apiVersion: keda.sh/v1alpha1
+    kind: ScaledObject
+    name: podinfo-so
   service:
     # service port number
     port: 9898
