@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: loadtester
-      interval: 6h # scan for new versions every six hours
+      interval: 6h
       sourceRef:
         kind: HelmRepository
         name: flagger-loadtester

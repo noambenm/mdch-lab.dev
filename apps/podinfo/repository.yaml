@@ -1,10 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: GitRepository
+kind: HelmRepository
 metadata:
-  name: flagger-examples
-  namespace: test
+  name: podinfo
 spec:
   interval: 24h
-  url: https://github.com/fluxcd/flagger.git
-  ref:
-    branch: main
+  url: oci://ghcr.io/stefanprodan/charts
+  type: oci
