@@ -11,7 +11,10 @@ labels:
     app.kubernetes.io/part-of: podinfo
 
 resources:
-- ../../base
+- ../../base/release.yaml
+- ../../base/canary.yaml
+- ../../base/scaledobject.yaml
+- ../../base/servicemonitor.yaml
 
 patches:
 - patch: |-
