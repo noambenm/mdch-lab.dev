@@ -17,6 +17,11 @@ spec:
   service:
     port: 9898
     targetPort: 9898
+    hosts:
+     - podinfo.mdch-lab.dev
+    gatewayRefs:
+      - name: mdch-lab-gateway
+        namespace: cilium
   analysis:
     interval: 40s
     threshold: 1
