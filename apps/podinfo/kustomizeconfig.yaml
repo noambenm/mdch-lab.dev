@@ -1,3 +1,5 @@
+apiVersion: builtin
+kind: KustomizeConfig
 nameReference:
 - kind: ConfigMap
   version: v1
