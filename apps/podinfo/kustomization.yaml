@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: test
 
 resources:
+  - namespace.yaml
   - canary.yaml
   - release.yaml
   - scaledobject.yaml
