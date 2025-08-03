@@ -5,6 +5,7 @@ namespace: test
 resources:
   - namespace.yaml
   - canary.yaml
+  - repository.yaml
   - release.yaml
   - scaledobject.yaml
   - servicemonitor.yaml
