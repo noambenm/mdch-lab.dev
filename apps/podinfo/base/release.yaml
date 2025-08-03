@@ -17,6 +17,3 @@ spec:
         name: podinfo
       verify:
         provider: cosign
-  valuesFrom:
-    - kind: ConfigMap
-      name: podinfo-values

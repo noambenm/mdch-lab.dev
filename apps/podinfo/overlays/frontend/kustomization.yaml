@@ -43,10 +43,13 @@ patches:
     version: v1
     kind: ServiceMonitor
     name: podinfo
-configMapGenerator:
-- name: podinfo-values
-  files:
-  - values.yaml
-
-configurations:
-- kustomizeconfig.yaml
+- patch: |-
+    - op: add
+      path: /spec/values
+      value:
+        backend: http://backend-podinfo:9898/echo
+  target:
+    group: helm.toolkit.fluxcd.io
+    version: v2
+    kind: HelmRelease
+    name: podinfo
