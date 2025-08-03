@@ -6,3 +6,6 @@ resources:
 - canary.yaml
 - scaledobject.yaml
 - servicemonitor.yaml
+
+configurations:
+- ../kustomizeconfig.yaml
