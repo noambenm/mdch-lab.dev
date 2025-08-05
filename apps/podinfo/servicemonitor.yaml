@@ -15,12 +15,13 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: podinfo
+  name: podinfo-primary
+  namespace: test
 spec:
   endpoints:
-  - path: /metrics
-    port: http
-    interval: 15s
+    - path: /metrics
+      port: http
+      interval: 5s
   selector:
     matchLabels:
-      app.kubernetes.io/name: podinfo
+      app: podinfo
