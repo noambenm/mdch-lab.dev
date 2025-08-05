@@ -10,7 +10,7 @@ spec:
     interval: 5s
   selector:
     matchLabels:
-      app.kubernetes.io/name: podinfo-canary
+      app: podinfo
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -24,4 +24,4 @@ spec:
       interval: 5s
   selector:
     matchLabels:
-      app.kubernetes.io/name: podinfo
+      app: podinfo

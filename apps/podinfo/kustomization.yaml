@@ -6,19 +6,8 @@ resources:
   - namespace.yaml
   - canary.yaml
   - repository.yaml
-  - release.yaml
+  - deployment.yaml
   - scaledobject.yaml
   - servicemonitor.yaml
   - flagger-loadtester.yaml
-  - metrics.yaml 
-
-configMapGenerator:
-  - name: podinfo-values
-    files:
-      - values.yaml
-    options:
-      labels:
-        app.kubernetes.io/part-of: flux
-        app.kubernetes.io/component: podinfo
-configurations:
-  - kustomizeconfig.yaml
+  - metrics.yaml
