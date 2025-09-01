@@ -10,4 +10,3 @@ resources:
   - servicemonitor.yaml
   - flagger-loadtester.yaml
   - metrics.yaml
-  - https://github.com/stefanprodan/podinfo//kustomize/deployment.yaml?ref=master
