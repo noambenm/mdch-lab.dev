@@ -1,13 +1,3 @@
-affinity:
-  nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: kubernetes.io/hostname
-            operator: In
-            values:
-            - node1
-
 persistence:
   media:
     enabled: false

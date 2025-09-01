@@ -62,16 +62,6 @@ prometheus:
   prometheusSpec:
     podMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelectorNilUsesHelmValues: false
-    affinity:
-      nodeAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          preference:
-            matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-              - node1
     storageSpec:
       volumeClaimTemplate:
         spec:
