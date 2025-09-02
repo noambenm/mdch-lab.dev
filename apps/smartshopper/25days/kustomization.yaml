@@ -4,3 +4,4 @@ namespace: smartshopper
 resources:
   - 25days-deployment.yaml
   - httproute.yaml
+  - namespace.yaml
