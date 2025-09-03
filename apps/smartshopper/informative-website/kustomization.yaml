@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: smartshopper
+resources:
+  - informative-website-blue-green.yaml
+  - informative-website-deployment.yaml
+  - informative-website-hpa.yaml
+  - informative-website-image.yaml
