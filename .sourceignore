@@ -3,3 +3,8 @@ infrastructure/controllers/loki-stack
 infrastructure/controllers/descheduler
 infrastructure/configs/kube-prometheus-stack
 infrastructure/configs/grafana
+apps/smartshopper
+apps/linkwarden
+apps/jellyfin
+apps/monkeytype
+apps/podinfo
