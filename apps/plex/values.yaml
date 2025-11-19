@@ -23,6 +23,7 @@ affinity:
 extraEnv:
   ADVERTISE_IP: "http://192.168.1.21:32400,https://plex.mdch-lab.dev:443"
   TZ: "Asia/Jerusalem"
+  PLEX_CLAIM: "claim"
 
 extraVolumeMounts:
   - name: plex-media
