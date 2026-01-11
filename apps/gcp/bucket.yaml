@@ -1,0 +1,10 @@
+apiVersion: storage.gcp.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: my-pi-bucket-test
+  labels:
+    created-by: crossplane
+spec:
+  forProvider:
+    location: US
+    forceDestroy: true 
