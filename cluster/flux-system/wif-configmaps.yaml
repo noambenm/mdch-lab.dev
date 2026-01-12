@@ -1,0 +1,131 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: source-controller-workload-identity-federation
+  namespace: flux-system
+data:
+  credential-configuration.json: |
+    {
+      "universe_domain": "googleapis.com",
+      "type": "external_account",
+      "audience": "//iam.googleapis.com/projects/320535199479/locations/global/workloadIdentityPools/mdch-lab-cluster-pool/providers/fluxcd",
+      "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
+      "token_url": "https://sts.googleapis.com/v1/token",
+      "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/source-controller@noambesandbox.iam.gserviceaccount.com:generateAccessToken",
+      "credential_source": {
+        "file": "/var/run/service-account/gcp-token",
+        "format": {
+          "type": "text"
+        }
+      }
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kustomize-controller-workload-identity-federation
+  namespace: flux-system
+data:
+  credential-configuration.json: |
+    {
+      "universe_domain": "googleapis.com",
+      "type": "external_account",
+      "audience": "//iam.googleapis.com/projects/320535199479/locations/global/workloadIdentityPools/mdch-lab-cluster-pool/providers/fluxcd",
+      "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
+      "token_url": "https://sts.googleapis.com/v1/token",
+      "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/kustomize-controller@noambesandbox.iam.gserviceaccount.com:generateAccessToken",
+      "credential_source": {
+        "file": "/var/run/service-account/gcp-token",
+        "format": {
+          "type": "text"
+        }
+      }
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: helm-controller-workload-identity-federation
+  namespace: flux-system
+data:
+  credential-configuration.json: |
+    {
+      "universe_domain": "googleapis.com",
+      "type": "external_account",
+      "audience": "//iam.googleapis.com/projects/320535199479/locations/global/workloadIdentityPools/mdch-lab-cluster-pool/providers/fluxcd",
+      "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
+      "token_url": "https://sts.googleapis.com/v1/token",
+      "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/helm-controller@noambesandbox.iam.gserviceaccount.com:generateAccessToken",
+      "credential_source": {
+        "file": "/var/run/service-account/gcp-token",
+        "format": {
+          "type": "text"
+        }
+      }
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notification-controller-workload-identity-federation
+  namespace: flux-system
+data:
+  credential-configuration.json: |
+    {
+      "universe_domain": "googleapis.com",
+      "type": "external_account",
+      "audience": "//iam.googleapis.com/projects/320535199479/locations/global/workloadIdentityPools/mdch-lab-cluster-pool/providers/fluxcd",
+      "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
+      "token_url": "https://sts.googleapis.com/v1/token",
+      "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/notification-controller@noambesandbox.iam.gserviceaccount.com:generateAccessToken",
+      "credential_source": {
+        "file": "/var/run/service-account/gcp-token",
+        "format": {
+          "type": "text"
+        }
+      }
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: image-reflector-controller-workload-identity-federation
+  namespace: flux-system
+data:
+  credential-configuration.json: |
+    {
+      "universe_domain": "googleapis.com",
+      "type": "external_account",
+      "audience": "//iam.googleapis.com/projects/320535199479/locations/global/workloadIdentityPools/mdch-lab-cluster-pool/providers/fluxcd",
+      "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
+      "token_url": "https://sts.googleapis.com/v1/token",
+      "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/image-reflector-controller@noambesandbox.iam.gserviceaccount.com:generateAccessToken",
+      "credential_source": {
+        "file": "/var/run/service-account/gcp-token",
+        "format": {
+          "type": "text"
+        }
+      }
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: image-automation-controller-workload-identity-federation
+  namespace: flux-system
+data:
+  credential-configuration.json: |
+    {
+      "universe_domain": "googleapis.com",
+      "type": "external_account",
+      "audience": "//iam.googleapis.com/projects/320535199479/locations/global/workloadIdentityPools/mdch-lab-cluster-pool/providers/fluxcd",
+      "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
+      "token_url": "https://sts.googleapis.com/v1/token",
+      "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/image-automation-controller@noambesandbox.iam.gserviceaccount.com:generateAccessToken",
+      "credential_source": {
+        "file": "/var/run/service-account/gcp-token",
+        "format": {
+          "type": "text"
+        }
+      }
+    }
