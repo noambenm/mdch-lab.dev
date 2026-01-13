@@ -107,25 +107,3 @@ data:
         }
       }
     }
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: image-automation-controller-workload-identity-federation
-  namespace: flux-system
-data:
-  credential-configuration.json: |
-    {
-      "universe_domain": "googleapis.com",
-      "type": "external_account",
-      "audience": "//iam.googleapis.com/projects/320535199479/locations/global/workloadIdentityPools/mdch-lab-cluster-pool/providers/fluxcd",
-      "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
-      "token_url": "https://sts.googleapis.com/v1/token",
-      "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/image-automation-controller@noambesandbox.iam.gserviceaccount.com:generateAccessToken",
-      "credential_source": {
-        "file": "/var/run/service-account/gcp-token",
-        "format": {
-          "type": "text"
-        }
-      }
-    }
