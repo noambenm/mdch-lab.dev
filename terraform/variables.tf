@@ -1,3 +1,8 @@
+variable "region" {
+  description = "The GCP Region"
+  type        = string
+}
+
 variable "project_id" {
   description = "The GCP Project ID where the Service Accounts will be created."
   type        = string
@@ -40,5 +45,10 @@ variable "github_app_installation_id" {
 
 variable "github_pat_secret" {
   description = "The Resource ID (e.g., projects/x/secrets/y/versions/z) of the GitHub Personal Access Token stored in Secret Manager."
+  type        = string
+}
+
+variable "infra_manager_sa" {
+  description = "the custom terrafom service account resource name"
   type        = string
 }
