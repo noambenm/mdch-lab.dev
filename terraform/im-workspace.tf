@@ -1,9 +1,10 @@
 module "im-workspace" {
   source                     = "terraform-google-modules/bootstrap/google//modules/im_cloudbuild_workspace"
+  version                    = "~> 11.0"
   location                   = var.region
   trigger_location           = var.region
-  version                    = "~> 11.0"
   project_id                 = var.project_id
+  repo_connection_name       = "im-mdch-lab"
   deployment_id              = var.deployment_id
   im_deployment_repo_uri     = var.im_deployment_repo_uri
   im_deployment_ref          = "main"
