@@ -1,6 +1,7 @@
 module "im-workspace" {
   source                     = "terraform-google-modules/bootstrap/google//modules/im_cloudbuild_workspace"
   location                   = var.region
+  trigger_location           = var.region
   version                    = "~> 11.0"
   project_id                 = var.project_id
   deployment_id              = var.deployment_id
