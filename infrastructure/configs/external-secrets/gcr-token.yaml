@@ -29,6 +29,10 @@ spec:
   refreshInterval: 1m
   target:
     name: gcr-token
+    template:
+      type: kubernetes.io/dockerconfigjson
+      data:
+        .dockerconfigjson: "{{ .myregistry | toString }}"
   dataFrom:
   - sourceRef:
       generatorRef:
