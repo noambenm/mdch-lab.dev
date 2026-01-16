@@ -32,7 +32,16 @@ spec:
     template:
       type: kubernetes.io/dockerconfigjson
       data:
-        .dockerconfigjson: "{{ .myregistry | toString }}"
+        .dockerconfigjson: |-
+          {
+            "auths": {
+              "me-west1-docker.pkg.dev": {
+                "username": "{{ .username }}",
+                "password": "{{ .password }}",
+                "auth": "{{ printf "%s:%s" .username .password | b64enc }}"
+              }
+            }
+          }
   dataFrom:
   - sourceRef:
       generatorRef:
