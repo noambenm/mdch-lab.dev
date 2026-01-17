@@ -3,7 +3,7 @@ ingress:
   url: ""
 
 pms:
-  storageClassName: longhorn
+  storageClassName: local-path
 
 service:
   type: LoadBalancer

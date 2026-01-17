@@ -53,7 +53,7 @@ metadata:
   name: redis-pvc
   namespace: monkeytype
 spec:
-  storageClassName: longhorn
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:

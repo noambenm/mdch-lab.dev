@@ -9,6 +9,3 @@ apps/linkwarden
 apps/jellyfin
 apps/monkeytype
 apps/podinfo
-apps/plex
-apps/qbittorrent
-apps/pihole

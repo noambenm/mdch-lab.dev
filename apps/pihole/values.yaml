@@ -18,7 +18,7 @@ probes:
 
 persistentVolumeClaim:
   enabled: true
-  storageClass: longhorn
+  storageClass: local-path
   size: "1Gi"
 
 admin:

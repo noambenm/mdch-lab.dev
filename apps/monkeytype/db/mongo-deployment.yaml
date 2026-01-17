@@ -52,7 +52,7 @@ metadata:
   name: mongo-pvc
   namespace: monkeytype
 spec:
-  storageClassName: longhorn
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
