@@ -16,5 +16,9 @@ spec:
         kind: HelmRepository
         name: selfhosted-helmcharts
   values:
+    image:
+      repository: lissy93/dashy
+      tag: latest
+      pullPolicy: Always
     static:
       existingSecret: dashy-conf
