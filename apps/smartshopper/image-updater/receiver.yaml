@@ -10,27 +10,27 @@ spec:
   secretRef:
     name: webhook-token
   resources:
-    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+    - apiVersion: image.toolkit.fluxcd.io/v1
       kind: ImageRepository
       name: backend-image
       namespace: smartshopper
-    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+    - apiVersion: image.toolkit.fluxcd.io/v1
       kind: ImageRepository
       name: frontend-image
       namespace: smartshopper
-    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+    - apiVersion: image.toolkit.fluxcd.io/v1
       kind: ImageRepository
       name: informative-website-image
       namespace: smartshopper
-    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+    - apiVersion: image.toolkit.fluxcd.io/v1
       kind: ImagePolicy
       name: backend-policy
       namespace: smartshopper
-    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+    - apiVersion: image.toolkit.fluxcd.io/v1
       kind: ImagePolicy
       name: frontend-policy
       namespace: smartshopper
-    - apiVersion: image.toolkit.fluxcd.io/v1beta2
+    - apiVersion: image.toolkit.fluxcd.io/v1
       kind: ImagePolicy
       name: informative-website-policy
       namespace: smartshopper
