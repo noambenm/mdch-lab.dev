@@ -4,8 +4,18 @@ infrastructure/controllers/descheduler
 infrastructure/controllers/longhorn
 infrastructure/configs/kube-prometheus-stack
 infrastructure/configs/grafana
-apps/smartshopper
-apps/linkwarden
-apps/jellyfin
-apps/monkeytype
-apps/podinfo
+apps/base/smartshopper
+apps/base/linkwarden
+apps/base/jellyfin
+apps/base/monkeytype
+apps/base/podinfo
+
+
+
+flux bootstrap github \
+  --owner=noambenm \
+  --repository=mdch-lab \
+  --branch=main \
+  --path=clusters/production \
+  --personal \
+  --components-extra=image-reflector-controller,image-automation-controller,source-watcher
