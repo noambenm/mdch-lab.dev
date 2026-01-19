@@ -13,5 +13,5 @@ env:
 - name: SLACK_URL
   valueFrom:
    secretKeyRef:
-     name: slack-webhook-url
+     name: flagger-slack-webhook-url
      key: url

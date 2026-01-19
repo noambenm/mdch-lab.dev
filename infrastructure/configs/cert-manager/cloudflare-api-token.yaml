@@ -1,19 +1,19 @@
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-  name: cloudflare-api-token-secret
+  name: cloudflare-api-token
   namespace: cert-manager
 spec:
   refreshInterval: 24h
   secretStoreRef:
-    name: ssm-parameter-store
+    name: gcpsm
     kind: ClusterSecretStore
   target:
-    name: cloudflare-api-token-secret
+    name: cloudflare-api-token
     creationPolicy: Owner
     template:
       type: Opaque
   data:
   - secretKey: api-token
     remoteRef:
-      key: /mdch-lab/cert-manager/api-token
+      key: cloudflare-api-token

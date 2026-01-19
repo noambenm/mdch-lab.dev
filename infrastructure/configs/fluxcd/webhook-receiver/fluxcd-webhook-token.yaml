@@ -1,18 +1,19 @@
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-  name: pihole-secret
+  name: fluxcd-webhook-token
+  namespace: flux-system
 spec:
   refreshInterval: 24h
   secretStoreRef:
-    name: ssm-parameter-store
+    name: gcpsm
     kind: ClusterSecretStore
   target:
-    name: pihole-secret
+    name: fluxcd-webhook-token
     creationPolicy: Owner
     template:
       type: Opaque
   data:
-  - secretKey: password
+  - secretKey: token
     remoteRef:
-      key: /mdch-lab/pihole/password
+      key: fluxcd-webhook-token

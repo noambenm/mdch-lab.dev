@@ -1,19 +1,19 @@
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-  name: slack-webhook-url
-  namespace: flagger-system
+  name: fluxcd-slack-token
+  namespace: flux-system
 spec:
   refreshInterval: 24h
   secretStoreRef:
-    name: ssm-parameter-store
+    name: gcpsm
     kind: ClusterSecretStore
   target:
-    name: slack-webhook-url
+    name: fluxcd-slack-token
     creationPolicy: Owner
     template:
       type: Opaque
   data:
-  - secretKey: url
+  - secretKey: token
     remoteRef:
-      key: /mdch-lab/flagger/slack/webhook-url
+      key: fluxcd-slack-token

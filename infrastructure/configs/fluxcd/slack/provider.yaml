@@ -8,4 +8,4 @@ spec:
   channel: flux-alerts
   address: https://slack.com/api/chat.postMessage
   secretRef:
-    name: slack-token
+    name: fluxcd-slack-token

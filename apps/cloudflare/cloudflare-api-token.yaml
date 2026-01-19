@@ -1,18 +1,18 @@
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-  name: cloudflared-token
+  name: cloudflare-tunnel-token
 spec:
   refreshInterval: 24h
   secretStoreRef:
     name: gcpsm
     kind: ClusterSecretStore
   target:
-    name: cloudflared-token
+    name: cloudflare-tunnel-token
     creationPolicy: Owner
     template:
       type: Opaque
   data:
   - secretKey: TOKEN
     remoteRef:
-      key: cloudflare-api-token
+      key: cloudflare-tunnel-token

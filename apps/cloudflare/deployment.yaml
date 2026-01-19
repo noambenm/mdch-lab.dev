@@ -30,12 +30,12 @@ spec:
             - run
           args:
             - --token
-            - $(TOKEN)          
+            - $(TOKEN)
           env:
             - name: TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: cloudflared-token
+                  name: cloudflare-tunnel-token
                   key: TOKEN
           image: cloudflare/cloudflared:latest
           name: cloudflared

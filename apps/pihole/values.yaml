@@ -23,7 +23,7 @@ persistentVolumeClaim:
 
 admin:
   enabled: true
-  existingSecret: "pihole-secret"
+  existingSecret: "pihole-password"
 
 extraEnvVars:
   TZ: "Asia/Jerusalem"
@@ -33,7 +33,7 @@ extraEnvVars:
 
 extraEnvVarsSecret:
   PIHOLE_PASSWORD:
-    name: pihole-secret
+    name: pihole-password
     key: password
 
 DNS1: "1.1.1.1"

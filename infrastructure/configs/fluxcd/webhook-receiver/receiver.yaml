@@ -9,7 +9,7 @@ spec:
     - "ping"
     - "push"
   secretRef:
-    name: webhook-token
+    name: fluxcd-webhook-token
   resources:
     - kind: GitRepository
       name: flux-system
