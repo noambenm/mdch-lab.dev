@@ -5,7 +5,7 @@ metadata:
 spec:
   refreshInterval: 24h
   secretStoreRef:
-    name: ssm-parameter-store
+    name: gcpsm
     kind: ClusterSecretStore
   target:
     name: cloudflared-token
@@ -15,4 +15,4 @@ spec:
   data:
   - secretKey: TOKEN
     remoteRef:
-      key: /mdch-lab/cloudflare/api-token
+      key: cloudflare-api-token
