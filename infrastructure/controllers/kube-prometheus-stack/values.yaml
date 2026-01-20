@@ -1,0 +1,74 @@
+defaultRules:
+  rules:
+    etcd: false
+
+grafana:
+  persistence:
+    enabled: true
+    type: sts
+    storageClassName: local-path
+    accessModes:
+      - ReadWriteOnce
+    size: 5Gi
+    finalizers:
+      - kubernetes.io/pvc-protection
+
+kubeControllerManager:
+  enabled: true
+  endpoints: ['192.168.1.10']
+  service:
+    port: 10257
+    targetPort: 10257
+  serviceMonitor:
+    https: true
+    insecureSkipVerify: true
+
+kubeEtcd:
+  enabled: false
+
+kubeScheduler:
+  enabled: true
+  endpoints: ['192.168.1.10']
+  service:
+    port: 10259
+    targetPort: 10259
+  serviceMonitor:
+    https: true
+    insecureSkipVerify: true
+
+kubeProxy:
+  enabled: false
+
+prometheus:
+  route:
+    main:
+      enabled: true
+      apiVersion: gateway.networking.k8s.io/v1
+      kind: HTTPRoute
+      annotations: {}
+      labels: {}
+      hostnames:
+        - prometheus.mdch-lab.dev
+      parentRefs:
+        - name: mdch-lab-gateway
+          namespace: cilium
+      httpsRedirect: false
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+      filters: []
+      additionalRules: []
+  prometheusSpec:
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 20Gi
+
+cleanPrometheusOperatorObjectNames: true

@@ -1,0 +1,15 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: alloy-httproute
+  namespace: monitoring
+spec:
+  parentRefs:
+  - name: mdch-lab-gateway
+    namespace: cilium
+  hostnames:
+  - alloy.mdch-lab.dev
+  rules:
+  - backendRefs:
+    - name: k8s-monitoring-alloy-logs
+      port: 12345

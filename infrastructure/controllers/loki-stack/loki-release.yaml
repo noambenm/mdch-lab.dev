@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: loki
+spec:
+  interval: 1h
+  dependsOn:
+    - name: k8s-monitoring
+  chart:
+    spec:
+      version: "6.30.x"
+      chart: loki
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+  valuesFrom:
+    - kind: ConfigMap
+      name: loki-values

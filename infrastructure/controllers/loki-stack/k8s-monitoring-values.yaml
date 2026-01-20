@@ -1,0 +1,36 @@
+cluster:
+  name: mdch-lab.dev
+
+destinations:
+  - name: loki
+    type: loki
+    url: http://loki-gateway/loki/api/v1/push
+
+
+clusterEvents:
+  enabled: true
+  collector: alloy-logs
+
+nodeLogs:
+  enabled: true
+  journal:
+    units:
+      - k3s.service
+
+podLogs:
+  enabled: true
+  collector: alloy-logs
+
+alloy-logs:
+  enabled: true
+  alloy:
+    mounts:
+      varlog: true
+      dockercontainers: false
+    clustering:
+      enabled: true
+    resources:
+      requests:
+        cpu: 300m
+      memory: 100Mi
+

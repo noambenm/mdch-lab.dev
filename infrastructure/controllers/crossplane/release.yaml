@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: crossplane
+spec:
+  interval: 1h
+  releaseName: crossplane
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+  chart:
+    spec:
+      chart: crossplane
+      version: 2.1.x
+      interval: 6h
+      sourceRef:
+        kind: HelmRepository
+        name: crossplane-stable
+  valuesFrom:
+    - kind: ConfigMap
+      name: crossplane-values
