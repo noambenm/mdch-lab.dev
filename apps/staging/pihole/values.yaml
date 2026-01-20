@@ -1,0 +1,106 @@
+serviceDns:
+  mixedService: true
+  externalTrafficPolicy: Cluster
+  loadBalancerIP: 192.168.1.20
+  type: LoadBalancer
+
+serviceDhcp:
+  enabled: false
+
+serviceWeb:
+  type: ClusterIP
+
+probes:
+  liveness:
+    timeoutSeconds: 10
+  readiness:
+    timeoutSeconds: 10
+
+persistentVolumeClaim:
+  enabled: true
+  storageClass: local-path
+  size: "1Gi"
+
+admin:
+  enabled: true
+  existingSecret: "pihole-password"
+
+extraEnvVars:
+  TZ: "Asia/Jerusalem"
+  FTLCONF_dns_listeningMode: "all"
+  FTLCONF_dns_revServers: "true,192.168.1.0/24,192.168.1.254,mdch-lab.dev"
+  PIHOLE_HOSTNAME: "localhost"
+
+extraEnvVarsSecret:
+  PIHOLE_PASSWORD:
+    name: pihole-password
+    key: password
+
+DNS1: "1.1.1.1"
+DNS2: "1.0.0.1"
+
+dnsmasq:
+  customDnsEntries:
+    - host-record=mdch-lab.dev,192.168.1.25
+    - host-record=controlplane.mdch-lab.dev,192.168.1.10
+    - host-record=node01.mdch-lab.dev,192.168.1.11
+    - host-record=node02.mdch-lab.dev,192.168.1.12
+    - address=/.mdch-lab.dev/192.168.1.25
+
+adlists:
+  - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+  - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
+  - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
+  - https://v.firebog.net/hosts/static/w3kbl.txt
+  - https://adaway.org/hosts.txt
+  - https://v.firebog.net/hosts/AdguardDNS.txt
+  - https://v.firebog.net/hosts/Admiral.txt
+  - https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
+  - https://v.firebog.net/hosts/Easylist.txt
+  - https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
+  - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
+  - https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
+  - https://v.firebog.net/hosts/Easyprivacy.txt
+  - https://v.firebog.net/hosts/Prigent-Ads.txt
+  - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
+  - https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+  - https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
+  - https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt
+  - https://v.firebog.net/hosts/Prigent-Crypto.txt
+  - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
+  - https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
+  - https://phishing.army/download/phishing_army_blocklist_extended.txt
+  - https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
+  - https://v.firebog.net/hosts/RPiList-Malware.txt
+  - https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
+  - https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts
+  - https://urlhaus.abuse.ch/downloads/hostfile/
+  - https://lists.cyberhost.uk/malware.txt
+
+whitelist:
+  - imasdk.googleapis.com	 # allow content to be played from smart tv n12 app
+
+capabilities:
+  add:
+    - NET_ADMIN
+    - SYS_TIME
+    - SYS_NICE
+
+podAnnotations:
+  prometheus.io/port: '9617'
+  prometheus.io/scrape: 'true'
+
+monitoring:
+  podMonitor:
+    enabled: true
+  sidecar:
+    enabled: true
+    port: 9617
+    image:
+      repository: ekofr/pihole-exporter
+      tag: latest
+      pullPolicy: IfNotPresent
+    resources:
+      limits:
+        memory: 128Mi
+
