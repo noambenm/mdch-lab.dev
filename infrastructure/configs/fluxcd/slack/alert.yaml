@@ -25,5 +25,7 @@ spec:
       name: '*'
     - kind: ImageUpdateAutomation
       name: '*'
+    - kind: FluxInstance
+      name: flux
   exclusionList:
     - "^Dependencies.*"
