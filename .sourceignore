@@ -1,6 +1,0 @@
-infrastructure/controllers/kube-prometheus-stack
-infrastructure/controllers/loki-stack
-infrastructure/controllers/descheduler
-infrastructure/controllers/longhorn
-infrastructure/configs/kube-prometheus-stack
-infrastructure/configs/grafana

@@ -15,6 +15,13 @@ spec:
       copy:
         - from: "@monorepo/infrastructure/**"
           to: "@artifact/"
+          exclude:
+            - "**/controllers/descheduler/**"
+            - "**/controllers/kube-prometheus-stack/**"
+            - "**/configs/kube-prometheus-stack/**"
+            - "**/controllers/loki-stack/**"
+            - "**/controllers/longhorn/**"
+            - "**/configs/grafana/**"
     - name: apps
       originRevision: "@monorepo"
       copy:

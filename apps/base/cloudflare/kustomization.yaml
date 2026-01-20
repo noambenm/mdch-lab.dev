@@ -4,5 +4,4 @@ resources:
   - namespace.yaml
   - deployment.yaml
   - cloudflare-api-token.yaml
-  - podmonitor.yaml
   - cloudflare-policy.yaml

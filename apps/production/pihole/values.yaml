@@ -90,17 +90,17 @@ podAnnotations:
   prometheus.io/port: '9617'
   prometheus.io/scrape: 'true'
 
-monitoring:
-  podMonitor:
-    enabled: true
-  sidecar:
-    enabled: true
-    port: 9617
-    image:
-      repository: ekofr/pihole-exporter
-      tag: latest
-      pullPolicy: IfNotPresent
-    resources:
-      limits:
-        memory: 128Mi
+#monitoring:
+#  podMonitor:
+#    enabled: true
+#  sidecar:
+#    enabled: true
+#    port: 9617
+#    image:
+#      repository: ekofr/pihole-exporter
+#      tag: latest
+#      pullPolicy: IfNotPresent
+#    resources:
+#      limits:
+#        memory: 128Mi
 
