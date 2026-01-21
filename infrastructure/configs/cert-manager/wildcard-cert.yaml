@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: wildcard-mdch-lab-dev
+  name: wildcard-cert
   namespace: cilium
 spec:
-  secretName: wildcard-mdch-lab-dev
+  secretName: wildcard-cert
   issuerRef:
-    name: letsencrypt-cluster-issuer
+    name: letsencrypt
     kind: ClusterIssuer
   commonName: '*.mdch-lab.dev'
   dnsNames:

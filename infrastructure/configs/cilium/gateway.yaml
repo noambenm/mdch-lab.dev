@@ -16,21 +16,23 @@ spec:
     protocol: HTTPS
     allowedRoutes:
       namespaces:
-        from: All      
+        from: All
     tls:
       mode: Terminate
       certificateRefs:
       - kind: Secret
-        name: wildcard-mdch-lab-dev
+        name: wildcard-cert
+        namespace: cert-manager
   - name: tld
     hostname: "mdch-lab.dev"
     port: 443
     protocol: HTTPS
     allowedRoutes:
       namespaces:
-        from: All      
+        from: All
     tls:
       mode: Terminate
       certificateRefs:
       - kind: Secret
-        name: wildcard-mdch-lab-dev-cert
+        name: wildcard-cert
+        namespace: cert-manager

@@ -18,9 +18,7 @@ spec:
           exclude:
             - "controllers/descheduler/**"
             - "**/crossplane/**"
-            - "**/kube-prometheus-stack/**"
             - "**/loki-stack/**"
-            - "**/grafana/**"
             - "**/longhorn/**"
     - name: apps
       originRevision: "@monorepo"
