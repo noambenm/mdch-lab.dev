@@ -1,0 +1,63 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: cloudflared-repository
+  namespace: cloudflare
+spec:
+  image: cloudflare/cloudflared
+  interval: 1h0m0s
+---
+#apiVersion: image.toolkit.fluxcd.io/v1
+#kind: ImagePolicy
+#metadata:
+#  name: cloudflared-policy
+#  namespace: cloudflare
+#spec:
+#  imageRepositoryRef:
+#    name: cloudflared-repository
+#  policy:
+#    semver:
+#      range: '>=2024.1.0'
+#---
+#apiVersion: image.toolkit.fluxcd.io/v1
+#kind: ImageUpdateAutomation
+#metadata:
+#  name: cloudflared-update
+#  namespace: cloudflare
+#spec:
+#  interval: 1h0m0s
+#  sourceRef:
+#    kind: GitRepository
+#    name: flux-system
+#    namespace: flux-system
+#  git:
+#    checkout:
+#      ref:
+#        branch: main
+#    commit:
+#      author:
+#        email: fluxcdbot@users.noreply.github.com
+#        name: fluxcdbot
+#      messageTemplate: |
+#        Automated image update
+#        Automation name: {{ .AutomationObject }}
+#        Files:
+#        {{ range $filename, $_ := .Changed.FileChanges -}}
+#        - {{ $filename }}
+#        {{ end -}}
+#        Objects:
+#        {{ range $resource, $changes := .Changed.Objects -}}
+#        - {{ $resource.Kind | lower }} {{ $resource.Name | lower }}
+#          Changes:
+#        {{- range $_, $change := $changes }}
+#          {{ if contains "5.0.3" $change.NewValue -}}
+#            - {{ $change.OldValue }} -> {{ $change.NewValue }}
+#          {{ else -}}
+#            [skip ci] wrong image
+#          {{ end -}}
+#        {{ end -}}
+#        {{ end -}}
+#    push:
+#      branch: main
+#  update:
+#    path: ./apps/base/cloudflare
