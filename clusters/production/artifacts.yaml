@@ -16,7 +16,7 @@ spec:
         - from: "@monorepo/infrastructure/**"
           to: "@artifact/"
           exclude:
-            - "**/controllers/descheduler/**"
+            - "controllers/descheduler/**"
             - "**/crossplane/**"
             - "**/kube-prometheus-stack/**"
             - "**/loki-stack/**"
