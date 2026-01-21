@@ -16,7 +16,6 @@ spec:
     crds: CreateReplace
   upgrade:
     crds: CreateReplace
-    force: true
   valuesFrom:
     - kind: ConfigMap
       name: cert-manager-values
