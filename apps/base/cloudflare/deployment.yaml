@@ -37,7 +37,7 @@ spec:
                 secretKeyRef:
                   name: cloudflare-tunnel-token
                   key: TOKEN
-          image: cloudflare/cloudflared:latest
+          image: cloudflare/cloudflared:latest # {"$imagepolicy": "cloudflare:cloudflared-policy"}
           name: cloudflared
           ports:
             - name: metrics
