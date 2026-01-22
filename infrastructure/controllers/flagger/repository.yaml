@@ -1,11 +1,14 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
   name: flagger
 spec:
   interval: 24h
-  url: oci://ghcr.io/fluxcd/charts
-  type: oci
+  url: oci://ghcr.io/fluxcd/charts/flagger
+  ref:
+    semver: 1.41.0
+  verify:
+    provider: cosign
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository

@@ -3,22 +3,23 @@ kind: HelmRelease
 metadata:
   name: flagger
 spec:
-  interval: 1h
   releaseName: flagger
+  chartRef:
+    kind: OCIRepository
+    name: flagger
+  interval: 30m
+  driftDetection:
+    mode: enabled
   install:
     crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   upgrade:
     crds: CreateReplace
-  chart:
-    spec:
-      chart: flagger
-      version: 1.x
-      interval: 6h
-      sourceRef:
-        kind: HelmRepository
-        name: flagger
-      verify:
-        provider: cosign 
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   valuesFrom:
     - kind: ConfigMap
       name: flagger-values
