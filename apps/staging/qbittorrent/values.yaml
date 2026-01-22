@@ -1,14 +1,4 @@
 qbittorrent:
-  volumes:
-    - name: media
-      nfs:
-        server: 192.168.1.98
-        path: /nfs/Plex
-        readOnly: false
-  volumeMounts:
-    - name: media
-      mountPath: /nfs-plex
-      readOnly: false
   prometheusQbittorrentExporter:
     enabled: true
     serviceMonitor:

@@ -9,10 +9,10 @@ qbittorrent:
     - name: media
       mountPath: /nfs-plex
       readOnly: false
-#  prometheusQbittorrentExporter:
-#    enabled: true
-#    serviceMonitor:
-#      enabled: true
+  prometheusQbittorrentExporter:
+    enabled: true
+    serviceMonitor:
+      enabled: true
 
 genericDevicePlugin:
   enabled: false

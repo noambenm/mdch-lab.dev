@@ -2,24 +2,7 @@ ingress:
   enabled: false
   url: ""
 
-service:
-  type: LoadBalancer
-  port: 32400
-  loadBalancerIP: 192.168.1.21
-
 extraEnv:
   ADVERTISE_IP: "http://192.168.1.21:32400,https://plex.mdch-lab.dev:443"
   TZ: "Asia/Jerusalem"
   PLEX_CLAIM: "claim-r5cLU1XVfdpbVxy_8Gk4"
-
-extraVolumeMounts:
-  - name: plex-media
-    mountPath: /plex
-    readOnly: false
-
-extraVolumes:
-  - name: plex-media
-    nfs:
-      server: 192.168.1.98
-      path: /nfs/Plex
-      readOnly: false
