@@ -1,0 +1,12 @@
+alertmanager:
+  alertmanagerSpec:
+    secrets:
+      - slack-webhook-url
+
+#flagger valuse
+env:
+- name: SLACK_URL
+  valueFrom:
+   secretKeyRef:
+     name: flagger-slack-webhook-url
+     key: url

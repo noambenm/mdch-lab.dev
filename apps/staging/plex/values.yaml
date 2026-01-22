@@ -7,16 +7,6 @@ service:
   port: 32400
   loadBalancerIP: 192.168.1.21
 
-affinity:
-  nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: kubernetes.io/hostname
-            operator: In
-            values:
-            - controlplane
-
 extraEnv:
   ADVERTISE_IP: "http://192.168.1.21:32400,https://plex.mdch-lab.dev:443"
   TZ: "Asia/Jerusalem"

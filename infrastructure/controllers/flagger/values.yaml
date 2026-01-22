@@ -9,9 +9,3 @@ slack:
   user: flagger
   channel: flagger-system
 
-env:
-- name: SLACK_URL
-  valueFrom:
-   secretKeyRef:
-     name: flagger-slack-webhook-url
-     key: url

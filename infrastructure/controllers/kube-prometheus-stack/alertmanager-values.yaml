@@ -20,8 +20,6 @@ alertmanager:
       additionalRules: []
 
   alertmanagerSpec:
-    secrets:
-      - slack-webhook-url
     storage:
       volumeClaimTemplate:
         spec:
