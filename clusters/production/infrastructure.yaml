@@ -66,6 +66,7 @@ spec:
       target:
         kind: ClusterIssuer
         name: letsencrypt
+        namespace: cert-manager
     - patch: |
         - op: replace
           path: /spec/commonName
@@ -79,3 +80,4 @@ spec:
       target:
         kind: Certificate
         name: wildcard-cert
+        namespace: cilium
