@@ -6,7 +6,7 @@ spec:
   interval: 24h
   url: oci://ghcr.io/fluxcd/charts/flagger
   ref:
-    digest: sha256:44baedd21ea3e26ceed3675b10d5ac8b14b483b03e9fa91070c567e11c62f54f
+    digest: sha256:6e8801f447bc9d3dcac132374ef02674a2cdfd44bacbb60c69e66bb85764adc7 # version 1.42.0+6e8801f447bc
   verify:
     provider: cosign
 ---
