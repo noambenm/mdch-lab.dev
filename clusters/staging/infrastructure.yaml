@@ -60,7 +60,6 @@ spec:
       target:
         kind: ClusterIssuer
         name: letsencrypt
-        namespace: cert-manager
     - patch: |
         - op: replace
           path: /spec/commonName
@@ -86,7 +85,6 @@ spec:
       target:
         kind: ClusterSecretStore
         name: gcpsm
-        namespace: external-secrets
     - patch: |
         - op: replace
           path: /spec/auth
@@ -95,6 +93,8 @@ spec:
               serviceAccountRef:
                 name: gcr-sa
                 namespace: external-secrets
+              clusterLocation: me-west1-c
+              clusterName: mdch-lab-staging-cluster-olf0
       target:
         kind: GCRAccessToken
         name: gcr-gen
