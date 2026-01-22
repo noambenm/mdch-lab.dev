@@ -73,3 +73,14 @@ spec:
       target:
         kind: Certificate
         name: wildcard-cert
+    - patch: |
+        - op: replace
+          path: /spec/provider/gcpsm/auth
+          value:
+            workloadIdentity:
+              serviceAccountRef:
+                name: gcpsm-sa
+                namespace: external-secrets
+      target:
+        kind: ClusterSecretStore
+        name: gcpsm
