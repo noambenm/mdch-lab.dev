@@ -52,7 +52,6 @@ metadata:
   name: mongo-pvc
   namespace: monkeytype
 spec:
-  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:

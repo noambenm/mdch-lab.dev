@@ -25,7 +25,6 @@ alertmanager:
     storage:
       volumeClaimTemplate:
         spec:
-          storageClassName: local-path
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:

@@ -14,6 +14,33 @@ spec:
   path: ./controllers
   prune: true
   wait: true
+  patches:
+    - patch: |
+        - op: add
+          path: /spec/values
+          value:
+            k8sServiceHost: "192.168.1.10"
+            k8sServicePort: 6443
+            l2announcements:
+              enabled: true
+            ingressController:
+              enabled: true
+              default: true
+              loadbalancerMode: shared
+              service:
+                loadBalancerIP: "192.168.1.30"
+                allocateLoadBalancerNodePorts: false
+            ipam:
+              operator:
+                clusterPoolIPv4PodCIDRList:
+                  - "10.42.0.0/16"
+            kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
+            operator:
+              replicas: 1
+      target:
+        kind: HelmRelease
+        name: cilium
+        namespace: cilium
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization

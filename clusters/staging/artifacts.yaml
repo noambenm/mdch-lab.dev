@@ -18,11 +18,8 @@ spec:
           exclude:
             - "**/descheduler/**"
             - "**/crossplane/**"
-            - "**/kube-prometheus-stack/**"
             - "**/loki-stack/**"
-            - "**/grafana/**"
             - "**/longhorn/**"
-            - "**/cilium/**"
             - "**/gateway-api/**"
     - name: apps
       originRevision: "@monorepo"

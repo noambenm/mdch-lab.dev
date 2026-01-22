@@ -2,9 +2,6 @@ ingress:
   enabled: false
   url: ""
 
-pms:
-  storageClassName: local-path
-
 service:
   type: LoadBalancer
   port: 32400

@@ -49,7 +49,6 @@ metadata:
   name: mysql-pv-claim
   namespace: smartshopper
 spec:
-  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
