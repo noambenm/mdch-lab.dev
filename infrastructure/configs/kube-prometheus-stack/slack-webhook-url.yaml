@@ -1,19 +1,19 @@
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-  name: slack-webhook-url
+  name: alertmanager-slack-webhook-url
   namespace: monitoring
 spec:
   refreshInterval: 24h
   secretStoreRef:
-    name: ssm-parameter-store
+    name: gcpsm
     kind: ClusterSecretStore
   target:
-    name: slack-webhook-url
+    name: alertmanager-slack-webhook-url
     creationPolicy: Owner
     template:
       type: Opaque
   data:
   - secretKey: SLACK_WEBHOOK_URL
     remoteRef:
-      key: /mdch-lab/alertmanager/slack-webhook-url
+      key: alertmanager-slack-webhook-url

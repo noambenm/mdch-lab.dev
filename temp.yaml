@@ -1,7 +1,7 @@
 alertmanager:
   alertmanagerSpec:
     secrets:
-      - slack-webhook-url
+      - alertmanager-slack-webhook-url
 
 #flagger valuse
 env:
