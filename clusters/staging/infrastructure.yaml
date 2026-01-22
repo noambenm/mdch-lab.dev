@@ -17,16 +17,18 @@ spec:
   patches:
     - patch: |
         - op: replace
-          path: /spec/ref/semver
-          value: 1.x
+          path: /spec/ref
+          value: 
+            semver: 1.x
       target:
         kind: OCIRepository
         name: cert-manager
         namespace: cert-manager
     - patch: |
         - op: replace
-          path: /spec/ref/semver
-          value: 1.x
+          path: /spec/ref
+          value:
+            semver: 1.x
       target:
         kind: OCIRepository
         name: flagger
