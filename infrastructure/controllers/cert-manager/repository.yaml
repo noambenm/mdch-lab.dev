@@ -3,7 +3,7 @@ kind: OCIRepository
 metadata:
   name: cert-manager
 spec:
-  interval: 5m
+  interval: 24h
   url: oci://quay.io/jetstack/charts/cert-manager
   ref:
-    semver: 1.19.2
+    digest: sha256:6f7f2d9065fdecb25ae5b1124169cdf0e94092931e2f43f46db8b06a29432b94
