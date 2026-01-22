@@ -3,19 +3,23 @@ kind: HelmRelease
 metadata:
   name: cert-manager
 spec:
-  interval: 1h
   releaseName: cert-manager
-  chart:
-    spec:
-      chart: cert-manager
-      version: 1.19.x
-      sourceRef:
-        kind: HelmRepository
-        name: cert-manager
+  chartRef:
+    kind: OCIRepository
+    name: cert-manager
+  interval: 30m
+  driftDetection:
+    mode: enabled
   install:
     crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   upgrade:
     crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   valuesFrom:
     - kind: ConfigMap
       name: cert-manager-values

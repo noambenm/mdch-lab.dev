@@ -16,6 +16,14 @@ spec:
   wait: true
   patches:
     - patch: |
+        - op: replace
+          path: /spec/ref/semver
+          value: 1.x
+      target:
+        kind: OCIRepository
+        name: cert-manager
+        namespace: cert-manager
+    - patch: |
         - op: add
           path: /spec/values
           value:

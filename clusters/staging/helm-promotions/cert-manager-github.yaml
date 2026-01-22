@@ -1,0 +1,31 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Provider
+metadata:
+  name: github
+  namespace: flux-system
+spec:
+  type: githubdispatch
+  address: https://github.com/noambenm/mdch-lab
+  secretRef:
+    name: flux-system
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: cert-manager-dispatch
+  namespace: flux-system
+spec:
+  providerRef:
+    name: github
+  eventMetadata:
+    summary: "Trigger promotion"
+    env: staging
+    cluster: mdch-lab-staging-cluster
+    region: me-west1
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRelease
+      name: cert-manager
+      namespace: cert-manager
+  inclusionList:
+    - ".*.upgrade.*succeeded.*"
