@@ -12,6 +12,18 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: external-secrets
+  driftDetection:
+    mode: enabled
+  install:
+    crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
+  upgrade:
+    crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   valuesFrom:
     - kind: ConfigMap
       name: external-secrets-values 
