@@ -150,6 +150,14 @@ spec:
         name: gcpsm
     - patch: |
         - op: replace
+          path: /spec/addresses/0/value
+          value: 34.165.134.187
+      target:
+        kind: Gateway
+        name: mdch-lab-gateway
+        namespace: cilium
+    - patch: |
+        - op: replace
           path: /spec/auth
           value:
             workloadIdentity:
