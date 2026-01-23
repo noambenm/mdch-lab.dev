@@ -4,3 +4,11 @@ namespace: cloudflare
 resources:
   - ../../base/cloudflare
   - image-automation.yaml
+patches:
+  - patch: |
+      - op: replace
+        path: /spec/data/0/remoteRef/key
+        value: cloudflare-tunnel-token-staging
+    target:
+      kind: ExternalSecret
+      name: cloudflare-tunnel-token
