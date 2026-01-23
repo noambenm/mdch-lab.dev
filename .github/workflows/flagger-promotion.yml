@@ -1,3 +1,4 @@
+name: flagger-promotion
 on:
   repository_dispatch:
     types:

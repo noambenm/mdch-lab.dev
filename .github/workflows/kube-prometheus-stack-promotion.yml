@@ -1,3 +1,4 @@
+name: kube-prometheus-stack-promotion
 on:
   repository_dispatch:
     types:

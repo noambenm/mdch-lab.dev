@@ -1,3 +1,4 @@
+name: cert-manager-promotion
 on:
   repository_dispatch:
     types:

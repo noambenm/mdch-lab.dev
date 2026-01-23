@@ -1,3 +1,4 @@
+name: cilium-promotion
 on:
   repository_dispatch:
     types:
