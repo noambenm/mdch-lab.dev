@@ -183,4 +183,4 @@ spec:
       target:
         kind: CiliumLoadBalancerIPPool
         name: ip-pool
-        namespace: cilium
+
