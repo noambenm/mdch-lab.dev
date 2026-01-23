@@ -111,7 +111,7 @@ spec:
     - patch: |
         - op: replace
           path: /spec/hostnames/0
-          value: flux-webhook.staging.mdch-lab.dev
+          value: webhook-receiver.staging.mdch-lab.dev
       target:
         kind: HTTPRoute
         name: webhook-receiver
