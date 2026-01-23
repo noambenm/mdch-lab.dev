@@ -33,6 +33,9 @@ spec:
     - kind: HelmRelease
       name: kube-prometheus-stack
       namespace: monitoring
+    - kind: HelmRelease
+      name: cilium
+      namespace: cilium
   inclusionList:
     - ".*.upgrade.*succeeded.*"
 

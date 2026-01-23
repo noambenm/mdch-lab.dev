@@ -43,6 +43,15 @@ spec:
         name: kube-prometheus-stack
         namespace: monitoring
     - patch: |
+        - op: replace
+          path: /spec/ref
+          value:
+            semver: 1.x
+      target:
+        kind: OCIRepository
+        name: cilium
+        namespace: cilium
+    - patch: |
         - op: add
           path: /spec/values
           value:

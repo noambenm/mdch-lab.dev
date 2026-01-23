@@ -3,19 +3,23 @@ kind: HelmRelease
 metadata:
   name: cilium
 spec:
-  interval: 1h
   releaseName: cilium
-  chart:
-    spec:
-      chart: cilium
-      version: 1.18.x
-      sourceRef:
-        kind: HelmRepository
-        name: cilium
+  chartRef:
+    kind: OCIRepository
+    name: cilium
+  interval: 1h
+  driftDetection:
+    mode: enabled
   install:
     crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   upgrade:
     crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   valuesFrom:
     - kind: ConfigMap
       name: cilium-values

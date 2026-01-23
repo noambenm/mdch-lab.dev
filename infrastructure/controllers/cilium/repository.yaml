@@ -1,8 +1,14 @@
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+kind: OCIRepository
 metadata:
   name: cilium
-  namespace: cilium
 spec:
   interval: 24h
-  url: https://helm.cilium.io
+  url: oci://quay.io/cilium/charts/cilium
+  ref:
+    digest: sha256:f525e12698149b3958024599493d9cc56fadbc46c9250cbced8016e9b9b679e5
+#  verify:
+#    provider: cosign
+#    matchOIDCIdentity:
+#      - issuer: "^https://token.actions.githubusercontent.com$"
+#        subject: "^https://github.com/cilium/cilium/.*$"

@@ -1,0 +1,53 @@
+on:
+  repository_dispatch:
+    types:
+      - HelmRelease/cilium.cilium
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    # Start promotion when the staging cluster has successfully
+    # upgraded the Helm release to a new chart version.
+    if: |
+      github.event.client_payload.metadata.env == 'staging' &&
+      github.event.client_payload.severity == 'info'
+    steps:
+      # Checkout main branch.
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      # Parse the event metadata to determine the chart version deployed on staging.
+      - name: Get chart version from staging
+        id: staging
+        run: |
+          DIGEST=$(echo ${{ github.event.client_payload.metadata.oci-digest }} | cut -d '@' -f1)
+          echo DIGEST=${DIGEST} >> $GITHUB_OUTPUT
+          VERSION=$(echo ${{ github.event.client_payload.metadata.revision }} | cut -d '@' -f1)
+          echo VERSION=${VERSION} >> $GITHUB_OUTPUT
+      # Patch the digest in the production OCIRepository manifest.
+      - name: Set chart version in production
+        id: production
+        env:
+          DIGEST: ${{ steps.staging.outputs.digest }}
+        run: |
+          echo "set ociRepository digest to ${DIGEST}"
+          # This will filter out all resources that do not have a digest field.
+          yq eval '(select(.spec.ref.digest) | .spec.ref.digest) = env(DIGEST)' -i ./infrastructure/controllers/cilium/repository.yaml
+          # add the chart version as a line comment
+          env lc="version ${{ steps.staging.outputs.version }}" \
+          yq eval '(select(.spec.ref.digest) | .spec.ref.digest) line_comment=env(lc)' -i ./infrastructure/controllers/cilium/repository.yaml
+      # Open a Pull Request if an upgrade is needed in production.
+      - name: Open promotion PR
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: cilium-promotion
+          delete-branch: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update cilium to v${{ steps.staging.outputs.version }} with digest ${{ steps.staging.outputs.digest }}
+          title: Promote cilium release to v${{ steps.staging.outputs.version }} with digest ${{ steps.staging.outputs.digest }}
+          body: |
+            Promote cilium release on production to v${{ steps.staging.outputs.version }} with digest ${{ steps.staging.outputs.digest }}
