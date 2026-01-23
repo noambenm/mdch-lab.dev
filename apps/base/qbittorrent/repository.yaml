@@ -1,8 +1,14 @@
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+kind: OCIRepository
 metadata:
   name: qbittorrent
 spec:
   interval: 24h
-  url: oci://ghcr.io/m0nsterrr/helm-charts
-  type: oci
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  url: oci://ghcr.io/m0nsterrr/helm-charts/qbittorrent
+  ref:
+    digest: sha256:48ebeeb9fad06412da56428038391ca739ef21a5387c08aac02c9ebf5d947687
+  verify:
+    provider: cosign

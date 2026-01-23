@@ -22,3 +22,12 @@ configMapGenerator:
         kustomize.toolkit.fluxcd.io/substitute: disabled
 configurations:
   - kustomizeconfig.yaml
+patches:
+  - patch: |
+      - op: replace
+        path: /spec/ref
+        value: 
+          semver: '*'
+    target:
+      kind: OCIRepository
+      name: qbittorrent

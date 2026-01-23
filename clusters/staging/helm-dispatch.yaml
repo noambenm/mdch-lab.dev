@@ -45,6 +45,9 @@ spec:
     - kind: HelmRelease
       name: plex
       namespace: plex
+    - kind: HelmRelease
+      name: qbittorrent
+      namespace: qbittorrent
   inclusionList:
     - ".*.upgrade.*succeeded.*"
 
