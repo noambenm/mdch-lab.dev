@@ -18,7 +18,7 @@ spec:
     name: cloudflared-repository
   policy:
     semver:
-      range: '2025.1.0'
+      range: 2026.x
 ---
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageUpdateAutomation
@@ -55,6 +55,6 @@ spec:
         {{ end -}}
         {{ end -}}
     push:
-      branch: main
+      branch: staging
   update:
     path: apps/base/cloudflare
