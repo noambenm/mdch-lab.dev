@@ -20,7 +20,6 @@ spec:
             - "**/crossplane/**"
             - "**/loki-stack/**"
             - "**/longhorn/**"
-            - "**/configs/cilium/ip-pool.yaml"
     - name: apps
       originRevision: "@monorepo"
       copy:

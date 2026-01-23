@@ -149,8 +149,6 @@ spec:
         kind: ClusterSecretStore
         name: gcpsm
     - patch: |
-        - op: remove
-          path: /metadata/annotations
         - op: replace
           path: /spec/addresses/0/value
           value: 34.165.134.187
@@ -178,3 +176,11 @@ spec:
         kind: GCRAccessToken
         name: gcr-gen
         namespace: external-secrets
+    - patch: |
+        - op: add
+          path: /spec/disabled
+          value: true
+      target:
+        kind: CiliumLoadBalancerIPPool
+        name: ip-pool
+        namespace: cilium
