@@ -22,7 +22,6 @@ spec:
       certificateRefs:
       - kind: Secret
         name: wildcard-cert
-        namespace: cert-manager
   - name: tld
     hostname: "mdch-lab.dev"
     port: 443
@@ -35,4 +34,3 @@ spec:
       certificateRefs:
       - kind: Secret
         name: wildcard-cert
-        namespace: cert-manager
