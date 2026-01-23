@@ -3,19 +3,23 @@ kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
 spec:
-  interval: 1h
   releaseName: kube-prometheus-stack
-  chart:
-    spec:
-      chart: kube-prometheus-stack
-      version: 81.x
-      sourceRef:
-        kind: HelmRepository
-        name: prometheus-community
+  chartRef:
+    kind: OCIRepository
+    name: kube-prometheus-stack
+  interval: 1h
+  driftDetection:
+    mode: enabled
   install:
     crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   upgrade:
     crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   valuesFrom:
     - kind: ConfigMap
       name: kube-prometheus-stack-values

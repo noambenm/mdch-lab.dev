@@ -1,7 +1,18 @@
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Provider
+metadata:
+  name: github
+  namespace: flux-system
+spec:
+  type: githubdispatch
+  address: https://github.com/noambenm/mdch-lab
+  secretRef:
+    name: flux-system
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
-  name: flagger-dispatch
+  name: github-dispatch
   namespace: flux-system
 spec:
   providerRef:
@@ -16,5 +27,12 @@ spec:
     - kind: HelmRelease
       name: flagger
       namespace: flagger-system
+    - kind: HelmRelease
+      name: cert-manager
+      namespace: cert-manager
+    - kind: HelmRelease
+      name: kube-prometheus-stack
+      namespace: monitoring
   inclusionList:
     - ".*.upgrade.*succeeded.*"
+
