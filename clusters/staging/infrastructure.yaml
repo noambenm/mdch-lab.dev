@@ -155,6 +155,12 @@ spec:
             io.cilium/service-type: ClusterIP
         - op: remove
           path: /spec/addresses
+        - op: replace
+          path: /spec/listeners/0/hostname
+          value: "*.staging.mdch-lab.dev"
+        - op: replace
+          path: /spec/listeners/1/hostname
+          value: "staging.mdch-lab.dev"
       target:
         kind: Gateway
         name: mdch-lab-gateway
