@@ -29,11 +29,15 @@ spec:
           path: /spec/ref
           value:
             semver: 1.x
+      target:
+        kind: OCIRepository
+        name: flagger
+        namespace: flagger-system
     - patch: |
         - op: replace
           path: /spec/ref
           value:
-            semver: *
+            semver: '*'
       target:
         kind: OCIRepository
         name: kube-prometheus-stack
