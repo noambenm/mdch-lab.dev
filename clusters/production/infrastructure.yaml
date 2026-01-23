@@ -59,25 +59,3 @@ spec:
     name: infrastructure
   path: ./configs
   prune: true
-  patches:
-    - patch: |
-        - op: replace
-          path: /spec/acme/server
-          value: https://acme-v02.api.letsencrypt.org/directory
-      target:
-        kind: ClusterIssuer
-        name: letsencrypt
-    - patch: |
-        - op: replace
-          path: /spec/commonName
-          value: "*.mdch-lab.dev"
-        - op: replace
-          path: /spec/dnsNames/0
-          value: "*.mdch-lab.dev"
-        - op: replace
-          path: /spec/dnsNames/1
-          value: mdch-lab.dev
-      target:
-        kind: Certificate
-        name: wildcard-cert
-        namespace: cilium

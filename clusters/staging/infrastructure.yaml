@@ -110,6 +110,14 @@ spec:
   patches:
     - patch: |
         - op: replace
+          path: /spec/hostnames/0
+          value: flux-webhook.staging.mdch-lab.dev
+      target:
+        kind: HTTPRoute
+        name: webhook-receiver
+        namespace: flux-system
+    - patch: |
+        - op: replace
           path: /spec/acme/server
           value: https://acme-staging-v02.api.letsencrypt.org/directory
       target:
