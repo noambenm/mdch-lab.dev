@@ -183,4 +183,3 @@ spec:
       target:
         kind: CiliumLoadBalancerIPPool
         name: ip-pool
-
