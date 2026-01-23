@@ -61,6 +61,14 @@ spec:
         name: external-secrets
         namespace: external-secrets
     - patch: |
+        - op: replace
+          path: /spec/chart/spec/version
+          value: 2.x
+      target:
+        kind: HelmRelease
+        name: keda
+        namespace: keda
+    - patch: |
         - op: add
           path: /spec/values
           value:

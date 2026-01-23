@@ -39,6 +39,9 @@ spec:
     - kind: HelmRelease
       name: external-secrets
       namespace: external-secrets
+    - kind: HelmRelease
+      name: keda
+      namespace: keda
   inclusionList:
     - ".*.upgrade.*succeeded.*"
 

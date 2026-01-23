@@ -12,6 +12,18 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kedacore
+  driftDetection:
+    mode: enabled
+  install:
+    crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
+  upgrade:
+    crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
   valuesFrom:
     - kind: ConfigMap
       name: keda-values 

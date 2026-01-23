@@ -1,0 +1,50 @@
+name: keda-promotion
+on:
+  repository_dispatch:
+    types:
+      - HelmRelease/keda.keda
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    # Start promotion when the staging cluster has successfully
+    # upgraded the Helm release to a new chart version.
+    if: |
+      github.event.client_payload.metadata.env == 'staging' &&
+      github.event.client_payload.severity == 'info'
+    steps:
+      - name: Inspect Payload
+        run: echo '${{ toJSON(github.event) }}'
+      # Checkout main branch.
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      # Parse the event metadata to determine the chart version deployed on staging.
+      - name: Get chart version from staging
+        id: staging
+        run: |
+          VERSION=$(echo ${{ github.event.client_payload.metadata.revision }} | cut -d '@' -f1)
+          echo VERSION=${VERSION} >> $GITHUB_OUTPUT
+      # Patch the chart version in the production Helm release manifest.
+      - name: Set chart version in production
+        id: production
+        env:
+          CHART_VERSION: ${{ steps.staging.outputs.version }}
+        run: |
+          echo "set chart version to ${CHART_VERSION}"
+          yq eval '.spec.chart.spec.version=env(CHART_VERSION)' -i ./infrastructure/controllers/keda/release.yaml
+      # Open a Pull Request if an upgrade is needed in production.
+      - name: Open promotion PR
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: keda-promotion
+          delete-branch: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update keda to v${{ steps.staging.outputs.version }}
+          title: Promote keda release to v${{ steps.staging.outputs.version }}
+          body: |
+            Promote keda release on production to v${{ steps.staging.outputs.version }}
