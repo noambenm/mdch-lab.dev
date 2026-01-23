@@ -9,6 +9,6 @@ spec:
     operation: copy
   url: oci://ghcr.io/m0nsterrr/helm-charts/qbittorrent
   ref:
-    digest: sha256:48ebeeb9fad06412da56428038391ca739ef21a5387c08aac02c9ebf5d947687
+    digest: sha256:94ee4a431b3e4a1bee67897e086ff23604acc0c3ea4515faf63590ee5bf0e657 # version 5.1.4+94ee4a431b3e
   verify:
     provider: cosign
