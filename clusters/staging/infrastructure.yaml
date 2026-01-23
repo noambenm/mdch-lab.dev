@@ -150,14 +150,13 @@ spec:
         name: gcpsm
     - patch: |
         - op: replace
-          path: /spec/addresses/0/value
-          value: 34.165.134.187
-        - op: replace
           path: /spec/listeners/0/hostname
           value: "*.staging.mdch-lab.dev"
         - op: replace
           path: /spec/listeners/1/hostname
           value: "staging.mdch-lab.dev"
+        - op: remove
+          path: /spec/addresses
       target:
         kind: Gateway
         name: mdch-lab-gateway
