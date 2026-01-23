@@ -6,4 +6,4 @@ spec:
   interval: 24h
   url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
   ref:
-    digest: sha256:d4cf08429228711cb9fe64d119befa7b54849e0c035313f6c377f1b2d6caa296 # version 80.14.1+d4cf08429228
+    digest: sha256:b9bfd40596a28ca3c6043f4d32f5bbc72ff617f66043939c66000f3a0bdf2496 # version 81.2.1+b9bfd40596a2
