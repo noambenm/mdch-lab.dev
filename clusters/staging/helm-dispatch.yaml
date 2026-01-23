@@ -42,6 +42,9 @@ spec:
     - kind: HelmRelease
       name: keda
       namespace: keda
+    - kind: HelmRelease
+      name: plex
+      namespace: plex
   inclusionList:
     - ".*.upgrade.*succeeded.*"
 
