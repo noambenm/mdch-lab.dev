@@ -20,7 +20,6 @@ spec:
             - "**/crossplane/**"
             - "**/loki-stack/**"
             - "**/longhorn/**"
-            - "**/gateway-api/**"
     - name: apps
       originRevision: "@monorepo"
       copy:
