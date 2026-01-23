@@ -6,14 +6,15 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
+  wait: true
+  timeout: 3m
   retryInterval: 2m
-  timeout: 5m
+  prune: true
+  force: true
   sourceRef:
     kind: ExternalArtifact
     name: infrastructure
   path: ./controllers
-  prune: true
-  wait: true
   patches:
     - patch: |
         - op: replace
@@ -52,6 +53,14 @@ spec:
         name: cilium
         namespace: cilium
     - patch: |
+        - op: replace
+          path: /spec/chart/spec/version
+          value: 1.x
+      target:
+        kind: HelmRelease
+        name: external-secrets
+        namespace: external-secrets
+    - patch: |
         - op: add
           path: /spec/values
           value:
@@ -81,13 +90,15 @@ spec:
   dependsOn:
     - name: infra-controllers
   interval: 1h
+  wait: true
+  timeout: 3m
   retryInterval: 2m
-  timeout: 5m
+  prune: true
+  force: true
   sourceRef:
     kind: ExternalArtifact
     name: infrastructure
   path: ./configs
-  prune: true
   patches:
     - patch: |
         - op: replace

@@ -3,11 +3,11 @@ kind: HelmRelease
 metadata:
   name: cert-manager
 spec:
+  interval: 1h
   releaseName: cert-manager
   chartRef:
     kind: OCIRepository
     name: cert-manager
-  interval: 1h
   driftDetection:
     mode: enabled
   install:

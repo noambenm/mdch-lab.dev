@@ -8,11 +8,12 @@ spec:
   dependsOn:
     - name: infra-configs
   interval: 1h
+  wait: true
+  timeout: 3m
   retryInterval: 2m
-  timeout: 5m
+  prune: true
+  force: true
   sourceRef:
     kind: ExternalArtifact
     name: apps
   path: ./staging
-  prune: true
-  wait: true

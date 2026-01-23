@@ -6,14 +6,15 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
+  wait: true
+  timeout: 3m
   retryInterval: 2m
-  timeout: 5m
+  prune: true
+  force: true
   sourceRef:
     kind: ExternalArtifact
     name: infrastructure
   path: ./controllers
-  prune: true
-  wait: true
   patches:
     - patch: |
         - op: add

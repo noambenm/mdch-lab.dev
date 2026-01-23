@@ -36,6 +36,9 @@ spec:
     - kind: HelmRelease
       name: cilium
       namespace: cilium
+    - kind: HelmRelease
+      name: external-secrets
+      namespace: external-secrets
   inclusionList:
     - ".*.upgrade.*succeeded.*"
 
