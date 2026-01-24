@@ -1,7 +1,3 @@
-k8sClientRateLimit:
-  qps: 50
-  burst: 200
-
 gatewayAPI:
   enabled: true
   gatewayClass:
@@ -58,8 +54,5 @@ envoy:
   prometheus:
     serviceMonitor:
       enabled: true
-
-externalIPs:
-  enabled: true
 
 rollOutCiliumPods: true
