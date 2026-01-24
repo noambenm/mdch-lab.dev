@@ -28,3 +28,5 @@ spec:
       name: '*'
   exclusionList:
     - "^Dependencies.*"
+    - ".*Health check passed.*"
+    - ".*stored artifact for commit.*"

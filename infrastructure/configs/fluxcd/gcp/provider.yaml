@@ -6,4 +6,4 @@ metadata:
 spec:
   type: googlepubsub
   address: noambesandbox
-  channel: flux-events
+  channel: flux-alerts
