@@ -182,3 +182,15 @@ spec:
       target:
         kind: CiliumLoadBalancerIPPool
         name: ip-pool
+    - patch: |
+        - op: replace
+          path: /spec/eventMetadata
+          value:
+            env: staging
+            cluster: mdch-lab-staging-cluster
+            kind: GKE
+            region: me-west1-c
+      target:
+        kind: Alert
+        name: slack-alerts
+        namespace: flux-system

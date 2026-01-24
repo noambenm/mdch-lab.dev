@@ -6,6 +6,11 @@ metadata:
 spec:
   providerRef:
     name: slack
+  eventMetadata:
+    env: production
+    cluster: mdch-lab
+    kind: Raspberry Pi
+    region: Beer Sheva
   eventSources:
     - kind: Kustomization
       name: '*'
