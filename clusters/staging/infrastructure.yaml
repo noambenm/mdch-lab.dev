@@ -186,10 +186,10 @@ spec:
         - op: replace
           path: /spec/eventMetadata
           value:
-            env: staging
-            cluster: mdch-lab-staging-cluster
-            kind: GKE
-            region: me-west1-c
+            Environment: staging
+            Cluster: mdch-lab-staging-cluster
+            Kind: GKE
+            Region: me-west1-c
       target:
         kind: Alert
         name: slack-alerts

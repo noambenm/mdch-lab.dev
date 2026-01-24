@@ -7,10 +7,10 @@ spec:
   providerRef:
     name: slack
   eventMetadata:
-    env: production
-    cluster: mdch-lab
-    kind: Raspberry Pi
-    region: Beer Sheva
+    Environment: production
+    Cluster: mdch-lab
+    Kind: Raspberry Pi
+    Region: Beer Sheva
   eventSources:
     - kind: Kustomization
       name: '*'
@@ -34,3 +34,5 @@ spec:
       name: flux
   exclusionList:
     - "^Dependencies.*"
+    - ".*Health check passed.*"
+    - ".*stored artifact for commit.*"
