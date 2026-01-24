@@ -191,7 +191,7 @@ spec:
           path: /spec/addresses
       target:
         kind: Gateway
-        name: mdch-lab-gateway
+        name: mdch-lab
         namespace: cilium
     - patch: |
         - op: replace

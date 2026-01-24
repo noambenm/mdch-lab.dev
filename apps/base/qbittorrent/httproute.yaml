@@ -4,7 +4,7 @@ metadata:
   name: qbittorrent-httproute
 spec:
   parentRefs:
-  - name: mdch-lab-gateway
+  - name: mdch-lab
     namespace: cilium
   hostnames:
   - "qbittorrent.mdch-lab.dev"

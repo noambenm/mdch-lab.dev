@@ -20,7 +20,7 @@ spec:
     hosts:
      - smartshopper-app.mdch-lab.dev
     gatewayRefs:
-      - name: mdch-lab-gateway
+      - name: mdch-lab
         namespace: cilium
     match:
       - uri:
@@ -34,4 +34,4 @@ spec:
         url: http://flagger-loadtester/
         timeout: 5s
         metadata:
-          cmd: "hey -z 2m -q 10 -c 2 -host smartshopper-app.mdch-lab.dev https://cilium-gateway-mdch-lab-gateway.cilium/"
+          cmd: "hey -z 2m -q 10 -c 2 -host smartshopper-app.mdch-lab.dev https://cilium-gateway-mdch-lab.cilium/"

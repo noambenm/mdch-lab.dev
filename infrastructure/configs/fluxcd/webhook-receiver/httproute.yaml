@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   parentRefs:
-    - name: mdch-lab-gateway
+    - name: mdch-lab
       namespace: cilium
   hostnames:
     - "webhook-receiver.mdch-lab.dev"

@@ -5,7 +5,7 @@ metadata:
   name: plex-web
 spec:
   parentRefs:
-  - name: mdch-lab-gateway
+  - name: mdch-lab
     namespace: cilium
   hostnames:
   - "plex.mdch-lab.dev"

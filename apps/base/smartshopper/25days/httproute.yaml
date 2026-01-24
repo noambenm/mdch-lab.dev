@@ -5,7 +5,7 @@ metadata:
   namespace: smartshopper
 spec:
   parentRefs:
-    - name: mdch-lab-gateway
+    - name: mdch-lab
       namespace: cilium
   hostnames:
     - "feldrizz.mdch-lab.dev"

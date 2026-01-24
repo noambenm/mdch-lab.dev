@@ -5,7 +5,7 @@ metadata:
   name: jellyfin-httproute
 spec:
   parentRefs:
-  - name: mdch-lab-gateway
+  - name: mdch-lab
     namespace: cilium
   hostnames:
   - "jellyfin.mdch-lab.dev"

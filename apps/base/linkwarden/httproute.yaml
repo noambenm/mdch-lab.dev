@@ -5,7 +5,7 @@ metadata:
   namespace: linkwarden
 spec:
   parentRefs:
-    - name: mdch-lab-gateway
+    - name: mdch-lab
       namespace: cilium
   hostnames:
     - "linkwarden.mdch-lab.dev"

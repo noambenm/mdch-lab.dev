@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
 spec:
   parentRefs:
-  - name: mdch-lab-gateway
+  - name: mdch-lab
     namespace: cilium
   hostnames:
   - alloy.mdch-lab.dev

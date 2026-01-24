@@ -5,7 +5,7 @@ metadata:
   namespace: cilium
 spec:
   parentRefs:
-  - name: mdch-lab-gateway
+  - name: mdch-lab
   hostnames:
   - "hubble.mdch-lab.dev"
   rules:
