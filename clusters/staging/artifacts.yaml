@@ -15,11 +15,6 @@ spec:
       copy:
         - from: "@monorepo/infrastructure/**"
           to: "@artifact/"
-          exclude:
-            - "**/descheduler/**"
-            - "**/crossplane/**"
-            - "**/loki-stack/**"
-            - "**/longhorn/**"
     - name: apps
       originRevision: "@monorepo"
       copy:
