@@ -39,25 +39,6 @@ kubeProxy:
   enabled: false
 
 prometheus:
-  route:
-    main:
-      enabled: true
-      apiVersion: gateway.networking.k8s.io/v1
-      kind: HTTPRoute
-      annotations: {}
-      labels: {}
-      hostnames:
-        - prometheus.mdch-lab.dev
-      parentRefs:
-        - name: mdch-lab-gateway
-          namespace: cilium
-      httpsRedirect: false
-      matches:
-        - path:
-            type: PathPrefix
-            value: /
-      filters: []
-      additionalRules: []
   prometheusSpec:
     podMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelectorNilUsesHelmValues: false
