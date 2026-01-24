@@ -194,3 +194,11 @@ spec:
         kind: Alert
         name: slack-alerts
         namespace: flux-system
+    - patch: |
+        - op: replace
+          path: /spec/channel
+          value: flux-alerts-staging
+      target:
+        kind: Provider
+        name: slack
+        namespace: flux-system
