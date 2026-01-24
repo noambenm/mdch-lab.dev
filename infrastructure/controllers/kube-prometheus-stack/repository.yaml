@@ -9,4 +9,4 @@ spec:
     operation: copy
   url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
   ref:
-    digest: sha256:b9bfd40596a28ca3c6043f4d32f5bbc72ff617f66043939c66000f3a0bdf2496 # version 81.2.1+b9bfd40596a2
+    digest: sha256:eb57971b1c8d22a9aa18a72166866b180fdcb371cab5ba8d6ec3b315aeecbcec # version 81.2.2+eb57971b1c8d
