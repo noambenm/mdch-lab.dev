@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: pihole
+resources:
+  - ../../base/pihole
+configMapGenerator:
+  - name: pihole-values
+    files:
+      - values.yaml
+    options:
+      labels:
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: pihole
+configurations:
+  - kustomizeconfig.yaml
+patches:
+  - patch: |
+      - op: replace
+        path: /spec/chart/spec/version
+        value: 2.x
+    target:
+      kind: HelmRelease
+      name: pihole

@@ -48,6 +48,9 @@ spec:
     - kind: HelmRelease
       name: qbittorrent
       namespace: qbittorrent
+    - kind: HelmRelease
+      name: pihole
+      namespace: pihole
   inclusionList:
     - ".*.upgrade.*succeeded.*"
 
