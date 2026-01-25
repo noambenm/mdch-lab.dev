@@ -1,0 +1,50 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flagger-system
+  labels:
+    app.kubernetes.io/component: flagger
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: flagger
+  namespace: flagger-system
+spec:
+  interval: 24h
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  url: oci://ghcr.io/fluxcd/charts/flagger
+  ref:
+    digest: sha256:6e8801f447bc9d3dcac132374ef02674a2cdfd44bacbb60c69e66bb85764adc7 # version 1.42.0+6e8801f447bc
+  verify:
+    provider: cosign
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: flagger
+  namespace: flagger-system
+spec:
+  releaseName: flagger
+  chartRef:
+    kind: OCIRepository
+    name: flagger
+  interval: 30m
+  driftDetection:
+    mode: enabled
+  install:
+    crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
+  upgrade:
+    crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
+  valuesFrom:
+    - kind: ConfigMap
+      name: flagger-values

@@ -1,0 +1,70 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Receiver
+metadata:
+  name: github-receiver
+  namespace: flux-system
+spec:
+  type: github
+  events:
+    - "ping"
+    - "push"
+  secretRef:
+    name: fluxcd-webhook-token
+  resources:
+    - kind: GitRepository
+      name: flux-system
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: fluxcd-webhook-token
+  namespace: flux-system
+spec:
+  refreshInterval: 24h
+  secretStoreRef:
+    name: gcpsm
+    kind: ClusterSecretStore
+  target:
+    name: fluxcd-webhook-token
+    creationPolicy: Owner
+    template:
+      type: Opaque
+  data:
+  - secretKey: token
+    remoteRef:
+      key: fluxcd-webhook-token
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: webhook-receiver
+  namespace: flux-system
+spec:
+  parentRefs:
+    - name: mdch-lab
+      namespace: cilium
+  hostnames:
+    - "webhook-receiver.mdch-lab.dev"
+  rules:
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /
+      backendRefs:
+        - name: webhook-receiver
+          port: 80
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-gateway-identity
+  namespace: flux-system
+spec:
+  endpointSelector:
+    matchLabels:
+      app: notification-controller
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        "reserved:ingress": ""

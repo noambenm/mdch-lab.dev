@@ -13,8 +13,10 @@ spec:
     - name: infrastructure
       originRevision: "@monorepo"
       copy:
-        - from: "@monorepo/infrastructure/**"
-          to: "@artifact/"
+        - from: "@monorepo/infrastructure/base/**"
+          to: "@artifact/base/"
+        - from: "@monorepo/infrastructure/staging/**"
+          to: "@artifact/staging/"
     - name: apps
       originRevision: "@monorepo"
       copy:

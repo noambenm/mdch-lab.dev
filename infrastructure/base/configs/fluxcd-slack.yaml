@@ -1,0 +1,71 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Provider
+metadata:
+  name: slack
+  namespace: flux-system
+spec:
+  type: slack
+  channel: flux-alerts
+  address: https://slack.com/api/chat.postMessage
+  secretRef:
+    name: fluxcd-slack-token
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: slack-alerts
+  namespace: flux-system
+spec:
+  providerRef:
+    name: slack
+  eventMetadata:
+    Environment: production
+    Cluster: mdch-lab
+    Kind: Raspberry Pi
+    Region: Beer Sheva
+  eventSources:
+    - kind: Kustomization
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
+    - kind: GitRepository
+      name: '*'
+    - kind: HelmRepository
+      name: '*'
+    - kind: OCIRepository 
+      name: '*'
+    - kind: Bucket
+      name: '*'
+    - kind: ImageRepository
+      name: '*'
+    - kind: ImagePolicy
+      name: '*'
+    - kind: ImageUpdateAutomation
+      name: '*'
+    - kind: FluxInstance
+      name: flux
+  exclusionList:
+    - "^Dependencies.*"
+    - ".*Health check passed.*"
+    - ".*stored artifact for commit.*"
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: fluxcd-slack-token
+  namespace: flux-system
+spec:
+  refreshInterval: 24h
+  secretStoreRef:
+    name: gcpsm
+    kind: ClusterSecretStore
+  target:
+    name: fluxcd-slack-token
+    creationPolicy: Owner
+    template:
+      type: Opaque
+  data:
+  - secretKey: token
+    remoteRef:
+      key: fluxcd-slack-token

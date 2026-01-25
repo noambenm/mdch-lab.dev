@@ -1,9 +1,0 @@
-apiVersion: notification.toolkit.fluxcd.io/v1beta3
-kind: Provider
-metadata:
-  name: google-pubsub
-  namespace: flux-system
-spec:
-  type: googlepubsub
-  address: noambesandbox
-  channel: flux-alerts

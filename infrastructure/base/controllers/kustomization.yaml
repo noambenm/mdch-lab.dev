@@ -1,0 +1,56 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - cert-manager.yaml
+  - cilium.yaml
+  - external-secrets.yaml
+  - flagger-load-tester.yaml
+  - flagger.yaml
+  - gateway-api.yaml
+  - keda.yaml
+  - kube-prometheus-stack.yaml
+  - dashboards/
+
+configMapGenerator:
+  - name: kube-prometheus-stack-values
+    namespace: monitoring
+    files:
+      - values.yaml=values/kube-prometheus-stack.yaml
+
+  - name: flux-kube-state-metrics-values
+    namespace: monitoring
+    files:
+      - values.yaml=values/kube-state-metrics.yaml
+
+  - name: alertmanager-values
+    namespace: monitoring
+    files:
+      - values.yaml=values/alertmanager.yaml
+
+  - name: cert-manager-values
+    namespace: cert-manager
+    files:
+      - values.yaml=values/cert-manager.yaml
+
+  - name: cilium-values
+    namespace: cilium
+    files:
+      - values.yaml=values/cilium.yaml
+
+  - name: external-secrets-values
+    namespace: external-secrets
+    files:
+      - values.yaml=values/external-secrets.yaml
+
+  - name: flagger-values
+    namespace: flagger-system
+    files:
+      - values.yaml=values/flagger.yaml
+
+  - name: keda-values
+    namespace: keda
+    files:
+      - values.yaml=values/keda.yaml
+
+configurations:
+  - values/kustomizeconfig.yaml

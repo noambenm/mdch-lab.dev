@@ -1,0 +1,15 @@
+- op: add
+  path: /spec/values
+  value:
+    gke:
+      enabled: true
+    ipam:
+      mode: kubernetes
+    cni:
+      binPath: /home/kubernetes/bin
+    nodeinit:
+      enabled: true
+      reconfigureKubelet: true
+      removeCbrBridge: true
+      removeNodeTaints: true
+    ipv4NativeRoutingCIDR: 192.168.0.0/18

@@ -1,0 +1,9 @@
+- op: replace
+  path: /spec/auth
+  value:
+    workloadIdentity:
+      serviceAccountRef:
+        name: gcr-sa
+        namespace: external-secrets
+      clusterLocation: me-west1-c
+      clusterName: mdch-lab-staging-cluster-olf0

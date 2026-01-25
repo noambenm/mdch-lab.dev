@@ -1,0 +1,37 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    email: admin@mdch-lab.dev
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: issuer-account-key
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: cloudflare-api-token
+            key: api-token
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: cloudflare-api-token
+  namespace: cert-manager
+spec:
+  refreshInterval: 24h
+  secretStoreRef:
+    name: gcpsm
+    kind: ClusterSecretStore
+  target:
+    name: cloudflare-api-token
+    creationPolicy: Owner
+    template:
+      type: Opaque
+  data:
+  - secretKey: api-token
+    remoteRef:
+      key: cloudflare-api-token

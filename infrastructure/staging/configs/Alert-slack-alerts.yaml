@@ -1,0 +1,7 @@
+- op: replace
+  path: /spec/eventMetadata
+  value:
+    Environment: staging
+    Cluster: mdch-lab-staging-cluster
+    Kind: GKE
+    Region: me-west1-c

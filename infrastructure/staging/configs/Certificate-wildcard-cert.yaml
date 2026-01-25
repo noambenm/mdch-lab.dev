@@ -1,0 +1,9 @@
+- op: replace
+  path: /spec/commonName
+  value: "*.staging.mdch-lab.dev"
+- op: replace
+  path: /spec/dnsNames/0
+  value: "*.staging.mdch-lab.dev"
+- op: replace
+  path: /spec/dnsNames/1
+  value: staging.mdch-lab.dev

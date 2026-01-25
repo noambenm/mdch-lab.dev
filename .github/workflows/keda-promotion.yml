@@ -36,7 +36,7 @@ jobs:
           CHART_VERSION: ${{ steps.staging.outputs.version }}
         run: |
           echo "set chart version to ${CHART_VERSION}"
-          yq eval '.spec.chart.spec.version=env(CHART_VERSION)' -i ./infrastructure/controllers/keda/release.yaml
+          yq eval '.spec.chart.spec.version=env(CHART_VERSION)' -i ./infrastructure/base/controllers/keda.yaml
       # Open a Pull Request if an upgrade is needed in production.
       - name: Open promotion PR
         uses: peter-evans/create-pull-request@v8

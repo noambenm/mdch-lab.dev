@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    app.kubernetes.io/component: monitoring
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 24h
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
+  ref:
+    digest: sha256:eb57971b1c8d22a9aa18a72166866b180fdcb371cab5ba8d6ec3b315aeecbcec # version 81.2.2+eb57971b1c8d
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  releaseName: kube-prometheus-stack
+  chartRef:
+    kind: OCIRepository
+    name: kube-prometheus-stack
+  interval: 1h
+  driftDetection:
+    mode: enabled
+  install:
+    crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
+  upgrade:
+    crds: CreateReplace
+    strategy:
+      name: RetryOnFailure
+      retryInterval: 5m
+  valuesFrom:
+    - kind: ConfigMap
+      name: kube-prometheus-stack-values
+    - kind: ConfigMap
+      name: flux-kube-state-metrics-values
+    - kind: ConfigMap
+      name: alertmanager-values
+
