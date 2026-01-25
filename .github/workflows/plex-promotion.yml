@@ -48,3 +48,6 @@ jobs:
           title: Promote plex release to v${{ steps.staging.outputs.version }}
           body: |
             Promote plex release on production to v${{ steps.staging.outputs.version }}
+
+            ### 🔗 Release Notes
+            [Release Notes](https://github.com/plexinc/pms-docker/releases/tag/helm-chart-${{ steps.staging.outputs.version }})

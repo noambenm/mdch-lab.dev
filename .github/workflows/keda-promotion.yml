@@ -48,3 +48,6 @@ jobs:
           title: Promote keda release to v${{ steps.staging.outputs.version }}
           body: |
             Promote keda release on production to v${{ steps.staging.outputs.version }}
+
+            ### 🔗 Release Notes
+            [Release Notes](https://github.com/kedacore/keda/releases/tag/v${{ steps.staging.outputs.version }})

@@ -52,3 +52,6 @@ jobs:
           title: Promote flagger release to v${{ steps.staging.outputs.version }} with digest ${{ steps.staging.outputs.digest }}
           body: |
             Promote flagger release on production to v${{ steps.staging.outputs.version }} with digest ${{ steps.staging.outputs.digest }}
+
+            ### 🔗 Release Notes
+            [Release Notes](https://github.com/fluxcd/flagger/releases/tag/v${{ steps.staging.outputs.version }})
