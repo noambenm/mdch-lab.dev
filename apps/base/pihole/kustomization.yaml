@@ -7,3 +7,13 @@ resources:
   - pihole-password.yaml
   - httproute.yaml
   - pihole-policy.yaml
+configMapGenerator:
+  - name: pihole-grafana-dashboards
+    files:
+      - dashboards/10176_rev3.json
+    options:
+      labels:
+        grafana_dashboard: "1"
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: pihole
+        kustomize.toolkit.fluxcd.io/substitute: disabled

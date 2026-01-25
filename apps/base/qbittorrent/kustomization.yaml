@@ -5,3 +5,13 @@ resources:
   - repository.yaml
   - namespace.yaml
   - httproute.yaml
+configMapGenerator:
+  - name: qbittorrent-grafana-dashboards
+    files:
+      - dashboards/dashboard.json
+    options:
+      labels:
+        grafana_dashboard: "1"
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: qbittorrent
+        kustomize.toolkit.fluxcd.io/substitute: disabled

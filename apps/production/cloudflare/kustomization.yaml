@@ -3,13 +3,3 @@ kind: Kustomization
 namespace: cloudflare
 resources:
   - ../../base/cloudflare
-configMapGenerator:
-  - name: cloudflare-grafana-dashboards
-    files:
-      - dashboards/17457_rev6.json
-    options:
-      labels:
-        grafana_dashboard: "1"
-        app.kubernetes.io/part-of: flux
-        app.kubernetes.io/component: cloudflare
-        kustomize.toolkit.fluxcd.io/substitute: disabled
