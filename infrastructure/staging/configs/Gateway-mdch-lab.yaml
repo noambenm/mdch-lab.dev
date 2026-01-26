@@ -5,5 +5,10 @@
   path: /spec/listeners/1/hostname
   value: "staging.mdch-lab.dev"
 - op: replace
-  path: /spec/addresses/0/value
-  value: 34.0.70.94
+  path: /spec/gatewayClassName
+  value: gke-l7-regional-external-managed
+- op: replace
+  path: /spec/addresses/0
+  value: 
+    type: NamedAddress
+    value: cilium-gateway-mdch-lab
