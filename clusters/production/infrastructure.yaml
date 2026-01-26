@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  wait: true
+  wait: false
   timeout: 3m
   retryInterval: 2m
   prune: true
