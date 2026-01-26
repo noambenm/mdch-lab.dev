@@ -20,6 +20,10 @@ spec:
           type: ReplaceFullPath
           replaceFullPath: /admin/login
         statusCode: 302 
-  - backendRefs:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: "/"
+    backendRefs:
     - name: pihole-web
       port: 80

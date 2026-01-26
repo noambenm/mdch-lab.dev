@@ -13,6 +13,6 @@ spec:
     - path:
         type: PathPrefix
         value: "/"
-  - backendRefs:
+    backendRefs:
     - name: qbittorrent-web
       port: 80

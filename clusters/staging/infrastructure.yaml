@@ -25,7 +25,7 @@ spec:
   dependsOn:
     - name: infra-controllers
   interval: 1h
-  wait: true
+  wait: false
   timeout: 3m
   retryInterval: 2m
   prune: true
