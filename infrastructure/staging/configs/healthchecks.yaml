@@ -1,0 +1,68 @@
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: grafana-health-check
+  namespace: monitoring
+spec:
+  default:
+    checkIntervalSec: 10
+    timeoutSec: 5
+    healthyThreshold: 1
+    unhealthyThreshold: 3
+    logConfig:
+      enabled: true
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: 3000
+        requestPath: /api/health
+  targetRef:
+    group: ""
+    kind: Service
+    name: kube-prometheus-stack-grafana
+---
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: prometheus-health-check
+  namespace: monitoring
+spec:
+  default:
+    checkIntervalSec: 10
+    timeoutSec: 5
+    healthyThreshold: 1
+    unhealthyThreshold: 3
+    logConfig:
+      enabled: true
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: 9090
+        requestPath: /-/healthy
+  targetRef:
+    group: ""
+    kind: Service
+    name: kube-prometheus-stack-prometheus
+---
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: webhook-receiver-check
+  namespace: flux-system
+spec:
+  targetRef:
+    group: ""
+    kind: Service
+    name: webhook-receiver
+  default:
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: 9440
+        requestPath: /readyz
+    checkIntervalSec: 10
+    timeoutSec: 5
+    healthyThreshold: 1
+    unhealthyThreshold: 3
+    logConfig:
+      enabled: true
