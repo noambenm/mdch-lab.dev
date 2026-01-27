@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: pihole
 resources:
   - ../../base/pihole
+  - healthcheck.yaml
 configMapGenerator:
   - name: pihole-values
     files:

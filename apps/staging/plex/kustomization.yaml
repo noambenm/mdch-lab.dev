@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: plex
 resources:
   - ../../base/plex
+  - healthcheck.yaml
 configMapGenerator:
   - name: plex-values
     files:

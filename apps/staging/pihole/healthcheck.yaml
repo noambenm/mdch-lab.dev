@@ -1,0 +1,22 @@
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: pihole-health-check
+  namespace: pihole
+spec:
+  default:
+    checkIntervalSec: 10
+    timeoutSec: 5
+    healthyThreshold: 2
+    unhealthyThreshold: 3
+    logConfig:
+      enabled: true
+    config:
+      type: HTTP
+      httpHealthCheck:
+        requestPath: /admin/login
+        port: 80
+  targetRef:
+    group: ""
+    kind: Service
+    name: pihole-web
