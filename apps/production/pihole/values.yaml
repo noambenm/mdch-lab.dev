@@ -42,9 +42,8 @@ dnsmasq:
   customDnsEntries:
     - host-record=mdch-lab.dev,192.168.1.25
     - host-record=controlplane.mdch-lab.dev,192.168.1.10
-    - host-record=node01.mdch-lab.dev,192.168.1.11
-    - host-record=node02.mdch-lab.dev,192.168.1.12
     - address=/.mdch-lab.dev/192.168.1.25
+    - server=/staging.mdch-lab.dev/#
 
 adlists:
   - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
