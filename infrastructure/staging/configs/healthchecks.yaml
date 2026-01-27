@@ -47,7 +47,7 @@ spec:
 apiVersion: networking.gke.io/v1
 kind: HealthCheckPolicy
 metadata:
-  name: webhook-receiver-check
+  name: webhook-receiver-tcp-check
   namespace: flux-system
 spec:
   targetRef:
@@ -56,13 +56,25 @@ spec:
     name: webhook-receiver
   default:
     config:
-      type: HTTP
-      httpHealthCheck:
-        port: 9440
-        requestPath: /readyz
-    checkIntervalSec: 10
+      type: TCP
+      tcpHealthCheck: {} 
+    checkIntervalSec: 5
     timeoutSec: 5
     healthyThreshold: 1
-    unhealthyThreshold: 3
+    unhealthyThreshold: 2
     logConfig:
       enabled: true
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-gcp-healthchecks
+  namespace: flux-system
+spec:
+  endpointSelector:
+    matchLabels:
+      app: notification-controller
+  ingress:
+  - fromCIDR:
+    - "130.211.0.0/22"
+    - "35.191.0.0/16"
