@@ -29,4 +29,3 @@ patches:
     target:
       kind: HTTPRoute
       name: qbittorrent-httproute
-      namespace: qbittorrent
