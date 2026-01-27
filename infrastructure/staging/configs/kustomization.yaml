@@ -74,11 +74,6 @@ patches:
       kind: Gateway
       name: mdch-lab
       namespace: cilium
-  - path: GCRAccessToken-gcr-gen.yaml
-    target:
-      kind: GCRAccessToken
-      name: gcr-gen
-      namespace: external-secrets
   - path: Alert-slack-alerts.yaml
     target:
       kind: Alert

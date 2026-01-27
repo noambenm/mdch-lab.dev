@@ -11,5 +11,4 @@ resources:
   - fluxcd-slack.yaml
   - gateway.yaml
   - gcp-clustersecretstore.yaml
-  - gcr-token.yaml
   - httproutes.yaml
