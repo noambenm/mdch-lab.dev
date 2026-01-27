@@ -22,3 +22,11 @@ patches:
     target:
       kind: OCIRepository
       name: qbittorrent
+  - patch: |
+      - op: replace
+        path: /spec/hostnames/0
+        value: qbittorrent.staging.mdch-lab.dev
+    target:
+      kind: HTTPRoute
+      name: qbittorrent-httproute
+      namespace: qbittorrent

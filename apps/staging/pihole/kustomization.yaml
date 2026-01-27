@@ -21,3 +21,11 @@ patches:
     target:
       kind: HelmRelease
       name: pihole
+  - patch: |
+      - op: replace
+        path: /spec/hostnames/0
+        value: pihole.staging.mdch-lab.dev
+    target:
+      kind: HTTPRoute
+      name: pihole-web
+      namespace: pihole

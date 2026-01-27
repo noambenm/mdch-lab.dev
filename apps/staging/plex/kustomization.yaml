@@ -21,3 +21,11 @@ patches:
     target:
       kind: HelmRelease
       name: plex
+  - patch: |
+      - op: replace
+        path: /spec/hostnames/0
+        value: plex.staging.mdch-lab.dev
+    target:
+      kind: HTTPRoute
+      name: plex-web
+      namespace: plex
