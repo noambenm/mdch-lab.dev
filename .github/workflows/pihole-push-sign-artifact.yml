@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - 'main'
-  workflow_dispatch:
+    paths:
+      - 'apps/base/pihole/**'
+      - 'apps/stage/pihole/**'
 
 permissions:
   contents: read
@@ -32,6 +34,7 @@ jobs:
         name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v3
         with:
+          project_id: noambesandbox
           workload_identity_provider: projects/320535199479/locations/global/workloadIdentityPools/mdch-lab-cluster-pool/providers/github-actions
 
       - name: Set up Cloud SDK
