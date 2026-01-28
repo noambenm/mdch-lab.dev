@@ -1,0 +1,58 @@
+name: pihole-push-sign-artifact
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # needed for keyless signing
+
+env:
+  OCI_REPO: "oci://me-west1-docker.pkg.dev/noambesandbox/${{ github.event.repository.name }}/pihole"
+
+jobs:
+  kubernetes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Flux CLI
+        uses: fluxcd/flux2/action@main
+
+      - name: Setup Cosign
+        uses: sigstore/cosign-installer@main
+        with:
+          cosign-release: v2.6.1 # cosign v3+ will be supported only in Flux v2.8+
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: projects/320535199479/locations/global/workloadIdentityPools/mdch-lab-cluster-pool/providers/github-actions
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v3
+
+      - name: Configure Docker for GAR
+        run: |
+          gcloud auth configure-docker me-west1-docker.pkg.dev --quiet
+
+      - name: Push and sign manifests
+        run: |
+          mkdir -p output
+          kustomize build ./apps/staging/pihole > ./output/staging-pihole.yaml
+          digest_url=$(flux push artifact \
+          $OCI_REPO:$(git rev-parse --short HEAD) \
+          --path="./output/staging-pihole.yaml" \
+          --source="$(git config --get remote.origin.url)" \
+          --revision="$(git branch --show-current)@sha1:$(git rev-parse HEAD)" \
+          --output=json | \
+          jq -r '. | .repository + "@" + .digest')
+
+          cosign sign --yes $digest_url
+
+          flux tag artifact $OCI_REPO:$(git rev-parse --short HEAD) --tag latest
