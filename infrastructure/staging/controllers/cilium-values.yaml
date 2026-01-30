@@ -12,7 +12,7 @@
       reconfigureKubelet: true
       removeCbrBridge: true
       removeNodeTaints: true
-    ipv4NativeRoutingCIDR: 192.168.0.0/18
+    ipv4NativeRoutingCIDR: 10.20.0.0/21
     agentNotReadyTaintKey: "ignore-taint.cluster-autoscaler.kubernetes.io/cilium-not-ready"
     operator:
       podDisruptionBudget:
